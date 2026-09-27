@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EP VIBE — ILTVIBE</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #0b0b0b;
+      color: #ffffff;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 720px;
+      margin: auto;
+      padding: 45px 20px 60px;
+    }
+
+    /* LOGO */
+
+    .logo {
+      text-align: center;
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: 5px;
+      margin-bottom: 6px;
+    }
+
+    .tagline {
+      text-align: center;
+      color: #888;
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin-bottom: 40px;
+    }
+
+    /* ALBUM COVER */
+
+    .album-cover {
+      width: min(360px, 90%);
+      margin: 0 auto 30px;
+    }
+
+    .album-cover img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
+    }
+
+    /* ALBUM INFO */
+
+    .album-title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 800;
+      margin: 0;
+    }
+
+    .album-info {
+      text-align: center;
+      color: #777;
+      font-size: 13px;
+      margin-top: 8px;
+      margin-bottom: 35px;
+      letter-spacing: 1px;
+    }
+
+    /* TRACKLIST */
+
+    .track {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+
+      background: #141414;
+      border: 1px solid #242424;
+
+      border-radius: 14px;
+
+      padding: 16px 17px;
+      margin-bottom: 10px;
+
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        border-color 0.2s ease;
+    }
+
+    .track:hover {
+      background: #1c1c1c;
+      border-color: #383838;
+      transform: translateY(-2px);
+    }
+
+    .track-number {
+      width: 30px;
+      color: #666;
+      font-size: 13px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .track-title {
+      flex: 1;
+      text-align: left;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+
+    .listen {
+      flex-shrink: 0;
+
+      color: #ffffff;
+      text-decoration: none;
+
+      border: 1px solid #444;
+      border-radius: 20px;
+
+      padding: 7px 14px;
+
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+
+      transition: 0.2s ease;
+    }
+
+    .listen:hover {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+    }
+
+    /* BACK BUTTON */
+
+    .back {
+      display: block;
+      width: fit-content;
+
+      margin: 38px auto 0;
+
+      color: #777;
+      text-decoration: none;
+
+      font-size: 13px;
+      letter-spacing: 1px;
+
+      transition: 0.2s ease;
+    }
+
+    .back:hover {
+      color: #ffffff;
+    }
+
+    /* FOOTER */
+
+    footer {
+      text-align: center;
+
+      margin-top: 55px;
+
+      color: #444;
+
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 500px) {
+
+      .container {
+        padding: 35px 15px 50px;
+      }
+
+      .logo {
+        font-size: 32px;
+      }
+
+      .album-title {
+        font-size: 27px;
+      }
+
+      .track {
+        padding: 14px 12px;
+        gap: 9px;
+      }
+
+      .track-title {
+        font-size: 14px;
+      }
+
+      .listen {
+        padding: 6px 10px;
+        font-size: 10px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- ILTVIBE LOGO -->
+
+    <div class="logo">
+      ILTVIBE
+    </div>
+
+    <div class="tagline">
+      I LIKE THE VIBE
+    </div>
+
+
+    <!-- ALBUM COVER -->
+
+    <div class="album-cover">
+
+      <!--
+        PALITAN ANG "ep-vibe.jpg"
+        KUNG IBA ANG FILE NAME NG ALBUM COVER
+      -->
+
+      <img
+        src="ep-vibe.jpg"
+        alt="EP VIBE — ILTVIBE"
+      >
+
+    </div>
+
+
+    <!-- ALBUM TITLE -->
+
+    <h1 class="album-title">
+      EP VIBE
+    </h1>
+
+    <div class="album-info">
+      ILTVIBE · 8 TRACKS
+    </div>
+
+
+    <!-- TRACK 01 -->
+
+    <div class="track">
+
+      <div class="track-number">
+        01
+      </div>
+
+      <div class="track-title">
+        FUBU
+      </div>
+
+      <a
+        class="listen"
+        href="YOUTUBE_LINK_HERE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LISTEN
+      </a>
+
+    </div>
+
+
+    <!-- TRACK 02 -->
+
+    <div class="track">
+
+      <div class="track-number">
+        02
+      </div>
+
+      <div class="track-title">
+        Makaibang Mundo
+      </div>
+
+      <a
+        class="listen"
+        href="YOUTUBE_LINK_HERE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LISTEN
+      </a>
+
+    </div>
+
+
+    <!-- TRACK 03 -->
+
+    <div class="track">
+
+      <div class="track-number">
+        03
+      </div>
+
+      <div class="track-title">
+        Zhynn
+      </div>
+
+      <a
+        class="listen"
+        href="YOUTUBE_LINK_HERE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LISTEN
+      </a>
+
+    </div>
+
+
+    <!-- TRACK 04 -->
+
+    <div class="track">
+
+      <div class="track-number">
+        04
+      </div>
+
+      <div class="track-title">
+        Ikaw Pa Rin
+      </div>
+
+      <a
+        class="listen"
+        href="YOUTUBE_LINK_HERE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LISTEN
+      </a>
+
+    </div>
+
+
+    <!-- TRACK 05 -->
+
+    <div class="track">
+
+      <div class="track-number">
+        05
+      </div>
+
+      <div class="track-title">
+        1004
+      </div>
+
+      <a
+        class="listen"
+        href="YOUTUBE_LINK_HERE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LISTEN
+      </a>
+
+    </div>
+
+
+    <!-- TRACK 06 -->
+
+    <div class="track">
+
+      <div class="track-number">
+        06
+      </div>
+
+      <div class="track-title">
+        ELAINE
+      </div>
+
+      <a
+        class="listen"
+        href="YOUTUBE_LINK_HERE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LISTEN
+      </a>
+
+    </div>
+
+
+    <!-- TRACK 07 -->
+
+    <div class="track">
+
+      <div class="track-number">
+        07
+      </div>
+
+      <div class="track-title">
+        Sa'yo Lang
+      </div>
+
+      <a
+        class="listen"
+        href="YOUTUBE_LINK_HERE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LISTEN
+      </a>
+
+    </div>
+
+
+    <!-- TRACK 08 -->
+
+    <div class="track">
+
+      <div class="track-number">
+        08
+      </div>
+
+      <div class="track-title">
+        Ikaw Pa Rin (The CodeVibe Version)
+      </div>
+
+      <a
+        class="listen"
+        href="YOUTUBE_LINK_HERE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LISTEN
+      </a>
+
+    </div>
+
+
+    <!-- BACK TO HOME -->
+
+    <a
+      class="back"
+      href="index.html"
+    >
+      ← BACK TO ILTVIBE
+    </a>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+      ILTVIBE · I LIKE THE VIBE
+    </footer>
+
+  </div>
+
+</body>
+</html>
