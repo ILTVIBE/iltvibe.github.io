@@ -102,6 +102,36 @@
       border-color: white;
     }
 
+    /* KATAMTAMANG RECTANGLE ARTIST SECTION */
+
+    .artist-section {
+      margin-bottom: 55px;
+      text-align: center;
+    }
+
+    .artist-box {
+      width: 100%;
+      max-width: 320px; /* Eksaktong katamtamang laki, hindi malaki, hindi maliit */
+      margin: auto;
+      overflow: hidden;
+      border-radius: 16px; /* Bagay sa rounded corners ng site mo */
+      border: 1px solid #222;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+    }
+
+    .artist-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .artist-title {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #aaa;
+      letter-spacing: 2px;
+    }
+
     /* ALBUMS */
 
     .albums {
@@ -205,7 +235,7 @@
 
 <body>
 
-  <!-- HEADER -->
+  <!-- ORIGINAL HEADER -->
 
   <header>
     <div class="logo">ILTVIBE</div>
@@ -238,6 +268,17 @@
     </section>
 
 
+    <!-- ARTIST PROFILE IMAGE (KATAMTAMANG RECTANGLE) -->
+
+    <section class="artist-section">
+      <div class="section-title">The Artist</div>
+      <div class="artist-box">
+        <img src="artist.png" alt="ILTVIBE Artist Profile">
+      </div>
+      <div class="artist-title">ILTVIBE MUSIC</div>
+    </section>
+
+
     <!-- ALBUMS -->
 
     <section class="albums">
@@ -257,12 +298,10 @@
         </a>
 
         <a class="album" href="beyond-the-vibe.html">
-          <span class="album-name">BEYOND THE VIBE</span>
           <span class="arrow">→</span>
         </a>
 
         <a class="album" href="the-next-vibe.html">
-          <span class="album-name">THE NEXT VIBE</span>
           <span class="arrow">→</span>
         </a>
 
@@ -315,9 +354,6 @@
 
     /*
       ILTVIBE RANDOM YOUTUBE VIDEOS
-
-      PALITAN ANG VIDEO IDs SA IBABA
-      NG ACTUAL ILTVIBE YOUTUBE VIDEO IDs MO.
     */
 
     const videos = [
