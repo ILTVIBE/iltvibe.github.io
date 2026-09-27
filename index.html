@@ -63,7 +63,7 @@
     /* RANDOM VIDEO */
 
     .random-section {
-      margin-bottom: 55px;
+      margin-bottom: 45px;
     }
 
     .video-box {
@@ -100,6 +100,36 @@
       background: white;
       color: black;
       border-color: white;
+    }
+
+    /* ARTIST */
+
+    .artist-center {
+      text-align: center;
+      padding: 5px 0 55px;
+    }
+
+    .artist-image {
+      width: 220px;
+      height: 125px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid #292929;
+      display: block;
+      margin: 0 auto 18px;
+    }
+
+    .artist-name {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .artist-subtitle {
+      margin-top: 7px;
+      color: #777;
+      font-size: 12px;
+      letter-spacing: 3px;
     }
 
     /* ALBUMS */
@@ -184,6 +214,7 @@
     /* MOBILE */
 
     @media (max-width: 600px) {
+
       header {
         padding-top: 40px;
       }
@@ -199,7 +230,13 @@
       .album-name {
         font-size: 15px;
       }
+
+      .artist-image {
+        width: 200px;
+        height: 115px;
+      }
     }
+
   </style>
 </head>
 
@@ -208,8 +245,15 @@
   <!-- HEADER -->
 
   <header>
-    <div class="logo">ILTVIBE</div>
-    <div class="tagline">I LIKE THE VIBE</div>
+
+    <div class="logo">
+      ILTVIBE
+    </div>
+
+    <div class="tagline">
+      I LIKE THE VIBE
+    </div>
+
   </header>
 
 
@@ -219,9 +263,12 @@
 
     <section class="random-section">
 
-      <div class="section-title">Random Vibe</div>
+      <div class="section-title">
+        Random Vibe
+      </div>
 
       <div class="video-box">
+
         <iframe
           id="youtubePlayer"
           src=""
@@ -229,11 +276,36 @@
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen>
         </iframe>
+
       </div>
 
-      <button class="random-button" onclick="randomVideo()">
+      <button
+        class="random-button"
+        onclick="randomVideo()">
+
         ⟳ RANDOM VIBE
+
       </button>
+
+    </section>
+
+
+    <!-- ARTIST IMAGE -->
+
+    <section class="artist-center">
+
+      <img
+        class="artist-image"
+        src="artist.png"
+        alt="ILTVIBE Artist">
+
+      <div class="artist-name">
+        ILTVIBE
+      </div>
+
+      <div class="artist-subtitle">
+        I LIKE THE VIBE
+      </div>
 
     </section>
 
@@ -242,28 +314,69 @@
 
     <section class="albums">
 
-      <div class="section-title">Albums</div>
+      <div class="section-title">
+        Albums
+      </div>
 
       <div class="album-list">
 
-        <a class="album" href="vibe.html">
-          <span class="album-name">EP VIBE</span>
-          <span class="arrow">→</span>
+        <a
+          class="album"
+          href="vibe.html">
+
+          <span class="album-name">
+            EP VIBE
+          </span>
+
+          <span class="arrow">
+            →
+          </span>
+
         </a>
 
-        <a class="album" href="after-the-vibe.html">
-          <span class="album-name">AFTER THE VIBE</span>
-          <span class="arrow">→</span>
+
+        <a
+          class="album"
+          href="after-the-vibe.html">
+
+          <span class="album-name">
+            AFTER THE VIBE
+          </span>
+
+          <span class="arrow">
+            →
+          </span>
+
         </a>
 
-        <a class="album" href="beyond-the-vibe.html">
-          <span class="album-name">BEYOND THE VIBE</span>
-          <span class="arrow">→</span>
+
+        <a
+          class="album"
+          href="beyond-the-vibe.html">
+
+          <span class="album-name">
+            BEYOND THE VIBE
+          </span>
+
+          <span class="arrow">
+            →
+          </span>
+
         </a>
 
-        <a class="album" href="the-next-vibe.html">
-          <span class="album-name">THE NEXT VIBE</span>
-          <span class="arrow">→</span>
+
+        <a
+          class="album"
+          href="the-next-vibe.html">
+
+          <span class="album-name">
+            THE NEXT VIBE
+          </span>
+
+          <span class="arrow">
+            →
+          </span>
+
         </a>
 
       </div>
@@ -275,28 +388,54 @@
 
     <section class="connect">
 
-      <div class="section-title">Connect</div>
+      <div class="section-title">
+        Connect
+      </div>
 
       <div class="socials">
 
-        <a href="https://www.youtube.com/" target="_blank">
+        <a
+          href="https://www.youtube.com/"
+          target="_blank">
+
           YouTube
+
         </a>
 
-        <a href="https://music.youtube.com/" target="_blank">
+
+        <a
+          href="https://music.youtube.com/"
+          target="_blank">
+
           YouTube Music
+
         </a>
 
-        <a href="#" target="_blank">
+
+        <a
+          href="#"
+          target="_blank">
+
           Facebook
+
         </a>
 
-        <a href="#" target="_blank">
+
+        <a
+          href="#"
+          target="_blank">
+
           Instagram
+
         </a>
 
-        <a href="#" target="_blank">
+
+        <a
+          href="#"
+          target="_blank">
+
           TikTok
+
         </a>
 
       </div>
@@ -306,8 +445,12 @@
   </main>
 
 
+  <!-- FOOTER -->
+
   <footer>
+
     ILTVIBE · I LIKE THE VIBE
+
   </footer>
 
 
@@ -335,7 +478,8 @@
       const randomIndex =
         Math.floor(Math.random() * videos.length);
 
-      const videoID = videos[randomIndex];
+      const videoID =
+        videos[randomIndex];
 
       document.getElementById("youtubePlayer").src =
         "https://www.youtube.com/embed/" +
