@@ -25,24 +25,18 @@
       text-decoration: none;
     }
 
-    /* HEADER */
+    /* WIDE HEADER / BANNER */
 
     header {
-      text-align: center;
-      padding: 55px 20px 35px;
+      width: 100%;
+      overflow: hidden;
+      margin-bottom: 35px;
     }
 
-    .logo {
-      font-size: clamp(42px, 10vw, 76px);
-      font-weight: 900;
-      letter-spacing: -4px;
-    }
-
-    .tagline {
-      margin-top: 8px;
-      color: #999;
-      font-size: 13px;
-      letter-spacing: 4px;
+    .banner-wide {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     /* MAIN */
@@ -100,6 +94,36 @@
       background: white;
       color: black;
       border-color: white;
+    }
+
+    /* ARTIST PROFILE SECTION */
+
+    .artist-section {
+      margin-bottom: 55px;
+      text-align: center;
+    }
+
+    .artist-box {
+      width: 100%;
+      max-width: 450px;
+      margin: auto;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid #222;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+
+    .artist-box img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .artist-title {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #aaa;
+      letter-spacing: 2px;
     }
 
     /* ALBUMS */
@@ -185,11 +209,7 @@
 
     @media (max-width: 600px) {
       header {
-        padding-top: 40px;
-      }
-
-      .logo {
-        letter-spacing: -3px;
+        margin-bottom: 20px;
       }
 
       .album {
@@ -205,11 +225,10 @@
 
 <body>
 
-  <!-- HEADER -->
+  <!-- FULL WIDE LOGO BANNER -->
 
   <header>
-    <div class="logo">ILTVIBE</div>
-    <div class="tagline">I LIKE THE VIBE</div>
+    <img class="banner-wide" src="banner.png" alt="ILTVIBE Official Wide Banner">
   </header>
 
 
@@ -235,6 +254,17 @@
         ⟳ RANDOM VIBE
       </button>
 
+    </section>
+
+
+    <!-- ARTIST PROFILE IMAGE -->
+
+    <section class="artist-section">
+      <div class="section-title">The Artist</div>
+      <div class="artist-box">
+        <img src="artist.png" alt="ILTVIBE Artist Profile">
+      </div>
+      <div class="artist-title">ILTVIBE MUSIC</div>
     </section>
 
 
@@ -279,11 +309,11 @@
 
       <div class="socials">
 
-        <a href="https://www.youtube.com/" target="_blank">
+        <a href="https://youtube.com/@iltvibe?si=Ytfq8VnivkixFAzM" target="_blank">
           YouTube
         </a>
 
-        <a href="https://music.youtube.com/" target="_blank">
+        <a href="https://music.youtube.com/@iltvibe" target="_blank">
           YouTube Music
         </a>
 
@@ -315,41 +345,28 @@
 
     /*
       ILTVIBE RANDOM YOUTUBE VIDEOS
-
-      PALITAN ANG VIDEO IDs SA IBABA
-      NG ACTUAL ILTVIBE YOUTUBE VIDEO IDs MO.
     */
 
     const videos = [
-
       "jzF-l5wMv-I",
       "t9k3DmYtcZ8",
       "5WdlZZcAnxM",
       "aqJ6blP4fXc"
-
     ];
 
 
     function randomVideo() {
-
-      const randomIndex =
-        Math.floor(Math.random() * videos.length);
-
+      const randomIndex = Math.floor(Math.random() * videos.length);
       const videoID = videos[randomIndex];
-
       document.getElementById("youtubePlayer").src =
-        "https://www.youtube.com/embed/" +
-        videoID +
-        "?autoplay=1";
-
+        "https://youtube.comembed/" + videoID + "?autoplay=1";
     }
 
-
-    // Random video kapag binuksan ang homepage
-
+    // Awtomatikong magpapatugtog pagkabukas ng homepage
     randomVideo();
 
   </script>
 
 </body>
   </html>
+  
