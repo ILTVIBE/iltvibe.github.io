@@ -102,36 +102,6 @@
       border-color: white;
     }
 
-    /* KATAMTAMANG RECTANGLE ARTIST SECTION */
-
-    .artist-section {
-      margin-bottom: 55px;
-      text-align: center;
-    }
-
-    .artist-box {
-      width: 100%;
-      max-width: 320px; /* Eksaktong katamtamang laki, hindi malaki, hindi maliit */
-      margin: auto;
-      overflow: hidden;
-      border-radius: 16px; /* Bagay sa rounded corners ng site mo */
-      border: 1px solid #222;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-    }
-
-    .artist-box img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .artist-title {
-      margin-top: 15px;
-      font-size: 14px;
-      color: #aaa;
-      letter-spacing: 2px;
-    }
-
     /* ALBUMS */
 
     .albums {
@@ -235,7 +205,7 @@
 
 <body>
 
-  <!-- ORIGINAL HEADER -->
+  <!-- HEADER -->
 
   <header>
     <div class="logo">ILTVIBE</div>
@@ -268,17 +238,6 @@
     </section>
 
 
-    <!-- ARTIST PROFILE IMAGE (KATAMTAMANG RECTANGLE) -->
-
-    <section class="artist-section">
-      <div class="section-title">The Artist</div>
-      <div class="artist-box">
-        <img src="artist.png" alt="ILTVIBE Artist Profile">
-      </div>
-      <div class="artist-title">ILTVIBE MUSIC</div>
-    </section>
-
-
     <!-- ALBUMS -->
 
     <section class="albums">
@@ -287,7 +246,7 @@
 
       <div class="album-list">
 
-        <a class="album" href="ep-vibe.html">
+        <a class="album" href="vibe.html">
           <span class="album-name">EP VIBE</span>
           <span class="arrow">→</span>
         </a>
@@ -298,10 +257,12 @@
         </a>
 
         <a class="album" href="beyond-the-vibe.html">
+          <span class="album-name">BEYOND THE VIBE</span>
           <span class="arrow">→</span>
         </a>
 
         <a class="album" href="the-next-vibe.html">
+          <span class="album-name">THE NEXT VIBE</span>
           <span class="arrow">→</span>
         </a>
 
@@ -318,11 +279,11 @@
 
       <div class="socials">
 
-        <a href="https://youtube.com" target="_blank">
+        <a href="https://www.youtube.com/" target="_blank">
           YouTube
         </a>
 
-        <a href="https://youtube.com" target="_blank">
+        <a href="https://music.youtube.com/" target="_blank">
           YouTube Music
         </a>
 
@@ -354,24 +315,38 @@
 
     /*
       ILTVIBE RANDOM YOUTUBE VIDEOS
+
+      PALITAN ANG VIDEO IDs SA IBABA
+      NG ACTUAL ILTVIBE YOUTUBE VIDEO IDs MO.
     */
 
     const videos = [
+
       "jzF-l5wMv-I",
       "t9k3DmYtcZ8",
       "5WdlZZcAnxM",
       "aqJ6blP4fXc"
+
     ];
 
 
     function randomVideo() {
-      const randomIndex = Math.floor(Math.random() * videos.length);
+
+      const randomIndex =
+        Math.floor(Math.random() * videos.length);
+
       const videoID = videos[randomIndex];
+
       document.getElementById("youtubePlayer").src =
-        "https://youtube.comembed/" + videoID + "?autoplay=1";
+        "https://www.youtube.com/embed/" +
+        videoID +
+        "?autoplay=1";
+
     }
 
+
     // Random video kapag binuksan ang homepage
+
     randomVideo();
 
   </script>
