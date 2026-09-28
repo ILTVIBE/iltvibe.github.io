@@ -9,574 +9,510 @@
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
 
     body {
-      background: #080808;
-      color: #fff;
+      margin: 0;
+      background: #0b0b0b;
+      color: #ffffff;
       font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
     }
 
     .container {
-      width: min(900px, 92%);
+      width: 100%;
+      max-width: 720px;
       margin: auto;
+      padding: 45px 20px 60px;
     }
 
-    /* =========================
-       HEADER
-    ========================= */
-
-    header {
-      text-align: center;
-      padding: 55px 0 35px;
-    }
+    /* LOGO */
 
     .logo {
-      font-size: 30px;
-      font-weight: 900;
+      text-align: center;
+      font-size: 40px;
+      font-weight: 800;
       letter-spacing: 5px;
+      margin-bottom: 6px;
     }
 
     .tagline {
-      margin-top: 7px;
-      color: #777;
-      font-size: 10px;
-      letter-spacing: 4px;
+      text-align: center;
+      color: #888;
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin-bottom: 40px;
     }
 
-    /* =========================
-       WIDE ALBUM IMAGES
-    ========================= */
+    /* AFTER THE VIBE BANNER */
 
-    .album-gallery {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 14px;
-      margin: 10px auto 55px;
-    }
-
-    .album-gallery a {
-      display: block;
-    }
-
-    .album-gallery img {
+    .album-cover {
       width: 100%;
-      aspect-ratio: 16 / 7;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .album-cover img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
       object-fit: cover;
       display: block;
-      border-radius: 14px;
-      border: 1px solid #292929;
-      background: #0e0e0e;
-      transition: transform 0.25s ease,
-                  border-color 0.25s ease,
-                  opacity 0.25s ease;
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
     }
 
-    .album-gallery img:hover {
-      transform: scale(1.01);
-      border-color: #444;
-      opacity: 0.92;
-    }
-
-    /* =========================
-       HERO
-    ========================= */
-
-    .hero {
-      text-align: center;
-      padding: 5px 0 55px;
-    }
-
-    .album-label {
-      color: #666;
-      font-size: 10px;
-      letter-spacing: 4px;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-    }
+    /* ALBUM INFO */
 
     .album-title {
-      font-size: clamp(34px, 7vw, 58px);
-      font-weight: 900;
-      letter-spacing: 2px;
-      line-height: 1.1;
+      text-align: center;
+      font-size: 32px;
+      font-weight: 800;
+      margin: 0;
     }
 
-    .album-subtitle {
-      margin-top: 10px;
+    .album-info {
+      text-align: center;
       color: #777;
-      font-size: 11px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
+      font-size: 13px;
+      margin-top: 8px;
+      margin-bottom: 35px;
+      letter-spacing: 1px;
     }
 
-    .album-description {
-      max-width: 650px;
-      margin: 20px auto 0;
-      color: #999;
-      font-size: 14px;
-    }
-
-    /* =========================
-       SECTION
-    ========================= */
-
-    .section {
-      padding-bottom: 60px;
-    }
-
-    .section-title {
-      color: #777;
-      font-size: 10px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-
-    /* =========================
-       TRACKLIST
-    ========================= */
-
-    .tracklist {
-      border-top: 1px solid #222;
-    }
+    /* TRACKLIST */
 
     .track {
       display: flex;
       align-items: center;
-      gap: 16px;
-      min-height: 64px;
-      padding: 14px 5px;
-      border-bottom: 1px solid #222;
-      transition: background 0.2s ease;
+      gap: 14px;
+
+      background: #141414;
+      border: 1px solid #242424;
+
+      border-radius: 14px;
+
+      padding: 16px 17px;
+      margin-bottom: 10px;
+
+      transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        border-color 0.2s ease;
     }
 
     .track:hover {
-      background: #0d0d0d;
+      background: #1c1c1c;
+      border-color: #383838;
+      transform: translateY(-2px);
     }
 
     .track-number {
       width: 30px;
-      color: #555;
-      font-size: 11px;
+      color: #666;
+      font-size: 13px;
       text-align: center;
       flex-shrink: 0;
     }
 
-    .track-name {
+    .track-title {
       flex: 1;
-      font-size: 14px;
+      text-align: left;
+      font-size: 15px;
       font-weight: 600;
+      line-height: 1.35;
     }
 
-    .track-type {
-      color: #555;
-      font-size: 9px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      white-space: nowrap;
+    .listen {
+      flex-shrink: 0;
+
+      color: #ffffff;
+      text-decoration: none;
+
+      border: 1px solid #444;
+      border-radius: 20px;
+
+      padding: 7px 14px;
+
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+
+      transition: 0.2s ease;
     }
 
-    /* =========================
-       FEATURED TRACK
-    ========================= */
-
-    .featured {
-      padding: 25px;
-      background: #0d0d0d;
-      border: 1px solid #242424;
-      border-radius: 14px;
+    .listen:hover {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
     }
 
-    .featured-label {
-      color: #666;
-      font-size: 9px;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
+    /* BACK BUTTON */
 
-    .featured-title {
-      font-size: 22px;
-      font-weight: 800;
-      margin-bottom: 18px;
-    }
-
-    .player {
-      width: 100%;
-      overflow: hidden;
-      border-radius: 10px;
-      border: 1px solid #222;
-      background: #000;
-    }
-
-    .player iframe {
+    .back {
       display: block;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      border: 0;
+      width: fit-content;
+
+      margin: 38px auto 0;
+
+      color: #777;
+      text-decoration: none;
+
+      font-size: 13px;
+      letter-spacing: 1px;
+
+      transition: 0.2s ease;
     }
 
-    /* =========================
-       NAVIGATION
-    ========================= */
-
-    .album-nav {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
+    .back:hover {
+      color: #ffffff;
     }
 
-    .nav-button {
-      padding: 18px;
-      text-align: center;
-      border: 1px solid #292929;
-      border-radius: 10px;
-      color: #999;
-      font-size: 10px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      transition: background 0.2s ease,
-                  color 0.2s ease,
-                  border-color 0.2s ease;
-    }
-
-    .nav-button:hover {
-      background: #111;
-      color: #fff;
-      border-color: #444;
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
+    /* FOOTER */
 
     footer {
-      border-top: 1px solid #181818;
       text-align: center;
-      padding: 35px 0 45px;
-      color: #555;
-      font-size: 10px;
-      letter-spacing: 1px;
+
+      margin-top: 55px;
+
+      color: #444;
+
+      font-size: 11px;
+      letter-spacing: 2px;
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
+    /* MOBILE */
 
-    @media (max-width: 600px) {
+    @media (max-width: 500px) {
 
-      header {
-        padding: 42px 0 30px;
+      .container {
+        padding: 35px 15px 50px;
       }
 
       .logo {
-        font-size: 25px;
+        font-size: 32px;
       }
 
-      .album-gallery {
-        gap: 10px;
-        margin-bottom: 42px;
-      }
-
-      .album-gallery img {
-        aspect-ratio: 16 / 8;
-        border-radius: 11px;
-      }
-
-      .hero {
-        padding-bottom: 45px;
-      }
-
-      .album-description {
-        font-size: 13px;
+      .album-title {
+        font-size: 27px;
       }
 
       .track {
-        min-height: 60px;
-        gap: 10px;
+        padding: 14px 12px;
+        gap: 9px;
       }
 
-      .track-number {
-        width: 22px;
+      .track-title {
+        font-size: 14px;
       }
 
-      .track-name {
-        font-size: 13px;
+      .listen {
+        padding: 6px 10px;
+        font-size: 10px;
       }
 
-      .track-type {
-        display: none;
-      }
-
-      .featured {
-        padding: 18px;
-      }
-
-      .featured-title {
-        font-size: 19px;
-      }
-
-      .album-nav {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
 
-
 <body>
 
-  <!-- =========================
-       HEADER
-  ========================= -->
+  <div class="container">
 
-  <header>
-    <div class="container">
+    <!-- ILTVIBE LOGO -->
 
-      <div class="logo">ILTVIBE</div>
+    <div class="logo">
+      ILTVIBE
+    </div>
 
-      <div class="tagline">
-        I LIKE THE VIBE
-      </div>
+    <div class="tagline">
+      I LIKE THE VIBE
+    </div>
+
+
+    <!-- AFTER THE VIBE BANNER -->
+
+    <div class="album-cover">
+
+      <!--
+        PALITAN ANG "after-the-vibe.png"
+        KUNG IBA ANG FILE NAME NG BANNER
+      -->
+
+      <img
+        src="after-the-vibe.png"
+        alt="AFTER THE VIBE — ILTVIBE"
+      >
 
     </div>
-  </header>
 
 
-  <main class="container">
+    <!-- ALBUM TITLE -->
+
+    <h1 class="album-title">
+      AFTER THE VIBE
+    </h1>
+
+    <div class="album-info">
+      ILTVIBE · 10 TRACKS
+    </div>
 
 
-    <!-- =========================
-         WIDE AFTER THE VIBE IMAGES
-    ========================= -->
+    <!-- TRACK 01 -->
 
-    <section class="album-gallery">
+    <div class="track">
 
-      <!-- Replace these filenames with your actual images -->
+      <div class="track-number">
+        01
+      </div>
 
-      <a href="#tracklist">
-        <img
-          src="after-the-vibe-1.jpg"
-          alt="AFTER THE VIBE — ILTVIBE">
+      <div class="track-title">
+        Sinta
+      </div>
+
+      <a
+        class="listen"
+        href="YOUTUBE_LINK_HERE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LISTEN
       </a>
 
-      <a href="#tracklist">
-        <img
-          src="after-the-vibe-2.jpg"
-          alt="AFTER THE VIBE — ILTVIBE">
+    </div>
+
+
+    <!-- TRACK 02 -->
+
+    <div class="track">
+
+      <div class="track-number">
+        02
+      </div>
+
+      <div class="track-title">
+        Saranghae
+      </div>
+
+      <a
+        class="listen"
+        href="YOUTUBE_LINK_HERE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LISTEN
       </a>
 
-      <a href="#tracklist">
-        <img
-          src="after-the-vibe-3.jpg"
-          alt="AFTER THE VIBE — ILTVIBE">
+    </div>
+
+
+    <!-- TRACK 03 -->
+
+    <div class="track">
+
+      <div class="track-number">
+        03
+      </div>
+
+      <div class="track-title">
+        Minamahal Kita
+      </div>
+
+      <a
+        class="listen"
+        href="YOUTUBE_LINK_HERE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LISTEN
       </a>
 
-    </section>
+    </div>
 
 
-    <!-- =========================
-         HERO
-    ========================= -->
+    <!-- TRACK 04 -->
 
-    <section class="hero">
+    <div class="track">
 
-      <div class="album-label">
-        ILTVIBE COLLECTION
+      <div class="track-number">
+        04
       </div>
 
-      <h1 class="album-title">
-        AFTER THE VIBE
-      </h1>
-
-      <div class="album-subtitle">
-        Love • Connection • Code • Obsession
+      <div class="track-title">
+        8-3-1-6-15-18-5-22-5-18
       </div>
 
-      <p class="album-description">
-        A collection of songs about love, connection, coded emotions,
-        obsession, and the stories that continue after the vibe.
-      </p>
+      <a
+        class="listen"
+        href="YOUTUBE_LINK_HERE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LISTEN
+      </a>
 
-    </section>
+    </div>
 
 
-    <!-- =========================
-         TRACKLIST
-    ========================= -->
+    <!-- TRACK 05 -->
 
-    <section class="section" id="tracklist">
+    <div class="track">
 
-      <div class="section-title">
-        Tracklist — 10 Tracks
+      <div class="track-number">
+        05
       </div>
 
-      <div class="tracklist">
-
-        <a class="track" href="#listen">
-          <div class="track-number">01</div>
-          <div class="track-name">Sinta</div>
-          <div class="track-type">Original</div>
-        </a>
-
-        <a class="track" href="#listen">
-          <div class="track-number">02</div>
-          <div class="track-name">Saranghae</div>
-          <div class="track-type">Original</div>
-        </a>
-
-        <a class="track" href="#listen">
-          <div class="track-number">03</div>
-          <div class="track-name">Minamahal Kita</div>
-          <div class="track-type">Original</div>
-        </a>
-
-        <a class="track" href="#listen">
-          <div class="track-number">04</div>
-          <div class="track-name">
-            8-3-1-6-15-18-5-22-5-18
-          </div>
-          <div class="track-type">Love Code</div>
-        </a>
-
-        <a class="track" href="#listen">
-          <div class="track-number">05</div>
-          <div class="track-name">SOULMYNA</div>
-          <div class="track-type">Original</div>
-        </a>
-
-        <a class="track" href="#listen">
-          <div class="track-number">06</div>
-          <div class="track-name">Obsession</div>
-          <div class="track-type">Original</div>
-        </a>
-
-        <a class="track" href="#listen">
-          <div class="track-number">07</div>
-          <div class="track-name">IG OFFICIAL</div>
-          <div class="track-type">Original</div>
-        </a>
-
-        <a class="track" href="#listen">
-          <div class="track-number">08</div>
-          <div class="track-name">
-            Sinta (The CodeVibe Version)
-          </div>
-          <div class="track-type">CodeVibe</div>
-        </a>
-
-        <a class="track" href="#listen">
-          <div class="track-number">09</div>
-          <div class="track-name">
-            Zhynn (The CodeVibe Version)
-          </div>
-          <div class="track-type">CodeVibe</div>
-        </a>
-
-        <a class="track" href="#listen">
-          <div class="track-number">10</div>
-          <div class="track-name">Atluser</div>
-          <div class="track-type">Original</div>
-        </a>
-
+      <div class="track-title">
+        SOULMYNA
       </div>
 
-    </section>
+      <a
+        class="listen"
+        href="YOUTUBE_LINK_HERE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LISTEN
+      </a>
+
+    </div>
 
 
-    <!-- =========================
-         FEATURED TRACK
-    ========================= -->
+    <!-- TRACK 06 -->
 
-    <section class="section" id="listen">
+    <div class="track">
 
-      <div class="section-title">
-        Listen
+      <div class="track-number">
+        06
       </div>
 
-      <div class="featured">
-
-        <div class="featured-label">
-          Featured Track
-        </div>
-
-        <div class="featured-title">
-          Sinta
-        </div>
-
-        <div class="player">
-
-          <!-- Replace VIDEO_ID with the actual YouTube ID -->
-
-          <iframe
-            src="https://www.youtube.com/embed/VIDEO_ID"
-            title="Sinta — ILTVIBE"
-            allow="autoplay; encrypted-media"
-            allowfullscreen>
-          </iframe>
-
-        </div>
-
+      <div class="track-title">
+        Obsession
       </div>
 
-    </section>
+      <a
+        class="listen"
+        href="YOUTUBE_LINK_HERE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LISTEN
+      </a>
+
+    </div>
 
 
-    <!-- =========================
-         ALBUM NAVIGATION
-    ========================= -->
+    <!-- TRACK 07 -->
 
-    <section class="section">
+    <div class="track">
 
-      <div class="section-title">
-        ILTVIBE Collection
+      <div class="track-number">
+        07
       </div>
 
-      <div class="album-nav">
-
-        <a
-          href="ep-vibe.html"
-          class="nav-button">
-          ← EP VIBE
-        </a>
-
-        <a
-          href="beyond-the-vibe.html"
-          class="nav-button">
-          BEYOND THE VIBE →
-        </a>
-
+      <div class="track-title">
+        IG OFFICIAL
       </div>
 
-    </section>
+      <a
+        class="listen"
+        href="YOUTUBE_LINK_HERE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LISTEN
+      </a>
+
+    </div>
 
 
-  </main>
+    <!-- TRACK 08 -->
+
+    <div class="track">
+
+      <div class="track-number">
+        08
+      </div>
+
+      <div class="track-title">
+        Sinta (The CodeVibe Version)
+      </div>
+
+      <a
+        class="listen"
+        href="YOUTUBE_LINK_HERE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LISTEN
+      </a>
+
+    </div>
 
 
-  <!-- =========================
-       FOOTER
-  ========================= -->
+    <!-- TRACK 09 -->
 
-  <footer>
+    <div class="track">
 
-    © 2026 ILTVIBE — I LIKE THE VIBE
+      <div class="track-number">
+        09
+      </div>
 
-  </footer>
+      <div class="track-title">
+        Zhynn (The CodeVibe Version)
+      </div>
 
+      <a
+        class="listen"
+        href="YOUTUBE_LINK_HERE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LISTEN
+      </a>
+
+    </div>
+
+
+    <!-- TRACK 10 -->
+
+    <div class="track">
+
+      <div class="track-number">
+        10
+      </div>
+
+      <div class="track-title">
+        Atluser
+      </div>
+
+      <a
+        class="listen"
+        href="YOUTUBE_LINK_HERE"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LISTEN
+      </a>
+
+    </div>
+
+
+    <!-- BACK TO HOME -->
+
+    <a
+      class="back"
+      href="index.html"
+    >
+      ← BACK TO ILTVIBE
+    </a>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+      ILTVIBE · I LIKE THE VIBE
+    </footer>
+
+  </div>
 
 </body>
-  </html>
+</html>
