@@ -9,23 +9,14 @@
   <style>
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
     }
 
     body {
+      margin: 0;
       background: #080808;
-      color: #ffffff;
+      color: #fff;
       font-family: Arial, Helvetica, sans-serif;
-      min-height: 100vh;
     }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* HEADER */
 
     header {
       text-align: center;
@@ -33,466 +24,277 @@
     }
 
     .logo {
-      font-size: clamp(42px, 10vw, 76px);
-      font-weight: 900;
-      letter-spacing: -4px;
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: 4px;
     }
 
     .tagline {
       margin-top: 8px;
-      color: #999;
-      font-size: 13px;
-      letter-spacing: 4px;
+      color: #777;
+      font-size: 12px;
+      letter-spacing: 3px;
     }
-
-    /* MAIN */
 
     main {
       width: min(900px, 92%);
       margin: auto;
     }
 
+    /* RANDOM VIBE */
+
     .section-title {
       font-size: 12px;
-      letter-spacing: 3px;
-      color: #777;
-      margin-bottom: 18px;
+      letter-spacing: 2px;
+      color: #888;
+      margin-bottom: 14px;
       text-transform: uppercase;
     }
 
-    /* RANDOM VIDEO */
-
-    .random-section {
-      margin-bottom: 45px;
-    }
-
-    .video-box {
+    .player {
       position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
       background: #111;
+      border-radius: 12px;
       overflow: hidden;
-      border-radius: 16px;
-      border: 1px solid #222;
+      border: 1px solid #1d1d1d;
     }
 
-    .video-box iframe {
+    .player iframe {
       width: 100%;
       height: 100%;
       border: 0;
     }
 
-    .random-button {
-      display: block;
-      margin: 18px auto 0;
-      padding: 13px 25px;
-      border: 1px solid #333;
-      border-radius: 30px;
+    .random-btn {
+      width: 100%;
+      margin-top: 12px;
+      padding: 14px;
+      border: 1px solid #222;
+      border-radius: 10px;
       background: #111;
-      color: white;
+      color: #aaa;
+      font-size: 11px;
+      letter-spacing: 2px;
       cursor: pointer;
-      font-size: 13px;
-      letter-spacing: 1px;
-      transition: 0.25s;
     }
 
-    .random-button:hover {
-      background: white;
-      color: black;
-      border-color: white;
+    .random-btn:hover {
+      background: #151515;
+      color: #fff;
     }
 
     /* ARTIST */
 
-    .artist-center {
+    .artist {
       text-align: center;
-      padding: 5px 0 55px;
+      margin-top: 65px;
     }
 
-    .artist-image {
+    .artist img {
       width: 320px;
-      height: 180px;
+      max-width: 85%;
+      aspect-ratio: 16 / 9;
       object-fit: contain;
       border-radius: 10px;
-      border: 1px solid #292929;
-      display: block;
-      margin: 0 auto 18px;
-      background: #0e0e0e;
+      border: 1px solid #222;
+      background: #0d0d0d;
     }
 
     .artist-name {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: 1px;
+      margin-top: 18px;
+      font-size: 25px;
+      font-weight: 700;
+      letter-spacing: 2px;
     }
 
     .artist-subtitle {
-      margin-top: 7px;
+      margin-top: 6px;
       color: #777;
-      font-size: 12px;
+      font-size: 11px;
       letter-spacing: 3px;
     }
 
-    /* ARTIST GENRE PROFILE */
-
-    .artist-profile {
-      margin: 24px auto 0;
-      width: min(520px, 92%);
-      padding: 20px 22px;
-      background: #0d0d0d;
-      border: 1px solid #1d1d1d;
-      border-radius: 12px;
-      text-align: left;
-    }
-
-    .profile-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 9px 0;
-      border-bottom: 1px solid #181818;
-    }
-
-    .profile-row:last-child {
-      border-bottom: none;
-    }
-
-    .profile-label {
-      color: #666;
+    .artist-meta {
+      margin-top: 18px;
+      color: #777;
       font-size: 11px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .profile-value {
-      color: #ccc;
-      font-size: 12px;
-      text-align: right;
-      line-height: 1.5;
+      line-height: 1.8;
+      letter-spacing: 0.4px;
     }
 
     /* ALBUMS */
 
     .albums {
-      margin-bottom: 70px;
+      margin-top: 60px;
     }
 
-    .album-list {
+    .album-grid {
       display: grid;
-      gap: 10px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
     }
 
-    .album {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 22px 24px;
-      background: #0e0e0e;
+    .album-card {
+      display: block;
+      padding: 22px 18px;
+      background: #101010;
       border: 1px solid #1d1d1d;
       border-radius: 12px;
-      transition: 0.25s;
+      color: #fff;
+      text-decoration: none;
+      transition: 0.2s ease;
     }
 
-    .album:hover {
+    .album-card:hover {
       background: #151515;
-      transform: translateX(5px);
-      border-color: #444;
+      transform: translateY(-2px);
     }
 
-    .album-name {
-      font-size: 17px;
+    .album-title {
+      font-size: 14px;
       font-weight: 700;
       letter-spacing: 1px;
     }
 
-    .arrow {
-      color: #777;
-      font-size: 20px;
+    .album-subtitle {
+      margin-top: 7px;
+      color: #666;
+      font-size: 10px;
+      letter-spacing: 1px;
     }
 
     /* CONNECT */
 
     .connect {
+      margin-top: 65px;
       text-align: center;
-      padding: 35px 0 50px;
-      border-top: 1px solid #181818;
     }
 
     .socials {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 20px;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 18px;
     }
 
     .socials a {
-      padding: 10px 16px;
-      border: 1px solid #242424;
-      border-radius: 30px;
-      color: #aaa;
-      font-size: 13px;
-      transition: 0.25s;
+      padding: 11px 15px;
+      border: 1px solid #222;
+      border-radius: 9px;
+      color: #999;
+      text-decoration: none;
+      font-size: 10px;
+      letter-spacing: 1px;
     }
 
     .socials a:hover {
-      color: white;
-      border-color: #555;
+      color: #fff;
+      background: #111;
     }
-
-    /* FOOTER */
 
     footer {
       text-align: center;
-      padding: 0 20px 30px;
-      color: #555;
-      font-size: 11px;
+      padding: 70px 20px 35px;
+      color: #444;
+      font-size: 10px;
       letter-spacing: 2px;
     }
 
-    /* MOBILE */
-
     @media (max-width: 600px) {
-
       header {
-        padding-top: 40px;
+        padding-top: 45px;
       }
 
       .logo {
-        letter-spacing: -3px;
+        font-size: 34px;
       }
 
-      .album {
-        padding: 19px;
+      .album-grid {
+        grid-template-columns: 1fr;
       }
 
-      .album-name {
-        font-size: 15px;
-      }
-
-      .artist-image {
-        width: 280px;
-        height: 158px;
-      }
-
-      .artist-profile {
+      .artist img {
         width: 100%;
-        padding: 17px 18px;
+        max-width: 320px;
       }
-
-      .profile-row {
-        gap: 12px;
-      }
-
-      .profile-label {
-        font-size: 10px;
-      }
-
-      .profile-value {
-        font-size: 11px;
-      }
-
     }
-
   </style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-
   <header>
-
-    <div class="logo">
-      ILTVIBE
-    </div>
-
-    <div class="tagline">
-      I LIKE THE VIBE
-    </div>
-
+    <div class="logo">ILTVIBE</div>
+    <div class="tagline">I LIKE THE VIBE</div>
   </header>
-
 
   <main>
 
-    <!-- RANDOM YOUTUBE VIDEO -->
+    <!-- RANDOM VIBE -->
+    <section>
+      <div class="section-title">Random Vibe</div>
 
-    <section class="random-section">
-
-      <div class="section-title">
-        Random Vibe
-      </div>
-
-      <div class="video-box">
-
+      <div class="player">
         <iframe
           id="youtubePlayer"
-          src=""
-          title="ILTVIBE Random Vibe"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          src="https://www.youtube.com/embed/jzF-l5wMv-I?autoplay=1"
+          allow="autoplay; encrypted-media"
           allowfullscreen>
         </iframe>
-
       </div>
 
-      <button
-        class="random-button"
-        onclick="randomVideo()">
-
+      <button class="random-btn" onclick="randomVideo()">
         ⟳ RANDOM VIBE
-
       </button>
-
     </section>
 
 
-    <!-- ARTIST IMAGE + PROFILE -->
+    <!-- ARTIST -->
+    <section class="artist">
 
-    <section class="artist-center">
+      <img src="artist.png" alt="ILTVIBE">
 
-      <img
-        class="artist-image"
-        src="artist.png"
-        alt="ILTVIBE Artist">
-
-      <div class="artist-name">
-        ILTVIBE
-      </div>
+      <div class="artist-name">ILTVIBE</div>
 
       <div class="artist-subtitle">
         I LIKE THE VIBE
       </div>
 
-
-      <!-- ARTIST GENRE PROFILE -->
-
-      <div class="artist-profile">
-
-        <div class="profile-row">
-
-          <div class="profile-label">
-            Artist
-          </div>
-
-          <div class="profile-value">
-            ILTVIBE
-          </div>
-
-        </div>
-
-
-        <div class="profile-row">
-
-          <div class="profile-label">
-            Main Genre
-          </div>
-
-          <div class="profile-value">
-            OPM Alternative Pop Rock
-          </div>
-
-        </div>
-
-
-        <div class="profile-row">
-
-          <div class="profile-label">
-            Style
-          </div>
-
-          <div class="profile-value">
-            Cyber-Anito Neo-Folk
-          </div>
-
-        </div>
-
-
-        <div class="profile-row">
-
-          <div class="profile-label">
-            Sonic Characteristics
-          </div>
-
-          <div class="profile-value">
-            Experimental · Sub-Bass Heavy · 102 BPM
-          </div>
-
-        </div>
-
+      <div class="artist-meta">
+        Genre: OPM Alternative Pop Rock / Cyber-Anito Neo-Folk
       </div>
 
     </section>
 
 
     <!-- ALBUMS -->
-
     <section class="albums">
 
-      <div class="section-title">
-        Albums
-      </div>
+      <div class="section-title">Albums</div>
 
-      <div class="album-list">
+      <div class="album-grid">
 
-        <a
-          class="album"
-          href="ep-vibe.html">
-
-          <span class="album-name">
-            EP VIBE
-          </span>
-
-          <span class="arrow">
-            →
-          </span>
-
+        <a class="album-card" href="ep-vibe.html">
+          <div class="album-title">EP VIBE</div>
+          <div class="album-subtitle">8 TRACKS</div>
         </a>
 
-
-        <a
-          class="album"
-          href="after-the-vibe.html">
-
-          <span class="album-name">
-            AFTER THE VIBE
-          </span>
-
-          <span class="arrow">
-            →
-          </span>
-
+        <a class="album-card" href="after-the-vibe.html">
+          <div class="album-title">AFTER THE VIBE</div>
+          <div class="album-subtitle">10 TRACKS</div>
         </a>
 
-
-        <a
-          class="album"
-          href="beyond-the-vibe.html">
-
-          <span class="album-name">
-            BEYOND THE VIBE
-          </span>
-
-          <span class="arrow">
-            →
-          </span>
-
+        <a class="album-card" href="beyond-the-vibe.html">
+          <div class="album-title">BEYOND THE VIBE</div>
+          <div class="album-subtitle">12 TRACKS</div>
         </a>
 
-
-        <a
-          class="album"
-          href="the-next-vibe.html">
-
-          <span class="album-name">
-            THE NEXT VIBE
-          </span>
-
-          <span class="arrow">
-            →
-          </span>
-
+        <a class="album-card" href="the-next-vibe.html">
+          <div class="album-title">THE NEXT VIBE</div>
+          <div class="album-subtitle">12 TRACKS</div>
         </a>
 
       </div>
@@ -500,58 +302,36 @@
     </section>
 
 
-    <!-- SOCIAL MEDIA -->
-
+    <!-- CONNECT -->
     <section class="connect">
 
-      <div class="section-title">
-        Connect
-      </div>
+      <div class="section-title">Connect</div>
 
       <div class="socials">
 
-        <a
-          href="https://youtube.com/@iltvibe?si=SfmvGsvLqE5T-vko"
-          target="_blank">
-
+        <a href="https://youtube.com/@iltvibe?si=SfmvGsvLqE5T-vko"
+           target="_blank">
           YouTube
-
         </a>
 
-
-        <a
-          href="https://music.youtube.com/@iltvibe"
-          target="_blank">
-
+        <a href="https://music.youtube.com/@iltvibe"
+           target="_blank">
           YouTube Music
-
         </a>
 
-
-        <a
-          href="#"
-          target="_blank">
-
+        <a href="#"
+           target="_blank">
           Facebook
-
         </a>
 
-
-        <a
-          href="#"
-          target="_blank">
-
+        <a href="#"
+           target="_blank">
           Instagram
-
         </a>
 
-
-        <a
-          href="https://tiktok.com/@iltvibe"
-          target="_blank">
-
+        <a href="https://tiktok.com/@iltvibe"
+           target="_blank">
           TikTok
-
         </a>
 
       </div>
@@ -561,55 +341,34 @@
   </main>
 
 
-  <!-- FOOTER -->
-
   <footer>
-
     ILTVIBE · I LIKE THE VIBE
-
   </footer>
 
 
   <script>
 
-    /*
-      ILTVIBE RANDOM YOUTUBE VIDEOS
-
-      PALITAN ANG VIDEO IDs SA IBABA
-      NG ACTUAL ILTVIBE YOUTUBE VIDEO IDs MO.
-    */
-
     const videos = [
-
       "jzF-l5wMv-I",
       "t9k3DmYtcZ8",
       "5WdlZZcAnxM",
       "aqJ6blP4fXc"
-
     ];
-
 
     function randomVideo() {
 
       const randomIndex =
         Math.floor(Math.random() * videos.length);
 
-      const videoID =
-        videos[randomIndex];
+      const videoId = videos[randomIndex];
 
       document.getElementById("youtubePlayer").src =
         "https://www.youtube.com/embed/" +
-        videoID +
+        videoId +
         "?autoplay=1";
-
     }
-
-
-    // Random video kapag binuksan ang homepage
-
-    randomVideo();
 
   </script>
 
 </body>
-    </html>
+</html>
