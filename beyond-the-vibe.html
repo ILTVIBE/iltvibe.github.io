@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BEYOND THE VIBE — ILTVIBE</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #0b0b0b;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    max-width: 720px;
+    margin: auto;
+    padding: 45px 20px 60px;
+}
+
+/* LOGO */
+
+.logo {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    margin-bottom: 5px;
+}
+
+.tagline {
+    text-align: center;
+    color: #888;
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 35px;
+}
+
+/* ALBUM BANNER */
+
+.album-cover {
+    width: 100%;
+    max-width: 700px;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto 28px;
+    border-radius: 16px;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.55);
+}
+
+/* ALBUM INFO */
+
+.album-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.album-info {
+    text-align: center;
+    color: #888;
+    font-size: 13px;
+    margin-bottom: 35px;
+}
+
+/* TRACKS */
+
+.track {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    background: #141414;
+    border: 1px solid #242424;
+    border-radius: 14px;
+
+    padding: 16px 18px;
+    margin-bottom: 12px;
+
+    transition: 0.2s ease;
+}
+
+.track:hover {
+    transform: translateY(-2px);
+    border-color: #3a3a3a;
+}
+
+.track-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 0;
+}
+
+.track-number {
+    color: #666;
+    font-size: 13px;
+    min-width: 22px;
+}
+
+.track-title {
+    font-size: 15px;
+    font-weight: 500;
+    word-break: break-word;
+}
+
+/* LISTEN BUTTON */
+
+.listen {
+    flex-shrink: 0;
+
+    text-decoration: none;
+    color: #ffffff;
+
+    border: 1px solid #444;
+    border-radius: 8px;
+
+    padding: 8px 14px;
+
+    font-size: 11px;
+    letter-spacing: 1px;
+
+    transition: 0.2s ease;
+}
+
+.listen:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+/* BACK */
+
+.back {
+    display: block;
+    width: fit-content;
+
+    margin: 35px auto 0;
+
+    color: #777;
+    text-decoration: none;
+
+    font-size: 12px;
+    letter-spacing: 1px;
+
+    transition: 0.2s ease;
+}
+
+.back:hover {
+    color: #ffffff;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    color: #555;
+    font-size: 11px;
+    margin-top: 45px;
+    letter-spacing: 1px;
+}
+
+/* MOBILE */
+
+@media (max-width: 500px) {
+
+    .container {
+        padding: 35px 16px 50px;
+    }
+
+    .logo {
+        font-size: 32px;
+        letter-spacing: 4px;
+    }
+
+    .tagline {
+        margin-bottom: 28px;
+    }
+
+    .album-cover {
+        border-radius: 12px;
+        margin-bottom: 24px;
+    }
+
+    .album-title {
+        font-size: 27px;
+    }
+
+    .track {
+        padding: 14px;
+    }
+
+    .track-title {
+        font-size: 14px;
+    }
+
+    .listen {
+        padding: 7px 11px;
+        font-size: 10px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LOGO -->
+
+    <div class="logo">
+        ILTVIBE
+    </div>
+
+    <div class="tagline">
+        I LIKE THE VIBE
+    </div>
+
+
+    <!-- ALBUM BANNER -->
+
+    <img
+        src="beyond-the-vibe.png"
+        alt="BEYOND THE VIBE"
+        class="album-cover"
+    >
+
+
+    <!-- ALBUM INFO -->
+
+    <div class="album-title">
+        BEYOND THE VIBE
+    </div>
+
+    <div class="album-info">
+        ILTVIBE · 12 TRACKS
+    </div>
+
+
+    <!-- TRACK 1 -->
+
+    <div class="track">
+
+        <div class="track-left">
+
+            <div class="track-number">
+                01
+            </div>
+
+            <div class="track-title">
+                ONSRA
+            </div>
+
+        </div>
+
+        <a
+            href="YOUTUBE_LINK_HERE"
+            target="_blank"
+            class="listen"
+        >
+            LISTEN
+        </a>
+
+    </div>
+
+
+    <!-- TRACK 2 -->
+
+    <div class="track">
+
+        <div class="track-left">
+
+            <div class="track-number">
+                02
+            </div>
+
+            <div class="track-title">
+                G-R
+            </div>
+
+        </div>
+
+        <a
+            href="YOUTUBE_LINK_HERE"
+            target="_blank"
+            class="listen"
+        >
+            LISTEN
+        </a>
+
+    </div>
+
+
+    <!-- TRACK 3 -->
+
+    <div class="track">
+
+        <div class="track-left">
+
+            <div class="track-number">
+                03
+            </div>
+
+            <div class="track-title">
+                GO YOUN-JUNG
+            </div>
+
+        </div>
+
+        <a
+            href="YOUTUBE_LINK_HERE"
+            target="_blank"
+            class="listen"
+        >
+            LISTEN
+        </a>
+
+    </div>
+
+
+    <!-- TRACK 4 -->
+
+    <div class="track">
+
+        <div class="track-left">
+
+            <div class="track-number">
+                04
+            </div>
+
+            <div class="track-title">
+                NGITI
+            </div>
+
+        </div>
+
+        <a
+            href="YOUTUBE_LINK_HERE"
+            target="_blank"
+            class="listen"
+        >
+            LISTEN
+        </a>
+
+    </div>
+
+
+    <!-- TRACK 5 -->
+
+    <div class="track">
+
+        <div class="track-left">
+
+            <div class="track-number">
+                05
+            </div>
+
+            <div class="track-title">
+                First Love-evoL tsriF
+            </div>
+
+        </div>
+
+        <a
+            href="YOUTUBE_LINK_HERE"
+            target="_blank"
+            class="listen"
+        >
+            LISTEN
+        </a>
+
+    </div>
+
+
+    <!-- TRACK 6 -->
+
+    <div class="track">
+
+        <div class="track-left">
+
+            <div class="track-number">
+                06
+            </div>
+
+            <div class="track-title">
+                1004 (The CodeVibe Version)
+            </div>
+
+        </div>
+
+        <a
+            href="YOUTUBE_LINK_HERE"
+            target="_blank"
+            class="listen"
+        >
+            LISTEN
+        </a>
+
+    </div>
+
+
+    <!-- TRACK 7 -->
+
+    <div class="track">
+
+        <div class="track-left">
+
+            <div class="track-number">
+                07
+            </div>
+
+            <div class="track-title">
+                Malisya Lang 'Yan
+            </div>
+
+        </div>
+
+        <a
+            href="YOUTUBE_LINK_HERE"
+            target="_blank"
+            class="listen"
+        >
+            LISTEN
+        </a>
+
+    </div>
+
+
+    <!-- TRACK 8 -->
+
+    <div class="track">
+
+        <div class="track-left">
+
+            <div class="track-number">
+                08
+            </div>
+
+            <div class="track-title">
+                Five-5
+            </div>
+
+        </div>
+
+        <a
+            href="YOUTUBE_LINK_HERE"
+            target="_blank"
+            class="listen"
+        >
+            LISTEN
+        </a>
+
+    </div>
+
+
+    <!-- TRACK 9 -->
+
+    <div class="track">
+
+        <div class="track-left">
+
+            <div class="track-number">
+                09
+            </div>
+
+            <div class="track-title">
+                Kakantahan Kita
+            </div>
+
+        </div>
+
+        <a
+            href="YOUTUBE_LINK_HERE"
+            target="_blank"
+            class="listen"
+        >
+            LISTEN
+        </a>
+
+    </div>
+
+
+    <!-- TRACK 10 -->
+
+    <div class="track">
+
+        <div class="track-left">
+
+            <div class="track-number">
+                10
+            </div>
+
+            <div class="track-title">
+                One Love
+            </div>
+
+        </div>
+
+        <a
+            href="YOUTUBE_LINK_HERE"
+            target="_blank"
+            class="listen"
+        >
+            LISTEN
+        </a>
+
+    </div>
+
+
+    <!-- TRACK 11 -->
+
+    <div class="track">
+
+        <div class="track-left">
+
+            <div class="track-number">
+                11
+            </div>
+
+            <div class="track-title">
+                02-12:00-14
+            </div>
+
+        </div>
+
+        <a
+            href="YOUTUBE_LINK_HERE"
+            target="_blank"
+            class="listen"
+        >
+            LISTEN
+        </a>
+
+    </div>
+
+
+    <!-- TRACK 12 -->
+
+    <div class="track">
+
+        <div class="track-left">
+
+            <div class="track-number">
+                12
+            </div>
+
+            <div class="track-title">
+                First Love (Alternative Version)
+            </div>
+
+        </div>
+
+        <a
+            href="YOUTUBE_LINK_HERE"
+            target="_blank"
+            class="listen"
+        >
+            LISTEN
+        </a>
+
+    </div>
+
+
+    <!-- BACK -->
+
+    <a
+        href="index.html"
+        class="back"
+    >
+        ← BACK TO ILTVIBE
+    </a>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+        ILTVIBE · I LIKE THE VIBE
+    </footer>
+
+</div>
+
+</body>
+      </html>
