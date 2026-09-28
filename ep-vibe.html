@@ -1,568 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>EP VIBE — ILTVIBE</title>
+<title>EP VIBE — ILTVIBE</title>
 
-  <style>
+<style>
     * {
-      box-sizing: border-box;
+        box-sizing: border-box;
     }
 
     body {
-      margin: 0;
-      background: #0b0b0b;
-      color: #ffffff;
-      font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        background: #080808;
+        color: #ffffff;
+        font-family: Arial, Helvetica, sans-serif;
     }
 
     .container {
-      width: 100%;
-      max-width: 720px;
-      margin: auto;
-      padding: 45px 20px 60px;
+        width: 90%;
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 40px 0 60px;
     }
 
-    /* LOGO */
+    .header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
 
     .logo {
-      text-align: center;
-      font-size: 40px;
-      font-weight: 800;
-      letter-spacing: 5px;
-      margin-bottom: 6px;
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: 5px;
+        margin-bottom: 8px;
     }
 
     .tagline {
-      text-align: center;
-      color: #888;
-      font-size: 12px;
-      letter-spacing: 3px;
-      margin-bottom: 40px;
+        font-size: 12px;
+        letter-spacing: 3px;
+        color: #888;
     }
 
-    /* ALBUM COVER */
-
-    .album-cover {
-      width: 100%;
-      max-width: 700px;
-      margin: 0 auto 30px;
+    .banner {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        display: block;
+        border-radius: 4px;
+        margin-bottom: 30px;
     }
-
-    .album-cover img {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      display: block;
-      border-radius: 16px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
-    }
-
-    /* ALBUM INFO */
 
     .album-title {
-      text-align: center;
-      font-size: 32px;
-      font-weight: 800;
-      margin: 0;
+        font-size: 30px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 8px;
     }
 
     .album-info {
-      text-align: center;
-      color: #777;
-      font-size: 13px;
-      margin-top: 8px;
-      margin-bottom: 30px;
-      letter-spacing: 1px;
+        font-size: 12px;
+        color: #777;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
     }
-
-    /* YOUTUBE PLAYER */
-
-    .player {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      margin-bottom: 30px;
-      border-radius: 16px;
-      overflow: hidden;
-      background: #000;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-    }
-
-    .player iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-    }
-
-    /* CURRENT SONG */
-
-    .now-playing {
-      text-align: center;
-      color: #777;
-      font-size: 12px;
-      letter-spacing: 1px;
-      margin-top: -15px;
-      margin-bottom: 25px;
-    }
-
-    .now-playing span {
-      color: #ffffff;
-      font-weight: 700;
-    }
-
-    /* TRACKLIST */
 
     .track {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-
-      background: #141414;
-      border: 1px solid #242424;
-
-      border-radius: 14px;
-
-      padding: 16px 17px;
-      margin-bottom: 10px;
-
-      transition:
-        background 0.2s ease,
-        transform 0.2s ease,
-        border-color 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+        padding: 17px 0;
+        border-bottom: 1px solid #1d1d1d;
     }
 
-    .track:hover {
-      background: #1c1c1c;
-      border-color: #383838;
-      transform: translateY(-2px);
+    .track-name {
+        font-size: 15px;
+        line-height: 1.4;
     }
 
-    .track-number {
-      width: 30px;
-      color: #666;
-      font-size: 13px;
-      text-align: center;
-      flex-shrink: 0;
+    .listen-btn {
+        flex-shrink: 0;
+        display: inline-block;
+        padding: 9px 16px;
+        border: 1px solid #444;
+        border-radius: 3px;
+        color: #fff;
+        text-decoration: none;
+        font-size: 10px;
+        letter-spacing: 2px;
+        transition: 0.2s ease;
     }
 
-    .track-title {
-      flex: 1;
-      text-align: left;
-      font-size: 15px;
-      font-weight: 600;
-      line-height: 1.35;
+    .listen-btn:hover {
+        background: #fff;
+        color: #000;
+        border-color: #fff;
     }
-
-    .listen {
-      flex-shrink: 0;
-
-      color: #ffffff;
-      background: transparent;
-
-      border: 1px solid #444;
-      border-radius: 20px;
-
-      padding: 7px 14px;
-
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-
-      cursor: pointer;
-
-      transition: 0.2s ease;
-    }
-
-    .listen:hover {
-      background: #ffffff;
-      color: #000000;
-      border-color: #ffffff;
-    }
-
-    /* ACTIVE TRACK */
-
-    .track.active {
-      background: #1c1c1c;
-      border-color: #555;
-    }
-
-    .track.active .track-number {
-      color: #ffffff;
-    }
-
-    /* BACK BUTTON */
 
     .back {
-      display: block;
-      width: fit-content;
-
-      margin: 38px auto 0;
-
-      color: #777;
-      text-decoration: none;
-
-      font-size: 13px;
-      letter-spacing: 1px;
-
-      transition: 0.2s ease;
+        display: inline-block;
+        margin-top: 35px;
+        color: #777;
+        text-decoration: none;
+        font-size: 11px;
+        letter-spacing: 2px;
+        transition: 0.2s ease;
     }
 
     .back:hover {
-      color: #ffffff;
+        color: #fff;
     }
-
-    /* FOOTER */
 
     footer {
-      text-align: center;
-
-      margin-top: 55px;
-
-      color: #444;
-
-      font-size: 11px;
-      letter-spacing: 2px;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 500px) {
-
-      .container {
-        padding: 35px 15px 50px;
-      }
-
-      .logo {
-        font-size: 32px;
-      }
-
-      .album-title {
-        font-size: 27px;
-      }
-
-      .track {
-        padding: 14px 12px;
-        gap: 9px;
-      }
-
-      .track-title {
-        font-size: 14px;
-      }
-
-      .listen {
-        padding: 6px 10px;
+        text-align: center;
+        margin-top: 50px;
+        color: #444;
         font-size: 10px;
-      }
-
+        letter-spacing: 2px;
     }
-  </style>
+
+    @media (max-width: 600px) {
+        .container {
+            width: 88%;
+            padding-top: 30px;
+        }
+
+        .logo {
+            font-size: 27px;
+            letter-spacing: 4px;
+        }
+
+        .album-title {
+            font-size: 24px;
+        }
+
+        .track {
+            padding: 15px 0;
+        }
+
+        .track-name {
+            font-size: 14px;
+        }
+
+        .listen-btn {
+            padding: 8px 12px;
+            font-size: 9px;
+        }
+    }
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <!-- ILTVIBE LOGO -->
-
-    <div class="logo">
-      ILTVIBE
+    <div class="header">
+        <div class="logo">ILTVIBE</div>
+        <div class="tagline">I LIKE THE VIBE</div>
     </div>
 
-    <div class="tagline">
-      I LIKE THE VIBE
-    </div>
+    <img src="ep-vibe.png" alt="EP VIBE — ILTVIBE" class="banner">
 
-
-    <!-- ALBUM COVER -->
-
-    <div class="album-cover">
-
-      <img
-        src="ep-vibe.png"
-        alt="EP VIBE — ILTVIBE"
-      >
-
-    </div>
-
-
-    <!-- ALBUM TITLE -->
-
-    <h1 class="album-title">
-      EP VIBE
-    </h1>
-
-    <div class="album-info">
-      ILTVIBE · 8 TRACKS
-    </div>
-
-
-    <!-- YOUTUBE PLAYER -->
-
-    <div class="player">
-
-      <iframe
-        id="youtubePlayer"
-        src="https://www.youtube.com/embed/aqJ6blP4fXc"
-        title="ILTVIBE — EP VIBE"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
-
-    </div>
-
-
-    <!-- NOW PLAYING -->
-
-    <div class="now-playing">
-      NOW PLAYING:
-      <span id="nowPlaying">
-        FUBU
-      </span>
-    </div>
-
-
-    <!-- TRACK 01 -->
-
-    <div class="track active">
-
-      <div class="track-number">
-        01
-      </div>
-
-      <div class="track-title">
-        FUBU
-      </div>
-
-      <button
-        class="listen"
-        onclick="playSong('aqJ6blP4fXc', 'FUBU', this)"
-      >
-        PLAY
-      </button>
-
-    </div>
-
-
-    <!-- TRACK 02 -->
+    <div class="album-title">EP VIBE</div>
+    <div class="album-info">ILTVIBE · 8 TRACKS</div>
 
     <div class="track">
-
-      <div class="track-number">
-        02
-      </div>
-
-      <div class="track-title">
-        Makaibang Mundo
-      </div>
-
-      <button
-        class="listen"
-        onclick="playSong('lowiO4EZ-Y8', 'Makaibang Mundo', this)"
-      >
-        PLAY
-      </button>
-
+        <div class="track-name">01. FUBU</div>
+        <a class="listen-btn"
+           href="https://youtu.be/aqJ6blP4fXc"
+           target="_blank"
+           rel="noopener noreferrer">
+            LISTEN
+        </a>
     </div>
-
-
-    <!-- TRACK 03 -->
 
     <div class="track">
-
-      <div class="track-number">
-        03
-      </div>
-
-      <div class="track-title">
-        Zhynn
-      </div>
-
-      <button
-        class="listen"
-        onclick="playSong('5WdlZZcAnxM', 'Zhynn', this)"
-      >
-        PLAY
-      </button>
-
+        <div class="track-name">02. Makaibang Mundo</div>
+        <a class="listen-btn"
+           href="https://youtu.be/lowiO4EZ-Y8"
+           target="_blank"
+           rel="noopener noreferrer">
+            LISTEN
+        </a>
     </div>
-
-
-    <!-- TRACK 04 -->
 
     <div class="track">
-
-      <div class="track-number">
-        04
-      </div>
-
-      <div class="track-title">
-        Ikaw Pa Rin
-      </div>
-
-      <button
-        class="listen"
-        onclick="playSong('t9k3DmYtcZ8', 'Ikaw Pa Rin', this)"
-      >
-        PLAY
-      </button>
-
+        <div class="track-name">03. Zhynn</div>
+        <a class="listen-btn"
+           href="https://youtu.be/5WdlZZcAnxM"
+           target="_blank"
+           rel="noopener noreferrer">
+            LISTEN
+        </a>
     </div>
-
-
-    <!-- TRACK 05 -->
 
     <div class="track">
-
-      <div class="track-number">
-        05
-      </div>
-
-      <div class="track-title">
-        1004
-      </div>
-
-      <button
-        class="listen"
-        onclick="playSong('jzF-l5wMv-I', '1004', this)"
-      >
-        PLAY
-      </button>
-
+        <div class="track-name">04. Ikaw Pa Rin</div>
+        <a class="listen-btn"
+           href="https://youtu.be/t9k3DmYtcZ8"
+           target="_blank"
+           rel="noopener noreferrer">
+            LISTEN
+        </a>
     </div>
-
-
-    <!-- TRACK 06 -->
 
     <div class="track">
-
-      <div class="track-number">
-        06
-      </div>
-
-      <div class="track-title">
-        ELAINE
-      </div>
-
-      <button
-        class="listen"
-        onclick="playSong('', 'ELAINE', this)"
-      >
-        PLAY
-      </button>
-
+        <div class="track-name">05. 1004</div>
+        <a class="listen-btn"
+           href="https://youtu.be/jzF-l5wMv-I"
+           target="_blank"
+           rel="noopener noreferrer">
+            LISTEN
+        </a>
     </div>
-
-
-    <!-- TRACK 07 -->
 
     <div class="track">
-
-      <div class="track-number">
-        07
-      </div>
-
-      <div class="track-title">
-        Sa'yo Lang
-      </div>
-
-      <button
-        class="listen"
-        onclick="playSong('', 'Sa\\'yo Lang', this)"
-      >
-        PLAY
-      </button>
-
+        <div class="track-name">06. ELAINE</div>
+        <a class="listen-btn"
+           href="#"
+           onclick="return false;">
+            SOON
+        </a>
     </div>
-
-
-    <!-- TRACK 08 -->
 
     <div class="track">
-
-      <div class="track-number">
-        08
-      </div>
-
-      <div class="track-title">
-        Ikaw Pa Rin (The CodeVibe Version)
-      </div>
-
-      <button
-        class="listen"
-        onclick="playSong('', 'Ikaw Pa Rin (The CodeVibe Version)', this)"
-      >
-        PLAY
-      </button>
-
+        <div class="track-name">07. Sa'yo Lang</div>
+        <a class="listen-btn"
+           href="#"
+           onclick="return false;">
+            SOON
+        </a>
     </div>
 
+    <div class="track">
+        <div class="track-name">08. Ikaw Pa Rin (The CodeVibe Version)</div>
+        <a class="listen-btn"
+           href="#"
+           onclick="return false;">
+            SOON
+        </a>
+    </div>
 
-    <!-- BACK TO HOME -->
-
-    <a
-      class="back"
-      href="index.html"
-    >
-      ← BACK TO ILTVIBE
-    </a>
-
-
-    <!-- FOOTER -->
+    <a href="index.html" class="back">← BACK TO ILTVIBE</a>
 
     <footer>
-      ILTVIBE · I LIKE THE VIBE
+        © 2026 ILTVIBE · I LIKE THE VIBE
     </footer>
 
-  </div>
-
-
-  <script>
-
-    function playSong(videoId, title, button) {
-
-      if (!videoId) {
-        alert("YouTube link coming soon.");
-        return;
-      }
-
-      const player = document.getElementById("youtubePlayer");
-
-      const nowPlaying = document.getElementById("nowPlaying");
-
-      player.src =
-        "https://www.youtube.com/embed/" +
-        videoId +
-        "?autoplay=1";
-
-      nowPlaying.textContent = title;
-
-
-      const tracks =
-        document.querySelectorAll(".track");
-
-      tracks.forEach(function(track) {
-        track.classList.remove("active");
-      });
-
-
-      button
-        .closest(".track")
-        .classList.add("active");
-
-
-      window.scrollTo({
-        top: player.getBoundingClientRect().top +
-             window.scrollY -
-             20,
-        behavior: "smooth"
-      });
-
-    }
-
-  </script>
+</div>
 
 </body>
-  </html>
+</html>
