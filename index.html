@@ -133,6 +133,45 @@
       letter-spacing: 3px;
     }
 
+    /* ARTIST GENRE PROFILE */
+
+    .artist-profile {
+      margin: 24px auto 0;
+      width: min(520px, 92%);
+      padding: 20px 22px;
+      background: #0d0d0d;
+      border: 1px solid #1d1d1d;
+      border-radius: 12px;
+      text-align: left;
+    }
+
+    .profile-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 9px 0;
+      border-bottom: 1px solid #181818;
+    }
+
+    .profile-row:last-child {
+      border-bottom: none;
+    }
+
+    .profile-label {
+      color: #666;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .profile-value {
+      color: #ccc;
+      font-size: 12px;
+      text-align: right;
+      line-height: 1.5;
+    }
+
     /* ALBUMS */
 
     .albums {
@@ -236,6 +275,24 @@
         width: 280px;
         height: 158px;
       }
+
+      .artist-profile {
+        width: 100%;
+        padding: 17px 18px;
+      }
+
+      .profile-row {
+        gap: 12px;
+      }
+
+      .profile-label {
+        font-size: 10px;
+      }
+
+      .profile-value {
+        font-size: 11px;
+      }
+
     }
 
   </style>
@@ -291,7 +348,7 @@
     </section>
 
 
-    <!-- ARTIST IMAGE -->
+    <!-- ARTIST IMAGE + PROFILE -->
 
     <section class="artist-center">
 
@@ -306,6 +363,64 @@
 
       <div class="artist-subtitle">
         I LIKE THE VIBE
+      </div>
+
+
+      <!-- ARTIST GENRE PROFILE -->
+
+      <div class="artist-profile">
+
+        <div class="profile-row">
+
+          <div class="profile-label">
+            Artist
+          </div>
+
+          <div class="profile-value">
+            ILTVIBE
+          </div>
+
+        </div>
+
+
+        <div class="profile-row">
+
+          <div class="profile-label">
+            Main Genre
+          </div>
+
+          <div class="profile-value">
+            OPM Alternative Pop Rock
+          </div>
+
+        </div>
+
+
+        <div class="profile-row">
+
+          <div class="profile-label">
+            Style
+          </div>
+
+          <div class="profile-value">
+            Cyber-Anito Neo-Folk
+          </div>
+
+        </div>
+
+
+        <div class="profile-row">
+
+          <div class="profile-label">
+            Sonic Characteristics
+          </div>
+
+          <div class="profile-value">
+            Experimental · Sub-Bass Heavy · 102 BPM
+          </div>
+
+        </div>
+
       </div>
 
     </section>
@@ -423,7 +538,7 @@
 
 
         <a
-          href="https://tiktok.com/@iltvibe"
+          href="#"
           target="_blank">
 
           Instagram
@@ -432,7 +547,7 @@
 
 
         <a
-          href="#"
+          href="https://tiktok.com/@iltvibe"
           target="_blank">
 
           TikTok
@@ -497,4 +612,4 @@
   </script>
 
 </body>
-        </html>
+    </html>
