@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Ikaw Pa Rin — ILTVIBE</title>
-  <meta name="description" content="Ikaw Pa Rin (Studio Version) — Official Lyrics by ILTVIBE.">
+  <meta name="description" content="Ikaw Pa Rin (Studio Version) — Official Lyrics and the story behind the song by ILTVIBE.">
 
   <style>
     * {
@@ -23,13 +23,31 @@
     }
 
     .container {
+      width: 100%;
       max-width: 760px;
-      margin: auto;
+      margin: 0 auto;
+    }
+
+    .thumbnail-banner {
+      width: 100%;
+      margin: 0 auto 35px;
+      overflow: hidden;
+      border: 1px solid #222;
+      border-radius: 8px;
+      background: #111;
+    }
+
+    .thumbnail-banner img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
     }
 
     header {
       text-align: center;
-      margin-bottom: 55px;
+      margin-bottom: 45px;
     }
 
     .logo {
@@ -46,6 +64,7 @@
     }
 
     .song-header {
+      text-align: center;
       border-bottom: 1px solid #222;
       padding-bottom: 25px;
       margin-bottom: 40px;
@@ -91,6 +110,38 @@
       margin: 45px 0;
     }
 
+    .story {
+      margin-top: 55px;
+      padding: 30px 24px;
+      border-top: 1px solid #222;
+      border-bottom: 1px solid #222;
+      text-align: center;
+    }
+
+    .story h2 {
+      color: #aaa;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .story p {
+      color: #aaa;
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    .story .closing {
+      margin-top: 18px;
+      color: #eee;
+      font-style: italic;
+    }
+
+    .navigation {
+      text-align: center;
+    }
+
     .back {
       display: inline-block;
       margin-top: 35px;
@@ -117,9 +168,14 @@
       letter-spacing: 1px;
     }
 
+    footer strong {
+      color: #888;
+      letter-spacing: 3px;
+    }
+
     @media (max-width: 600px) {
       body {
-        padding: 30px 18px;
+        padding: 25px 16px;
       }
 
       .logo {
@@ -133,24 +189,38 @@
       .lyrics {
         font-size: 15px;
       }
+
+      .story {
+        padding: 25px 12px;
+      }
     }
   </style>
 </head>
 
 <body>
-
   <div class="container">
 
+    <!-- Song Thumbnail Banner -->
+    <div class="thumbnail-banner">
+      <img
+        src="/ikaw-pa-rin.png"
+        alt="Ikaw Pa Rin — ILTVIBE Studio Version"
+      >
+    </div>
+
+    <!-- Artist Header -->
     <header>
       <div class="logo">ILTVIBE</div>
       <div class="tagline">I LIKE THE VIBE</div>
     </header>
 
+    <!-- Song Title -->
     <div class="song-header">
       <h1>Ikaw Pa Rin</h1>
       <div class="meta">EP VIBE · OFFICIAL LYRICS · STUDIO VERSION</div>
     </div>
 
+    <!-- Lyrics -->
     <main class="lyrics">
 
       <section class="section">
@@ -331,20 +401,41 @@ Ikaw pa rin...
 
     </main>
 
-    <a href="../lyrics.html" class="back">← Back to Lyrics Archive</a>
+    <!-- Story Behind the Song -->
+    <section class="story">
+      <h2>The Story Behind the Song</h2>
 
+      <p>
+        <em>Ikaw Pa Rin</em> was inspired by the love story of
+        Allie and Noah in the first half of <em>The Notebook</em>.
+        Their playful arguments, emotional moments, and undeniable
+        connection inspired the song's story of two people who may
+        fight and say goodbye, yet somehow keep finding their way
+        back to each other.
+      </p>
+
+      <p class="closing">
+        Because sometimes, no matter how complicated love becomes,
+        it's still the same person your heart chooses. ❤️
+      </p>
+    </section>
+
+    <!-- Back Navigation -->
+    <div class="navigation">
+      <a href="../lyrics.html" class="back">
+        ← Back to Lyrics Archive
+      </a>
+    </div>
+
+    <!-- Footer -->
     <footer>
-      ILTVIBE · I LIKE THE VIBE
+      <strong>ILTVIBE</strong><br>
+      I LIKE THE VIBE<br><br>
+
+      Original lyrics and composition by 알윈 아놀린.<br>
+      © 2026 ILTVIBE — All rights reserved.
     </footer>
 
   </div>
-
-</body><footer>
-  <strong>ILTVIBE</strong><br>
-  I LIKE THE VIBE<br><br>
-
-  Original lyrics and composition by 알윈 아놀린.<br>
-  © 2026 ILTVIBE — All rights reserved.
-
-  <br><br>
-</html>
+</body>
+  </html>
