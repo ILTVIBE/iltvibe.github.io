@@ -23,8 +23,26 @@
     }
 
     .container {
+      width: 100%;
       max-width: 760px;
-      margin: auto;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .thumbnail-banner {
+      width: 100%;
+      margin: 0 auto 35px;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid #222;
+    }
+
+    .thumbnail-banner img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
     }
 
     header {
@@ -46,6 +64,7 @@
     }
 
     .song-header {
+      text-align: center;
       border-bottom: 1px solid #222;
       padding-bottom: 25px;
       margin-bottom: 40px;
@@ -64,6 +83,7 @@
     }
 
     .lyrics {
+      text-align: left;
       font-size: 16px;
     }
 
@@ -85,6 +105,7 @@
     }
 
     .story {
+      text-align: center;
       border-top: 1px solid #222;
       margin-top: 45px;
       padding-top: 28px;
@@ -144,12 +165,23 @@
       .lyrics {
         font-size: 15px;
       }
+
+      .thumbnail-banner {
+        margin-bottom: 28px;
+      }
     }
   </style>
 </head>
 
 <body>
   <div class="container">
+
+    <div class="thumbnail-banner">
+      <img
+        src="/saranghae.jpg"
+        alt="Saranghae — ILTVIBE YouTube Thumbnail"
+      >
+    </div>
 
     <header>
       <div class="logo">ILTVIBE</div>
