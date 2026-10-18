@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>ELAINE — ILTVIBE</title>
+  <meta name="description" content="ELAINE — Official lyrics and the story behind the song by ILTVIBE.">
 
   <style>
     * {
@@ -40,6 +41,34 @@
     main {
       width: min(760px, 92%);
       margin: auto;
+    }
+
+    /* ELAINE POSTER BANNER */
+    .poster-banner {
+      width: 100%;
+      margin: 0 auto 30px;
+      overflow: hidden;
+      border: 1px solid #202020;
+      border-radius: 10px;
+      background: #101010;
+    }
+
+    .poster-banner a {
+      display: block;
+      line-height: 0;
+    }
+
+    .poster-banner img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      transition: opacity 0.25s ease;
+    }
+
+    .poster-banner a:hover img {
+      opacity: 0.88;
     }
 
     .song-header {
@@ -100,6 +129,43 @@
       text-transform: uppercase;
     }
 
+    /* BACKSTORY */
+    .backstory {
+      margin: 10px 0 45px;
+      padding: 30px 24px;
+      border-top: 1px solid #242424;
+      border-bottom: 1px solid #242424;
+      background: linear-gradient(
+        180deg,
+        #0d0d0d 0%,
+        #080808 100%
+      );
+    }
+
+    .backstory h2 {
+      margin: 0 0 20px;
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    .backstory p {
+      margin: 0 0 18px;
+      color: #aaa;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .backstory p:last-child {
+      margin-bottom: 0;
+    }
+
+    .backstory .closing-line {
+      margin-top: 24px;
+      color: #ddd;
+      font-style: italic;
+    }
+
     .back {
       text-align: center;
       padding: 20px 0 60px;
@@ -114,6 +180,7 @@
       text-decoration: none;
       font-size: 10px;
       letter-spacing: 2px;
+      transition: color 0.2s ease, background 0.2s ease;
     }
 
     .back a:hover {
@@ -129,7 +196,15 @@
       letter-spacing: 2px;
     }
 
+    footer strong {
+      color: #777;
+    }
+
     @media (max-width: 600px) {
+      header {
+        padding: 40px 20px 30px;
+      }
+
       .song-title {
         font-size: 27px;
       }
@@ -137,39 +212,53 @@
       .lyrics p {
         font-size: 14px;
       }
+
+      .backstory {
+        padding: 25px 18px;
+      }
+
+      .backstory p {
+        font-size: 13px;
+      }
     }
   </style>
 </head>
 
 <body>
 
+  <!-- HEADER -->
   <header>
     <div class="logo">ILTVIBE</div>
     <div class="tagline">I LIKE THE VIBE</div>
   </header>
 
-
   <main>
+
+    <!-- ELAINE POSTER BANNER -->
+    <section class="poster-banner">
+      <a href="elaine.png" target="_blank" rel="noopener">
+        <img
+          src="elaine.png"
+          alt="ELAINE — ILTVIBE Poster"
+          loading="eager"
+        >
+      </a>
+    </section>
 
     <!-- SONG HEADER -->
     <section class="song-header">
-
       <div class="song-title">ELAINE</div>
 
       <div class="song-meta">
         EP VIBE · OFFICIAL LYRICS
       </div>
-
     </section>
-
 
     <!-- LYRICS -->
     <section class="lyrics">
 
-
       <!-- VERSE 1 -->
       <div class="lyrics-section">
-
         <div class="section-label">Verse 1</div>
 
         <p>
@@ -183,13 +272,10 @@
           Makinig ka sa kumpas ng aking tugtog<br>
           Ang tapat kong paghanga sa’yo’y lalong tumutubo
         </p>
-
       </div>
-
 
       <!-- VERSE 2 -->
       <div class="lyrics-section">
-
         <div class="section-label">Verse 2</div>
 
         <p>
@@ -203,13 +289,10 @@
           Seryoso ang puso ko kapag ikaw ang katabi<br>
           Gusto ko lang mapansin mo ako kahit saglit
         </p>
-
       </div>
-
 
       <!-- CHORUS -->
       <div class="lyrics-section chorus">
-
         <div class="section-label">Chorus</div>
 
         <p>
@@ -222,13 +305,10 @@
         <p>
           Gusto ko lang naman na mapangiti kita sa bawat sulyap mo
         </p>
-
       </div>
-
 
       <!-- VERSE 3 -->
       <div class="lyrics-section">
-
         <div class="section-label">Verse 3</div>
 
         <p>
@@ -242,13 +322,10 @@
           Gusto ko lang ang kuwentuhan nating walang katapusan<br>
           Isang magandang samahan na puno ng tawanan
         </p>
-
       </div>
-
 
       <!-- CHORUS -->
       <div class="lyrics-section chorus">
-
         <div class="section-label">Chorus</div>
 
         <p>
@@ -261,13 +338,10 @@
         <p>
           Gusto ko lang naman na mapangiti kita sa bawat sulyap mo
         </p>
-
       </div>
-
 
       <!-- BRIDGE -->
       <div class="lyrics-section">
-
         <div class="section-label">Bridge</div>
 
         <p>
@@ -276,19 +350,15 @@
           Walang drama, walang lungkot na maiiwan<br>
           Isang masayang indayog lang habang tayo’y naglalakad
         </p>
-
       </div>
-
 
       <!-- GUITAR SOLO -->
       <div class="solo">
         ♪ Upbeat Bouncy Guitar Solo ♪
       </div>
 
-
       <!-- REPEAT CHORUS -->
       <div class="lyrics-section chorus">
-
         <div class="section-label">Repeat Chorus</div>
 
         <p>
@@ -301,13 +371,46 @@
         <p>
           Gusto ko lang naman na mapangiti kita sa bawat sulyap mo
         </p>
-
       </div>
 
     </section>
 
+    <!-- BACKSTORY -->
+    <section class="backstory">
+      <div class="section-label">The Story Behind the Song</div>
 
-    <!-- BACK -->
+      <h2>ELAINE (ENIALE)</h2>
+
+      <p>
+        ELAINE was inspired by a girl the songwriter came
+        across on TikTok. During her live streams, her
+        cheerful energy, cute expressions, and constant
+        smiles made an ordinary moment feel brighter.
+      </p>
+
+      <p>
+        Sometimes, inspiration comes from the simplest
+        things—a smile, a laugh, or the happiness someone
+        brings without even trying. Her lively presence
+        became a spark for a song that carries the same
+        lighthearted feeling.
+      </p>
+
+      <p>
+        ELAINE is about admiration and the joy of discovering
+        someone whose smile can lift your mood. It turns
+        that little burst of happiness into a melody,
+        preserving the feeling long after the live stream
+        has ended.
+      </p>
+
+      <p class="closing-line">
+        Some people appear on your screen for a moment,
+        but the feeling they leave behind becomes a song.
+      </p>
+    </section>
+
+    <!-- BACK TO LYRICS ARCHIVE -->
     <div class="back">
       <a href="../lyrics.html">
         ← LYRICS ARCHIVE
@@ -316,19 +419,15 @@
 
   </main>
 
-
+  <!-- FOOTER -->
   <footer>
-    ILTVIBE · I LIKE THE VIBE
+    <strong>ILTVIBE</strong><br>
+    I LIKE THE VIBE<br><br>
+
+    Official Lyrics Archive<br>
+    Original lyrics and composition by 알윈 아놀린.<br>
+    © 2026 ILTVIBE — All rights reserved.
   </footer>
 
 </body>
-  <footer>
-  <strong>ILTVIBE</strong><br>
-  I LIKE THE VIBE<br><br>
-
-  Official Lyrics Archive<br>
-  Original lyrics and composition by 알윈 아놀린.<br>
-  © 2026 ILTVIBE — All rights reserved.
-
-  <br><br>
 </html>
