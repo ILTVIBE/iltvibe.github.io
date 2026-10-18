@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>FUBU — ILTVIBE</title>
+  <meta name="description" content="FUBU — Official lyrics and backstory from ILTVIBE.">
 
   <style>
     * {
@@ -40,6 +41,34 @@
     main {
       width: min(760px, 92%);
       margin: auto;
+    }
+
+    /* FUBU POSTER BANNER */
+    .poster-banner {
+      width: 100%;
+      margin: 0 auto 30px;
+      overflow: hidden;
+      border: 1px solid #202020;
+      border-radius: 10px;
+      background: #101010;
+    }
+
+    .poster-banner a {
+      display: block;
+      line-height: 0;
+    }
+
+    .poster-banner img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      transition: opacity 0.25s ease;
+    }
+
+    .poster-banner a:hover img {
+      opacity: 0.88;
     }
 
     .song-header {
@@ -100,6 +129,41 @@
       text-transform: uppercase;
     }
 
+    /* BACKSTORY */
+    .backstory {
+      margin: 10px 0 45px;
+      padding: 30px 24px;
+      border-top: 1px solid #242424;
+      border-bottom: 1px solid #242424;
+      background: linear-gradient(
+        180deg,
+        #0d0d0d 0%,
+        #080808 100%
+      );
+    }
+
+    .backstory .section-label {
+      margin-bottom: 10px;
+    }
+
+    .backstory h2 {
+      margin: 0 0 20px;
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    .backstory p {
+      margin: 0 0 18px;
+      color: #aaa;
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .backstory p:last-child {
+      margin-bottom: 0;
+    }
+
     .back {
       text-align: center;
       padding: 20px 0 60px;
@@ -114,6 +178,7 @@
       text-decoration: none;
       font-size: 10px;
       letter-spacing: 2px;
+      transition: color 0.2s ease, background 0.2s ease;
     }
 
     .back a:hover {
@@ -129,7 +194,15 @@
       letter-spacing: 2px;
     }
 
+    footer strong {
+      color: #777;
+    }
+
     @media (max-width: 600px) {
+      header {
+        padding: 40px 20px 30px;
+      }
+
       .song-title {
         font-size: 27px;
       }
@@ -137,39 +210,53 @@
       .lyrics p {
         font-size: 14px;
       }
+
+      .backstory {
+        padding: 25px 18px;
+      }
+
+      .backstory p {
+        font-size: 13px;
+      }
     }
   </style>
 </head>
 
 <body>
 
+  <!-- HEADER -->
   <header>
     <div class="logo">ILTVIBE</div>
     <div class="tagline">I LIKE THE VIBE</div>
   </header>
 
-
   <main>
+
+    <!-- FUBU POSTER BANNER -->
+    <section class="poster-banner">
+      <a href="fubu.png" target="_blank" rel="noopener">
+        <img
+          src="fubu.png"
+          alt="FUBU — ILTVIBE Poster"
+          loading="eager"
+        >
+      </a>
+    </section>
 
     <!-- SONG HEADER -->
     <section class="song-header">
-
       <div class="song-title">FUBU</div>
 
       <div class="song-meta">
         EP VIBE · OFFICIAL LYRICS
       </div>
-
     </section>
-
 
     <!-- LYRICS -->
     <section class="lyrics">
 
-
       <!-- VERSE 1 -->
       <div class="lyrics-section">
-
         <div class="section-label">Verse 1</div>
 
         <p>
@@ -185,13 +272,10 @@
           Pusong pansamantala<br>
           Iyan ang ating naging daan
         </p>
-
       </div>
-
 
       <!-- VERSE 2 -->
       <div class="lyrics-section">
-
         <div class="section-label">Verse 2</div>
 
         <p>
@@ -205,13 +289,10 @@
           Ang gulo ng rules natin, parang unti-unting nababasag<br>
           Kasi kapag magkasama tayo, ang sarap ng bawat sandali
         </p>
-
       </div>
-
 
       <!-- CHORUS -->
       <div class="lyrics-section chorus">
-
         <div class="section-label">Chorus</div>
 
         <p>
@@ -225,13 +306,10 @@
           Akala ko ba ay laro lang ang lahat ng ito noong una?<br>
           Heto na naman ako, nahuhulog na yata sa'yo sinta
         </p>
-
       </div>
-
 
       <!-- VERSE 3 -->
       <div class="lyrics-section">
-
         <div class="section-label">Verse 3</div>
 
         <p>
@@ -245,13 +323,10 @@
           Kasi mas masaya pala kapag kasabay kitang tumatawa sa umaga<br>
           Hindi lang kapag madilim at mag-isa tayong dalawa
         </p>
-
       </div>
-
 
       <!-- CHORUS -->
       <div class="lyrics-section chorus">
-
         <div class="section-label">Chorus</div>
 
         <p>
@@ -265,13 +340,10 @@
           Akala ko ba ay laro lang ang lahat ng ito noong una?<br>
           Heto na naman ako, nahuhulog na yata sa'yo sinta
         </p>
-
       </div>
-
 
       <!-- BRIDGE -->
       <div class="lyrics-section">
-
         <div class="section-label">Bridge</div>
 
         <p>
@@ -280,19 +352,15 @@
           Basta huwag kang titingin sa iba kapag wala ako sa tabi mo<br>
           Dahil kahit walang pirma, akin ka lang sa mundong ito
         </p>
-
       </div>
-
 
       <!-- GUITAR SOLO -->
       <div class="solo">
         ♪ Upbeat Catchy Guitar Solo ♪
       </div>
 
-
-      <!-- CHORUS -->
+      <!-- FINAL CHORUS -->
       <div class="lyrics-section chorus">
-
         <div class="section-label">Chorus</div>
 
         <p>
@@ -300,13 +368,10 @@
           Pero bakit ang cute mo kapag nakasandal sa aking dibdib?<br>
           Walang label, walang tayo, pero bakit may kilig na?
         </p>
-
       </div>
-
 
       <!-- OUTRO -->
       <div class="lyrics-section">
-
         <div class="section-label">Outro</div>
 
         <p>
@@ -314,9 +379,7 @@
           Hahaha, sige na nga, ikaw muna ang mauna.<br>
           Basta bukas, text mo ulit ako, ah?
         </p>
-
       </div>
-
 
       <!-- FADE OUT -->
       <div class="solo">
@@ -325,21 +388,52 @@
 
     </section>
 
+    <!-- BACKSTORY -->
+    <section class="backstory">
+      <div class="section-label">The Story Behind the Song</div>
 
-    <!-- BACK -->
+      <h2>FUBU</h2>
+
+      <p>
+        FUBU was inspired by Sofie and Angelito from
+        <em>A Secret in Prague</em>, particularly their
+        first meeting and the way others see their
+        connection as nothing more than friends with benefits.
+      </p>
+
+      <p>
+        The song captures the playful tension of a casual
+        arrangement where the rules seem clear at first,
+        but little by little, affection and jealousy begin
+        to blur the line between a simple setup and
+        something more meaningful.
+      </p>
+
+      <p>
+        No labels, no promises, and supposedly no falling
+        in love. But when feelings start to grow, one
+        question remains: what if it's no longer just FUBU?
+      </p>
+    </section>
+
+    <!-- BACK TO LYRICS ARCHIVE -->
     <div class="back">
       <a href="../lyrics.html">
         ← LYRICS ARCHIVE
       </a>
     </div>
-    <footer>
-  <strong>ILTVIBE</strong><br>
-  I LIKE THE VIBE<br><br>
 
-  Official Lyrics Archive<br>
-  Original lyrics and composition by 알윈 아놀린.<br>
-  © 2026 ILTVIBE — All rights reserved.
+  </main>
 
-  <br><br>
+  <!-- FOOTER -->
+  <footer>
+    <strong>ILTVIBE</strong><br>
+    I LIKE THE VIBE<br><br>
 
+    Official Lyrics Archive<br>
+    Original lyrics and composition by 알윈 아놀린.<br>
+    © 2026 ILTVIBE — All rights reserved.
+  </footer>
+
+</body>
 </html>
