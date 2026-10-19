@@ -269,6 +269,10 @@
 
     </section>
 
+    <!-- DYNAMIC LOGO CENTERPIECE (FALLS AS DEFAULT) -->
+    <section class="artist" style="margin-top: 55px; margin-bottom: -25px;">
+      <img id="dynamicLogo" src="falls.png" alt="ILTVIBE Vibe Art">
+    </section>
 
     <!-- ALBUMS -->
     <section class="albums">
@@ -362,17 +366,11 @@
 
     </section>
 
-
-    <!-- CONNECT -->
-</section>
-    
   </main>
-
 
   <footer>
     ILTVIBE · I LIKE THE VIBE
   </footer>
-
 
   <script>
 
@@ -387,27 +385,41 @@
     ];
 
     function randomVideo() {
-
       const randomIndex =
         Math.floor(Math.random() * videos.length);
-
       const videoId = videos[randomIndex];
-
       document.getElementById("youtubePlayer").src =
         "https://www.youtube.com/embed/" +
         videoId +
         "?autoplay=1";
     }
 
+    // RANDOM LOGO CHANGER (WITH FALLS AS DEFAULT OPTION)
+    const logos = [
+      "falls.png",       // Waterfall Guitar (Default)
+      "dark-thorns.png",  // Dark Gothic Thorns
+      "neon-cyber.png",   // Neon Cyberpunk
+      "liquid-gold.png",  // Liquid Gold
+      "glitch-art.png",   // Glitch Art
+      "chameleon.png",    // Chameleon Neon
+      "white-smoke.png",  // White Smoke
+      "feathers.png",     // White Feathers
+      "pure-fire.png",    // Pure Fire
+      "vintage-wood.png"  // Vintage Wood
+    ];
+
+    // Pumipili ng random logo mula sa listahan tuwing mag-lo-load ang page
+    const randomLogoIndex = Math.floor(Math.random() * logos.length);
+    document.getElementById("dynamicLogo").src = logos[randomLogoIndex];
+
   </script>
 
 </body>
-  <footer>
+<footer>
   <strong>ILTVIBE</strong><br>
   I LIKE THE VIBE<br><br>
-
   Original lyrics and composition by 알윈 아놀린.<br>
   © 2026 ILTVIBE — All rights reserved.
-
   <br><br>
+</footer>
 </html>
