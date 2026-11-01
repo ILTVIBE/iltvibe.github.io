@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -100,16 +99,62 @@
       color: #fff;
     }
 
+    /* ILTVIBE MINIMAL FOOTER */
+
     footer {
-      padding: 25px 20px 35px;
-      border-top: 1px solid #222;
+      background: #080808;
+      color: #555;
       text-align: center;
-      color: #777;
       font-size: 12px;
+      letter-spacing: 1.5px;
     }
 
-    footer p {
-      margin: 5px 0;
+    .footer-top {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 35px 20px 100px;
+      border-top: 1px solid #171717;
+    }
+
+    .footer-brand {
+      color: #444;
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+
+    .footer-bottom {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 20px 55px;
+      border-top: 1px solid #171717;
+    }
+
+    .footer-logo {
+      color: #555;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .footer-tagline {
+      margin-top: 3px;
+      color: #444;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+
+    .footer-credit {
+      margin-top: 28px;
+      color: #555;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+    }
+
+    .footer-copyright {
+      margin-top: 5px;
+      color: #555;
+      font-size: 12px;
+      letter-spacing: 1.5px;
     }
 
     @media (max-width: 600px) {
@@ -128,6 +173,19 @@
       .lyrics {
         font-size: 14px;
       }
+
+      .footer-top {
+        padding-bottom: 100px;
+      }
+
+      .footer-bottom {
+        padding-bottom: 50px;
+      }
+
+      .footer-credit,
+      .footer-copyright {
+        font-size: 11px;
+      }
     }
   </style>
 
@@ -140,18 +198,19 @@
     <div class="tagline">I LIKE THE VIBE</div>
   </header>
 
-<img
-class="banner"
-src="/love-reverse.png"
-alt="Love Reverse — ILTVIBE"
-
-
+  <img
+    class="banner"
+    src="/love-reverse.png"
+    alt="Love Reverse — ILTVIBE"
+  >
 
   <main>
+
     <div class="eyebrow">AFTER THE VIBE · OFFICIAL LYRICS</div>
+
     <h1>LOVE REVERSE</h1>
 
-<div class="lyrics">
+    <div class="lyrics">
 
 <span class="section">[Intro]</span>
 
@@ -274,15 +333,43 @@ Just a memory on replay...
 Yeah, love reverse, it's the only way.
 
 <span class="section">[End]</span>
-</div>
 
-<a class="back-link" href="../lyrics.html">← BACK TO LYRICS</a>
+    </div>
+
+    <a class="back-link" href="../lyrics.html">
+      ← BACK TO LYRICS
+    </a>
 
   </main>
 
   <footer>
-    <p>ILTVIBE · I LIKE THE VIBE</p>
-    <p>Songwriting / Lyrics / Composition: 알윈 아놀린</p>
+
+    <div class="footer-top">
+      <div class="footer-brand">
+        ILTVIBE · I LIKE THE VIBE
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+
+      <div class="footer-logo">
+        ILTVIBE
+      </div>
+
+      <div class="footer-tagline">
+        I LIKE THE VIBE
+      </div>
+
+      <div class="footer-credit">
+        Original lyrics and composition by 알윈 아놀린.
+      </div>
+
+      <div class="footer-copyright">
+        © 2026 ILTVIBE — All rights reserved.
+      </div>
+
+    </div>
+
   </footer>
 
 </body>
