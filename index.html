@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,8 +42,6 @@
       margin: auto;
     }
 
-    /* RANDOM VIBE */
-
     .section-title {
       font-size: 12px;
       letter-spacing: 2px;
@@ -50,6 +49,8 @@
       margin-bottom: 14px;
       text-transform: uppercase;
     }
+
+    /* RANDOM VIBE */
 
     .player {
       position: relative;
@@ -122,6 +123,31 @@
       font-size: 11px;
       line-height: 1.8;
       letter-spacing: 0.4px;
+    }
+
+    /* BEHIND THE VIBE */
+
+    .about {
+      max-width: 620px;
+      margin: 65px auto 0;
+      padding: 30px 22px;
+      text-align: center;
+      border-top: 1px solid #1d1d1d;
+      border-bottom: 1px solid #1d1d1d;
+    }
+
+    .about-title {
+      color: #777;
+      font-size: 11px;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+
+    .about-text {
+      color: #bbb;
+      font-size: 14px;
+      line-height: 1.9;
+      letter-spacing: 0.2px;
     }
 
     /* ALBUMS */
@@ -201,6 +227,7 @@
       color: #444;
       font-size: 10px;
       letter-spacing: 2px;
+      line-height: 1.8;
     }
 
     @media (max-width: 600px) {
@@ -219,6 +246,15 @@
       .artist img {
         width: 100%;
         max-width: 320px;
+      }
+
+      .about {
+        margin-top: 50px;
+        padding: 27px 15px;
+      }
+
+      .about-text {
+        font-size: 13px;
       }
     }
   </style>
@@ -251,7 +287,6 @@
       </button>
     </section>
 
-
     <!-- ARTIST -->
     <section class="artist">
 
@@ -269,9 +304,25 @@
 
     </section>
 
-    <!-- DYNAMIC LOGO CENTERPIECE (FALLS AS DEFAULT) -->
-    <section class="artist" style="margin-top: 55px; margin-bottom: -25px;">
-      <img id="dynamicLogo" src="falls.png" alt="ILTVIBE Vibe Art">
+    <!-- DYNAMIC VIBE ART -->
+    <section class="artist"
+      style="margin-top: 55px; margin-bottom: -25px;">
+
+      <img id="dynamicLogo" src="falls.png"
+           alt="ILTVIBE Vibe Art">
+
+    </section>
+
+    <!-- BEHIND THE VIBE -->
+    <section class="about">
+
+      <div class="about-title">BEHIND THE VIBE</div>
+
+      <div class="about-text">
+        Bawat kanta ay alaala ng isang sandali sa buhay ko—
+        mga bagay na ayokong tuluyang makalimutan.
+      </div>
+
     </section>
 
     <!-- ALBUMS -->
@@ -305,7 +356,6 @@
 
     </section>
 
-
     <!-- CONNECT -->
     <section class="connect">
 
@@ -314,12 +364,12 @@
       <div class="socials">
 
         <a href="https://youtube.com/@iltvibe?si=SfmvGsvLqE5T-vko"
-           target="_blank">
+           target="_blank" rel="noopener">
           YouTube
         </a>
 
         <a href="https://music.youtube.com/@iltvibe"
-           target="_blank">
+           target="_blank" rel="noopener">
           YouTube Music
         </a>
 
@@ -334,13 +384,14 @@
         </a>
 
         <a href="https://tiktok.com/@iltvibe"
-           target="_blank">
+           target="_blank" rel="noopener">
           TikTok
         </a>
 
       </div>
 
     </section>
+
     <!-- ARCHIVE -->
     <section class="albums">
 
@@ -369,7 +420,10 @@
   </main>
 
   <footer>
-    ILTVIBE · I LIKE THE VIBE
+    <strong>ILTVIBE</strong><br>
+    I LIKE THE VIBE<br><br>
+    Original lyrics and composition by 알윈 아놀린.<br>
+    © 2026 ILTVIBE — All rights reserved.
   </footer>
 
   <script>
@@ -387,43 +441,40 @@
     function randomVideo() {
       const randomIndex =
         Math.floor(Math.random() * videos.length);
+
       const videoId = videos[randomIndex];
+
       document.getElementById("youtubePlayer").src =
         "https://www.youtube.com/embed/" +
         videoId +
         "?autoplay=1";
     }
 
-    // RANDOM LOGO CHANGER (WITH FALLS AS DEFAULT OPTION)
+    // RANDOM VIBE ART
     const logos = [
-      "falls.png",       // Waterfall Guitar (Default)
-      "dark-thorns.png",  // Dark Gothic Thorns
-      "neon-cyber.png",   // Neon Cyberpunk
-      "liquid-gold.png",  // Liquid Gold
-      "glitch-art.png",   // Glitch Art
-      "chameleon.png",    // Chameleon Neon
-      "white-smoke.png",  // White Smoke
-      "feathers.png",     // White Feathers
-      "pure-fire.png",    // Pure Fire
-      "vintage-wood.png",   // Vintage Wood
-      "bittersweet-ignition.png",  // Bittersweet Ignition
-      "the-ecentric-shrine.png",  // Ecentric Shrine
-      "cyber-vibe-matrix.png",  // Cyber Vibe Matrix
+      "falls.png",
+      "dark-thorns.png",
+      "neon-cyber.png",
+      "liquid-gold.png",
+      "glitch-art.png",
+      "chameleon.png",
+      "white-smoke.png",
+      "feathers.png",
+      "pure-fire.png",
+      "vintage-wood.png",
+      "bittersweet-ignition.png",
+      "the-ecentric-shrine.png",
+      "cyber-vibe-matrix.png"
     ];
-  
 
-    // Pumipili ng random logo mula sa listahan tuwing mag-lo-load ang page
-    const randomLogoIndex = Math.floor(Math.random() * logos.length);
-    document.getElementById("dynamicLogo").src = logos[randomLogoIndex];
+    const randomLogoIndex =
+      Math.floor(Math.random() * logos.length);
+
+    document.getElementById("dynamicLogo").src =
+      logos[randomLogoIndex];
 
   </script>
 
 </body>
-<footer>
-  <strong>ILTVIBE</strong><br>
-  I LIKE THE VIBE<br><br>
-  Original lyrics and composition by 알윈 아놀린.<br>
-  © 2026 ILTVIBE — All rights reserved.
-  <br><br>
-</footer>
-</html>
+  </html>
+  
