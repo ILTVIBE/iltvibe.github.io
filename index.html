@@ -221,6 +221,45 @@
       background: #111;
     }
 
+    /* BUSINESS INQUIRIES */
+
+    .business-contact {
+      max-width: 620px;
+      margin: 55px auto 0;
+      padding: 28px 20px;
+      text-align: center;
+      border-top: 1px solid #1d1d1d;
+      border-bottom: 1px solid #1d1d1d;
+    }
+
+    .business-title {
+      color: #888;
+      font-size: 11px;
+      letter-spacing: 3px;
+      margin-bottom: 15px;
+    }
+
+    .business-description {
+      color: #777;
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .business-email {
+      display: inline-block;
+      margin-top: 15px;
+      color: #d8bd69;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+    }
+
+    .business-email:hover {
+      color: #fff;
+    }
+
+    /* FOOTER */
+
     footer {
       text-align: center;
       padding: 70px 20px 35px;
@@ -229,6 +268,8 @@
       letter-spacing: 2px;
       line-height: 1.8;
     }
+
+    /* MOBILE */
 
     @media (max-width: 600px) {
       header {
@@ -262,6 +303,7 @@
 
 <body>
 
+  <!-- HEADER -->
   <header>
     <div class="logo">ILTVIBE</div>
     <div class="tagline">I LIKE THE VIBE</div>
@@ -373,22 +415,31 @@
           YouTube Music
         </a>
 
-        <a href="#"
-           target="_blank">
-          Facebook
-        </a>
-
-        <a href="#"
-           target="_blank">
-          Instagram
-        </a>
-
         <a href="https://tiktok.com/@iltvibe"
            target="_blank" rel="noopener">
           TikTok
         </a>
 
       </div>
+
+    </section>
+
+    <!-- BUSINESS INQUIRIES -->
+    <section class="business-contact">
+
+      <div class="business-title">
+        BUSINESS INQUIRIES
+      </div>
+
+      <div class="business-description">
+        For collaborations, music licensing,
+        and other inquiries.
+      </div>
+
+      <a class="business-email"
+         href="mailto:contact.iltvibe@gmail.com">
+        contact.iltvibe@gmail.com
+      </a>
 
     </section>
 
@@ -419,6 +470,7 @@
 
   </main>
 
+  <!-- FOOTER -->
   <footer>
     <strong>ILTVIBE</strong><br>
     I LIKE THE VIBE<br><br>
@@ -428,6 +480,7 @@
 
   <script>
 
+    // RANDOM VIBE VIDEOS
     const videos = [
       "S4h_bfXUUuU",
       "t9k3DmYtcZ8",
