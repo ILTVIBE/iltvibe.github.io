@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -138,8 +139,11 @@
     .player {
       position: relative;
       width: 100%;
+      max-width: 640px;
       aspect-ratio: 16 / 9;
+      margin: 0 auto;
       background: #050609;
+      overflow: hidden;
     }
 
     .player iframe {
@@ -147,6 +151,12 @@
       height: 100%;
       border: 0;
       display: block;
+    }
+
+    @media (max-width: 680px) {
+      .player {
+        max-width: 100%;
+      }
     }
 
     /* FOOTER */
@@ -167,6 +177,7 @@
     footer a:hover {
       text-decoration: underline;
     }
+
   </style>
 </head>
 
@@ -184,7 +195,6 @@
 
 </header>
 
-
 <main>
 
   <section class="intro">
@@ -200,7 +210,6 @@
 
   </section>
 
-
   <div class="notice">
 
     🎧 Demos are available here before their official releases.
@@ -209,10 +218,7 @@
 
   </div>
 
-
-  <!-- =====================================================
-       DEMO 01
-       ===================================================== -->
+  <!-- DEMO 01 -->
 
   <article class="demo">
 
@@ -245,7 +251,6 @@
 
   </article>
 
-
   <!-- DEMO 02 -->
 
   <article class="demo">
@@ -253,7 +258,7 @@
     <div class="demo-info">
 
       <div class="demo-title">
-       02. Sinta
+        02. Sinta
       </div>
 
       <div class="demo-meta">
@@ -279,7 +284,6 @@
 
   </article>
 
-
   <!-- DEMO 03 -->
 
   <article class="demo">
@@ -295,7 +299,7 @@
       </div>
 
       <div class="demo-label">
-        Demo 03
+        DEMO
       </div>
 
     </div>
@@ -312,7 +316,6 @@
     </div>
 
   </article>
-
 
   <!-- DEMO 04 -->
 
@@ -347,7 +350,6 @@
 
   </article>
 
-
   <!-- DEMO 05 -->
 
   <article class="demo">
@@ -380,7 +382,6 @@
     </div>
 
   </article>
-
 
   <!-- DEMO 06 -->
 
@@ -415,7 +416,6 @@
 
   </article>
 
-
   <!-- DEMO 07 -->
 
   <article class="demo">
@@ -448,7 +448,6 @@
     </div>
 
   </article>
-
 
   <!-- DEMO 08 -->
 
@@ -483,7 +482,6 @@
 
   </article>
 
-
   <!-- DEMO 09 -->
 
   <article class="demo">
@@ -516,7 +514,6 @@
     </div>
 
   </article>
-
 
   <!-- DEMO 10 -->
 
@@ -551,9 +548,7 @@
 
   </article>
 
-
 </main>
-
 
 <footer>
 
@@ -566,4 +561,4 @@
 </footer>
 
 </body>
-  </html>
+</html>
