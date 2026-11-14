@@ -1,0 +1,432 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>About the Artist | ILTVIBE</title>
+  <meta name="description" content="Meet Alwin Anolin, the independent Filipino artist behind ILTVIBE — I LIKE THE VIBE.">
+  <meta name="theme-color" content="#080808">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #080808;
+      color: #e8e8e8;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(100% - 40px, 850px);
+      margin: auto;
+    }
+
+    /* HEADER */
+
+    header {
+      padding: 28px 0;
+      border-bottom: 1px solid #222;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: #fff;
+    }
+
+    .logo span {
+      display: block;
+      color: #888;
+      font-size: 9px;
+      letter-spacing: 4px;
+      font-weight: 400;
+      line-height: 1.5;
+    }
+
+    .back-link {
+      color: #aaa;
+      font-size: 12px;
+      letter-spacing: 1px;
+      transition: color .2s ease;
+    }
+
+    .back-link:hover {
+      color: #fff;
+    }
+
+    /* MAIN */
+
+    main {
+      padding: 85px 0 100px;
+    }
+
+    .eyebrow {
+      color: #999;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: clamp(38px, 8vw, 66px);
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 12px;
+    }
+
+    .artist-role {
+      color: #999;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    /* ARTIST PHOTO */
+
+    .artist-photo {
+      width: 190px;
+      height: 230px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      margin: 0 0 38px;
+      border: 1px solid #292929;
+      border-radius: 3px;
+      background: #111;
+    }
+
+    .divider {
+      width: 45px;
+      height: 2px;
+      background: #777;
+      margin-bottom: 38px;
+    }
+
+    /* BIOGRAPHY */
+
+    .about-copy {
+      max-width: 700px;
+    }
+
+    .about-copy p {
+      color: #bdbdbd;
+      font-size: 15px;
+      line-height: 2;
+      margin-bottom: 24px;
+    }
+
+    .about-copy p:first-child {
+      color: #eee;
+      font-size: 17px;
+    }
+
+    /* ARTIST DETAILS */
+
+    .section {
+      margin-top: 65px;
+      padding-top: 35px;
+      border-top: 1px solid #222;
+    }
+
+    .section h2 {
+      color: #fff;
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin-bottom: 22px;
+      font-weight: 600;
+    }
+
+    .details {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 15px 25px;
+      font-size: 13px;
+    }
+
+    .details .label {
+      color: #777;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 10px;
+    }
+
+    .details .value {
+      color: #ccc;
+    }
+
+    /* SIGNATURE */
+
+    .closing {
+      margin-top: 75px;
+      padding: 35px 0;
+      border-top: 1px solid #222;
+      text-align: center;
+    }
+
+    .closing h2 {
+      color: #fff;
+      font-size: 19px;
+      letter-spacing: 4px;
+      margin-bottom: 8px;
+    }
+
+    .closing p {
+      color: #888;
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      border-top: 1px solid #222;
+      padding: 28px 0;
+      text-align: center;
+    }
+
+    footer p {
+      color: #666;
+      font-size: 10px;
+      letter-spacing: 1px;
+      line-height: 2;
+    }
+
+    footer a {
+      color: #aaa;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+      .container {
+        width: min(100% - 36px, 850px);
+      }
+
+      header {
+        padding: 22px 0;
+      }
+
+      main {
+        padding: 65px 0 75px;
+      }
+
+      .artist-role {
+        font-size: 10px;
+        margin-bottom: 25px;
+      }
+
+      .artist-photo {
+        width: 160px;
+        height: 200px;
+        margin-bottom: 32px;
+      }
+
+      .about-copy p {
+        font-size: 14px;
+      }
+
+      .about-copy p:first-child {
+        font-size: 16px;
+      }
+
+      .details {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+
+      .details .value {
+        margin-bottom: 15px;
+      }
+
+      .back-link {
+        font-size: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+    <div class="container header-inner">
+
+      <a href="https://iltvibe.github.io/" class="logo">
+        ILTVIBE
+        <span>I LIKE THE VIBE</span>
+      </a>
+
+      <a href="https://iltvibe.github.io/" class="back-link">
+        ← BACK TO HOME
+      </a>
+
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+
+  <main class="container">
+
+    <div class="eyebrow">ABOUT THE ARTIST</div>
+
+    <h1>ALWIN ANOLIN</h1>
+
+    <div class="artist-role">
+      Independent Filipino Artist · Creator of ILTVIBE
+    </div>
+
+    <!-- ARTIST PHOTO -->
+
+    <img
+      src="artist2.png"
+      alt="Alwin Anolin - Independent Filipino Artist"
+      class="artist-photo"
+      loading="eager"
+    >
+
+    <div class="divider"></div>
+
+    <!-- ABOUT ME -->
+
+    <div class="about-copy">
+
+      <p>
+        I'm Alwin Anolin, the person behind ILTVIBE — I LIKE THE VIBE.
+      </p>
+
+      <p>
+        I started ILTVIBE as a way to turn my ideas, feelings,
+        and experiences into music. I enjoy exploring different
+        sounds, writing lyrics, and creating songs that each
+        have their own story.
+      </p>
+
+      <p>
+        My music is mainly rooted in OPM Alternative Pop-Rock
+        and Cyber-Anito Neo-Folk, but I also enjoy experimenting
+        with different styles and sounds.
+      </p>
+
+      <p>
+        I use AI tools as part of my music-making process,
+        but the ideas, lyrics, creative direction, and decisions
+        behind each song come from me.
+      </p>
+
+      <p>
+        For me, music is not always about being perfect
+        or following trends. Sometimes, it's simply about
+        creating something that I enjoy listening to
+        and sharing it with others.
+      </p>
+
+      <p>
+        ILTVIBE is where I bring those ideas to life.
+      </p>
+
+    </div>
+
+    <!-- ARTIST DETAILS -->
+
+    <section class="section">
+
+      <h2>ARTIST DETAILS</h2>
+
+      <div class="details">
+
+        <div class="label">Artist</div>
+        <div class="value">Alwin Anolin</div>
+
+        <div class="label">Music Project</div>
+        <div class="value">ILTVIBE — I LIKE THE VIBE</div>
+
+        <div class="label">Musical Direction</div>
+        <div class="value">
+          OPM Alternative Pop-Rock / Cyber-Anito Neo-Folk
+        </div>
+
+        <div class="label">Songwriting</div>
+        <div class="value">Original Lyrics and Composition</div>
+
+        <div class="label">Production</div>
+        <div class="value">AI-Assisted Music Production</div>
+
+        <div class="label">Artist Credit</div>
+        <div class="value">알윈 아놀린</div>
+
+      </div>
+
+    </section>
+
+    <!-- SIGNATURE -->
+
+    <div class="closing">
+
+      <h2>ILTVIBE</h2>
+
+      <p>I LIKE THE VIBE</p>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container">
+
+      <p>
+        <a href="https://iltvibe.github.io/">HOME</a>
+        &nbsp; · &nbsp;
+        <a href="https://iltvibe.github.io/">ILTVIBE</a>
+      </p>
+
+      <p>
+        Original lyrics, concepts, and composition by Alwin Anolin.
+      </p>
+
+      <p>
+        © 2026 ILTVIBE — All rights reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+</body>
+</html>
