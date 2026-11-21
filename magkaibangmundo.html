@@ -6,6 +6,7 @@
 
   <title>Magkaibang Mundo - ILTVIBE</title>
   <meta name="description" content="Magkaibang Mundo - Official Lyrics and the story behind the song by ILTVIBE.">
+  <meta name="theme-color" content="#000000">
 
   <style>
     * {
@@ -14,12 +15,41 @@
       padding: 0;
     }
 
+    :root {
+      --accent: #A78BFA;
+      --accent-rgb: 167, 139, 250;
+      --accent-soft: rgba(167, 139, 250, 0.10);
+      --accent-border: rgba(167, 139, 250, 0.35);
+      --accent-glow: rgba(167, 139, 250, 0.22);
+      --accent-backlight: rgba(167, 139, 250, 0.16);
+    }
+
+    html {
+      background: #000;
+      scroll-behavior: smooth;
+    }
+
     body {
-      background: #080808;
+      position: relative;
+      isolation: isolate;
+      min-height: 100vh;
+      background: #000;
       color: #fff;
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.8;
       padding: 40px 20px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 50% 0%, var(--accent-backlight), transparent 55%),
+        radial-gradient(ellipse at 0% 50%, rgba(var(--accent-rgb), 0.07), transparent 45%),
+        radial-gradient(ellipse at 100% 80%, rgba(var(--accent-rgb), 0.06), transparent 45%);
     }
 
     .container {
@@ -32,9 +62,10 @@
       width: 100%;
       margin: 0 auto 35px;
       overflow: hidden;
-      border: 1px solid #222;
-      border-radius: 8px;
-      background: #111;
+      border: 1px solid var(--accent-border);
+      border-radius: 10px;
+      background: #080808;
+      box-shadow: 0 0 22px var(--accent-glow);
     }
 
     .thumbnail-banner img {
@@ -51,14 +82,17 @@
     }
 
     .logo {
+      display: inline-block;
       font-size: 28px;
       font-weight: 800;
       letter-spacing: 4px;
+      color: #fff;
+      text-shadow: 0 0 16px var(--accent-glow);
     }
 
     .tagline {
       margin-top: 8px;
-      color: #666;
+      color: #777;
       font-size: 10px;
       letter-spacing: 3px;
     }
@@ -66,18 +100,20 @@
     .song-header {
       text-align: center;
       padding: 25px 0 45px;
-      border-bottom: 1px solid #1d1d1d;
+      border-bottom: 1px solid var(--accent-border);
+      box-shadow: 0 8px 18px -18px var(--accent);
     }
 
     .song-title {
       font-size: 32px;
       font-weight: 700;
       letter-spacing: 2px;
+      text-shadow: 0 0 18px var(--accent-glow);
     }
 
     .song-meta {
       margin-top: 10px;
-      color: #666;
+      color: var(--accent);
       font-size: 10px;
       letter-spacing: 2px;
     }
@@ -87,12 +123,22 @@
     }
 
     .lyrics-section {
-      margin-bottom: 42px;
+      margin-bottom: 32px;
+      padding: 20px;
+      border: 1px solid rgba(var(--accent-rgb), 0.13);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.018);
+      transition: 0.25s ease;
+    }
+
+    .lyrics-section:hover {
+      border-color: var(--accent-border);
+      box-shadow: 0 0 18px rgba(var(--accent-rgb), 0.08);
     }
 
     .section-label {
       margin-bottom: 14px;
-      color: #666;
+      color: var(--accent);
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 2px;
@@ -105,33 +151,44 @@
       font-size: 15px;
     }
 
+    .lyrics p:last-child {
+      margin-bottom: 0;
+    }
+
     .chorus p {
       color: #fff;
     }
 
     .solo {
-      margin: 45px 0;
+      margin: 40px 0;
       padding: 18px;
       text-align: center;
-      border-top: 1px solid #1d1d1d;
-      border-bottom: 1px solid #1d1d1d;
-      color: #777;
+      border-top: 1px solid var(--accent-border);
+      border-bottom: 1px solid var(--accent-border);
+      color: var(--accent);
       font-size: 10px;
       letter-spacing: 2px;
       text-transform: uppercase;
+      text-shadow: 0 0 12px var(--accent-glow);
     }
 
     .story {
       margin-top: 10px;
       padding: 30px 24px;
-      border-top: 1px solid #222;
-      border-bottom: 1px solid #222;
+      border: 1px solid var(--accent-border);
+      border-radius: 12px;
+      background: linear-gradient(
+        180deg,
+        rgba(var(--accent-rgb), 0.08) 0%,
+        rgba(255, 255, 255, 0.015) 100%
+      );
       text-align: center;
+      box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.06);
     }
 
     .story h2 {
       margin-bottom: 18px;
-      color: #aaa;
+      color: var(--accent);
       font-size: 13px;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -151,37 +208,39 @@
 
     .back {
       text-align: center;
-      padding: 20px 0 60px;
+      padding: 35px 0 60px;
     }
 
     .back a {
       display: inline-block;
       padding: 11px 18px;
-      border: 1px solid #222;
+      border: 1px solid var(--accent-border);
       border-radius: 9px;
-      color: #888;
+      color: var(--accent);
+      background: var(--accent-soft);
       text-decoration: none;
       font-size: 10px;
       letter-spacing: 2px;
-      transition: 0.2s;
+      transition: 0.2s ease;
     }
 
     .back a:hover {
       color: #fff;
-      background: #111;
+      border-color: var(--accent);
+      box-shadow: 0 0 16px var(--accent-glow);
     }
 
     footer {
       text-align: center;
       padding: 40px 20px 20px;
-      border-top: 1px solid #1c1c1c;
-      color: #444;
+      border-top: 1px solid rgba(var(--accent-rgb), 0.20);
+      color: #555;
       font-size: 10px;
       letter-spacing: 1px;
     }
 
     footer strong {
-      color: #888;
+      color: var(--accent);
       letter-spacing: 3px;
     }
 
@@ -202,8 +261,24 @@
         font-size: 14px;
       }
 
+      .lyrics-section {
+        padding: 17px;
+      }
+
       .story {
-        padding: 25px 12px;
+        padding: 25px 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
@@ -362,5 +437,65 @@ Isang sikat na reyna at ang kanyang sandigan
     </footer>
 
   </div>
+
+  <script>
+    const themes = [
+      { name: "Electric Purple", accent: "#A78BFA", rgb: "167, 139, 250" },
+      { name: "Neon Blue", accent: "#60A5FA", rgb: "96, 165, 250" },
+      { name: "Cyber Cyan", accent: "#22D3EE", rgb: "34, 211, 238" },
+      { name: "Neon Pink", accent: "#F472B6", rgb: "244, 114, 182" },
+      { name: "Champagne Gold", accent: "#FBBF24", rgb: "251, 191, 36" },
+      { name: "Emerald Green", accent: "#34D399", rgb: "52, 211, 153" },
+      { name: "Deep Crimson", accent: "#FB7185", rgb: "251, 113, 133" },
+      { name: "Violet", accent: "#C084FC", rgb: "192, 132, 252" }
+    ];
+
+    let previousTheme = null;
+
+    try {
+      previousTheme = localStorage.getItem("iltvibeTheme");
+    } catch (error) {
+      previousTheme = null;
+    }
+
+    let availableThemes = themes.filter(
+      theme => theme.name !== previousTheme
+    );
+
+    if (availableThemes.length === 0) {
+      availableThemes = themes;
+    }
+
+    const selectedTheme =
+      availableThemes[Math.floor(Math.random() * availableThemes.length)];
+
+    const root = document.documentElement;
+
+    root.style.setProperty("--accent", selectedTheme.accent);
+    root.style.setProperty("--accent-rgb", selectedTheme.rgb);
+    root.style.setProperty(
+      "--accent-soft",
+      `rgba(${selectedTheme.rgb}, 0.10)`
+    );
+    root.style.setProperty(
+      "--accent-border",
+      `rgba(${selectedTheme.rgb}, 0.35)`
+    );
+    root.style.setProperty(
+      "--accent-glow",
+      `rgba(${selectedTheme.rgb}, 0.22)`
+    );
+    root.style.setProperty(
+      "--accent-backlight",
+      `rgba(${selectedTheme.rgb}, 0.16)`
+    );
+
+    try {
+      localStorage.setItem("iltvibeTheme", selectedTheme.name);
+    } catch (error) {
+      // Theme still works if localStorage is unavailable.
+    }
+  </script>
+
 </body>
 </html>
