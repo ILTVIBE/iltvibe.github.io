@@ -63,7 +63,7 @@ body::before {
     width: 90%;
     max-width: 720px;
     margin: 0 auto;
-    padding: 40px 0 60px;
+    padding: 40px 0 280px;
 }
 
 .header {
@@ -146,9 +146,12 @@ body::before {
     border: 1px solid var(--accent-border);
     border-radius: 3px;
     color: #fff;
+    background: transparent;
     text-decoration: none;
+    font-family: inherit;
     font-size: 10px;
     letter-spacing: 2px;
+    cursor: pointer;
     transition: 0.2s ease;
 }
 
@@ -157,6 +160,16 @@ body::before {
     color: #000;
     border-color: var(--accent);
     box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.track.active {
+    background: var(--accent-soft);
+    border-bottom-color: var(--accent-border);
+}
+
+.track.active .track-name {
+    color: var(--accent);
+    text-shadow: 0 0 10px var(--accent-glow);
 }
 
 .back {
@@ -184,10 +197,149 @@ footer {
     letter-spacing: 2px;
 }
 
+/* ==================================
+   ILTVIBE MINI PLAYER
+================================== */
+
+.mini-player {
+    position: fixed;
+    z-index: 1000;
+    left: 50%;
+    bottom: 12px;
+    transform: translateX(-50%);
+    width: min(720px, calc(100% - 24px));
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    background: rgba(8, 8, 12, 0.97);
+    border: 1px solid var(--accent-border);
+    border-radius: 10px;
+    box-shadow:
+        0 0 18px var(--accent-glow),
+        0 0 45px rgba(var(--accent-rgb), 0.12);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+.player-video {
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 5px;
+    background: #000;
+    border: 1px solid rgba(var(--accent-rgb), 0.3);
+}
+
+.player-video iframe {
+    display: block;
+    width: 200px;
+    height: 200px;
+    border: 0;
+}
+
+.player-details {
+    flex: 1;
+    min-width: 0;
+    padding: 5px 8px 5px 0;
+}
+
+.player-label {
+    color: var(--accent);
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.player-song {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.4;
+    margin-bottom: 5px;
+    overflow-wrap: anywhere;
+}
+
+.player-artist {
+    color: #888;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+}
+
+.progress-area {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 15px;
+}
+
+.time {
+    color: #999;
+    font-size: 9px;
+    min-width: 29px;
+    font-variant-numeric: tabular-nums;
+}
+
+.progress-slider {
+    flex: 1;
+    min-width: 0;
+    height: 4px;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+}
+
+.player-control {
+    width: 34px;
+    height: 34px;
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 19px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.player-control:hover {
+    color: var(--accent);
+    text-shadow: 0 0 12px var(--accent-glow);
+}
+
+.player-control.main {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #000;
+    font-size: 19px;
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.player-control.main:hover {
+    transform: scale(1.06);
+}
+
+.player-status {
+    color: #777;
+    font-size: 9px;
+    text-align: center;
+    margin-top: 12px;
+    letter-spacing: 1px;
+}
+
 @media (max-width: 600px) {
     .container {
         width: 88%;
         padding-top: 30px;
+        padding-bottom: 280px;
     }
 
     .logo {
@@ -210,6 +362,71 @@ footer {
     .listen-btn {
         padding: 8px 12px;
         font-size: 9px;
+    }
+
+    .mini-player {
+        gap: 10px;
+        padding: 8px;
+        min-height: 216px;
+    }
+
+    .player-video,
+    .player-video iframe {
+        width: 200px;
+        height: 200px;
+    }
+
+    .player-details {
+        padding-right: 2px;
+    }
+
+    .player-song {
+        font-size: 13px;
+    }
+
+    .player-artist {
+        font-size: 9px;
+        margin-bottom: 14px;
+    }
+
+    .player-controls {
+        gap: 8px;
+    }
+
+    .player-control {
+        width: 29px;
+        height: 32px;
+        font-size: 17px;
+    }
+
+    .player-control.main {
+        width: 37px;
+        height: 37px;
+    }
+
+    .player-label {
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 360px) {
+    .mini-player {
+        gap: 7px;
+        padding: 6px;
+    }
+
+    .player-video,
+    .player-video iframe {
+        width: 200px;
+        height: 200px;
+    }
+
+    .player-controls {
+        gap: 3px;
+    }
+
+    .player-control {
+        width: 25px;
     }
 }
 
@@ -241,84 +458,44 @@ footer {
     <div class="album-title">EP VIBE</div>
     <div class="album-info">ILTVIBE · 08 TRACKS</div>
 
-    <div class="track">
+    <div class="track" data-index="0">
         <div class="track-name">01. FUBU</div>
-        <a class="listen-btn"
-           href="https://youtu.be/aqJ6blP4fXc"
-           target="_blank"
-           rel="noopener noreferrer">
-            LISTEN
-        </a>
+        <button class="listen-btn" type="button">PLAY</button>
     </div>
 
-    <div class="track">
+    <div class="track" data-index="1">
         <div class="track-name">02. Makaibang Mundo</div>
-        <a class="listen-btn"
-           href="https://youtu.be/lowiO4EZ-Y8"
-           target="_blank"
-           rel="noopener noreferrer">
-            LISTEN
-        </a>
+        <button class="listen-btn" type="button">PLAY</button>
     </div>
 
-    <div class="track">
+    <div class="track" data-index="2">
         <div class="track-name">03. Zhynn</div>
-        <a class="listen-btn"
-           href="https://youtu.be/yj2BXvdIbvw"
-           target="_blank"
-           rel="noopener noreferrer">
-            LISTEN
-        </a>
+        <button class="listen-btn" type="button">PLAY</button>
     </div>
 
-    <div class="track">
+    <div class="track" data-index="3">
         <div class="track-name">04. Ikaw Pa Rin</div>
-        <a class="listen-btn"
-           href="https://youtu.be/t9k3DmYtcZ8"
-           target="_blank"
-           rel="noopener noreferrer">
-            LISTEN
-        </a>
+        <button class="listen-btn" type="button">PLAY</button>
     </div>
 
-    <div class="track">
+    <div class="track" data-index="4">
         <div class="track-name">05. 1004</div>
-        <a class="listen-btn"
-           href="https://youtu.be/mDQvJEzrIWo"
-           target="_blank"
-           rel="noopener noreferrer">
-            LISTEN
-        </a>
+        <button class="listen-btn" type="button">PLAY</button>
     </div>
 
-    <div class="track">
+    <div class="track" data-index="5">
         <div class="track-name">06. ELAINE</div>
-        <a class="listen-btn"
-           href="https://youtu.be/3wu6LRun8Aw"
-           target="_blank"
-           rel="noopener noreferrer">
-            LISTEN
-        </a>
+        <button class="listen-btn" type="button">PLAY</button>
     </div>
 
-    <div class="track">
+    <div class="track" data-index="6">
         <div class="track-name">07. Sa'yo Lang</div>
-        <a class="listen-btn"
-           href="https://youtu.be/M-WCmXS8E3c"
-           target="_blank"
-           rel="noopener noreferrer">
-            LISTEN
-        </a>
+        <button class="listen-btn" type="button">PLAY</button>
     </div>
 
-    <div class="track">
+    <div class="track" data-index="7">
         <div class="track-name">08. Ikaw Pa Rin (Studio Version)</div>
-        <a class="listen-btn"
-           href="https://youtu.be/S4h_bfXUUuU"
-           target="_blank"
-           rel="noopener noreferrer">
-            LISTEN
-        </a>
+        <button class="listen-btn" type="button">PLAY</button>
     </div>
 
     <a href="index.html" class="back">← BACK TO ILTVIBE</a>
@@ -329,7 +506,79 @@ footer {
 
 </div>
 
+<!-- ILTVIBE MINI PLAYER -->
+
+<div class="mini-player">
+
+    <div class="player-video">
+        <div id="yt-player"></div>
+    </div>
+
+    <div class="player-details">
+
+        <div class="player-label">ILTVIBE MINI PLAYER</div>
+
+        <div class="player-song" id="player-song">
+            FUBU
+        </div>
+
+        <div class="player-artist">
+            ILTVIBE · EP VIBE
+        </div>
+
+        <div class="progress-area">
+            <span class="time" id="current-time">0:00</span>
+
+            <input
+                type="range"
+                class="progress-slider"
+                id="progress"
+                min="0"
+                max="100"
+                value="0"
+                aria-label="Song progress"
+            >
+
+            <span class="time" id="duration">0:00</span>
+        </div>
+
+        <div class="player-controls">
+
+            <button
+                class="player-control"
+                id="previous"
+                type="button"
+                aria-label="Previous track"
+            >|◀</button>
+
+            <button
+                class="player-control main"
+                id="play-pause"
+                type="button"
+                aria-label="Play"
+            >▶</button>
+
+            <button
+                class="player-control"
+                id="next"
+                type="button"
+                aria-label="Next track"
+            >▶|</button>
+
+        </div>
+
+        <div class="player-status" id="player-status">
+            SELECT A TRACK TO PLAY
+        </div>
+
+    </div>
+</div>
+
 <script>
+/* ==================================
+   RANDOM RGB THEME
+================================== */
+
 const themes = [
     { name: "Electric Purple", color: "#A78BFA", rgb: "167, 139, 250" },
     { name: "Neon Blue", color: "#60A5FA", rgb: "96, 165, 250" },
@@ -364,28 +613,302 @@ const root = document.documentElement;
 
 root.style.setProperty("--accent", selectedTheme.color);
 root.style.setProperty("--accent-rgb", selectedTheme.rgb);
-root.style.setProperty(
-    "--accent-soft",
-    `rgba(${selectedTheme.rgb}, 0.12)`
-);
-root.style.setProperty(
-    "--accent-border",
-    `rgba(${selectedTheme.rgb}, 0.35)`
-);
-root.style.setProperty(
-    "--accent-glow",
-    `rgba(${selectedTheme.rgb}, 0.28)`
-);
-root.style.setProperty(
-    "--accent-backlight",
-    `rgba(${selectedTheme.rgb}, 0.13)`
-);
+root.style.setProperty("--accent-soft", `rgba(${selectedTheme.rgb}, 0.12)`);
+root.style.setProperty("--accent-border", `rgba(${selectedTheme.rgb}, 0.35)`);
+root.style.setProperty("--accent-glow", `rgba(${selectedTheme.rgb}, 0.28)`);
+root.style.setProperty("--accent-backlight", `rgba(${selectedTheme.rgb}, 0.13)`);
 
 try {
     localStorage.setItem("iltvibeTheme", selectedTheme.name);
 } catch (error) {
     // The page still works if browser storage is unavailable.
 }
+
+
+/* ==================================
+   EP VIBE TRACKLIST
+================================== */
+
+const tracks = [
+    {
+        title: "FUBU",
+        id: "aqJ6blP4fXc"
+    },
+    {
+        title: "Makaibang Mundo",
+        id: "lowiO4EZ-Y8"
+    },
+    {
+        title: "Zhynn",
+        id: "yj2BXvdIbvw"
+    },
+    {
+        title: "Ikaw Pa Rin",
+        id: "t9k3DmYtcZ8"
+    },
+    {
+        title: "1004",
+        id: "mDQvJEzrIWo"
+    },
+    {
+        title: "ELAINE",
+        id: "3wu6LRun8Aw"
+    },
+    {
+        title: "Sa'yo Lang",
+        id: "M-WCmXS8E3c"
+    },
+    {
+        title: "Ikaw Pa Rin (Studio Version)",
+        id: "S4h_bfXUUuU"
+    }
+];
+
+let currentTrack = 0;
+let player = null;
+let progressTimer = null;
+let isSeeking = false;
+
+const songTitle = document.getElementById("player-song");
+const playPauseButton = document.getElementById("play-pause");
+const progressSlider = document.getElementById("progress");
+const currentTimeDisplay = document.getElementById("current-time");
+const durationDisplay = document.getElementById("duration");
+const playerStatus = document.getElementById("player-status");
+
+
+/* ==================================
+   YOUTUBE IFRAME PLAYER API
+================================== */
+
+const youtubeScript = document.createElement("script");
+youtubeScript.src = "https://www.youtube.com/iframe_api";
+
+const firstScript = document.getElementsByTagName("script")[0];
+firstScript.parentNode.insertBefore(youtubeScript, firstScript);
+
+window.onYouTubeIframeAPIReady = function() {
+
+    player = new YT.Player("yt-player", {
+        width: "200",
+        height: "200",
+        videoId: tracks[0].id,
+
+        playerVars: {
+            playsinline: 1,
+            rel: 0
+        },
+
+        events: {
+            onReady: function() {
+                playerStatus.textContent = "READY TO PLAY";
+                updateTrackHighlight();
+                startProgressTimer();
+            },
+
+            onStateChange: function(event) {
+
+                if (event.data === YT.PlayerState.PLAYING) {
+                    playPauseButton.textContent = "Ⅱ";
+                    playPauseButton.setAttribute("aria-label", "Pause");
+                    playerStatus.textContent = "NOW PLAYING";
+                }
+
+                else if (event.data === YT.PlayerState.PAUSED) {
+                    playPauseButton.textContent = "▶";
+                    playPauseButton.setAttribute("aria-label", "Play");
+                    playerStatus.textContent = "PAUSED";
+                }
+
+                else if (event.data === YT.PlayerState.ENDED) {
+                    playNextTrack();
+                }
+
+                else if (event.data === YT.PlayerState.BUFFERING) {
+                    playerStatus.textContent = "LOADING...";
+                }
+            },
+
+            onError: function() {
+                playerStatus.textContent = "VIDEO UNAVAILABLE";
+            }
+        }
+    });
+};
+
+
+/* ==================================
+   TRACK SELECTION
+================================== */
+
+function selectTrack(index) {
+
+    if (!player || !player.loadVideoById) {
+        playerStatus.textContent = "PLAYER IS LOADING...";
+        return;
+    }
+
+    if (index < 0 || index >= tracks.length) {
+        return;
+    }
+
+    currentTrack = index;
+
+    const track = tracks[currentTrack];
+
+    songTitle.textContent = track.title;
+    playerStatus.textContent = "LOADING...";
+
+    player.loadVideoById(track.id);
+
+    updateTrackHighlight();
+    resetProgress();
+}
+
+function updateTrackHighlight() {
+
+    document.querySelectorAll(".track").forEach((element, index) => {
+
+        const button = element.querySelector(".listen-btn");
+
+        if (index === currentTrack) {
+            element.classList.add("active");
+            button.textContent = "PLAYING";
+        } else {
+            element.classList.remove("active");
+            button.textContent = "PLAY";
+        }
+
+    });
+}
+
+document.querySelectorAll(".track").forEach((element, index) => {
+
+    element.querySelector(".listen-btn").addEventListener("click", () => {
+        selectTrack(index);
+    });
+
+});
+
+
+/* ==================================
+   PLAYER CONTROLS
+================================== */
+
+playPauseButton.addEventListener("click", function() {
+
+    if (!player || !player.getPlayerState) {
+        return;
+    }
+
+    const state = player.getPlayerState();
+
+    if (state === YT.PlayerState.PLAYING) {
+        player.pauseVideo();
+    } else {
+        player.playVideo();
+    }
+});
+
+document.getElementById("previous").addEventListener("click", function() {
+    const previousIndex = (currentTrack - 1 + tracks.length) % tracks.length;
+    selectTrack(previousIndex);
+});
+
+document.getElementById("next").addEventListener("click", function() {
+    playNextTrack();
+});
+
+function playNextTrack() {
+    const nextIndex = (currentTrack + 1) % tracks.length;
+    selectTrack(nextIndex);
+}
+
+
+/* ==================================
+   PROGRESS BAR
+================================== */
+
+function formatTime(seconds) {
+
+    if (!Number.isFinite(seconds)) {
+        return "0:00";
+    }
+
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+
+    return minutes + ":" + String(remainingSeconds).padStart(2, "0");
+}
+
+function startProgressTimer() {
+
+    if (progressTimer) {
+        clearInterval(progressTimer);
+    }
+
+    progressTimer = setInterval(function() {
+
+        if (!player || !player.getCurrentTime) {
+            return;
+        }
+
+        if (isSeeking) {
+            return;
+        }
+
+        const current = player.getCurrentTime() || 0;
+        const total = player.getDuration() || 0;
+
+        currentTimeDisplay.textContent = formatTime(current);
+        durationDisplay.textContent = formatTime(total);
+
+        if (total > 0) {
+            progressSlider.value = (current / total) * 100;
+        } else {
+            progressSlider.value = 0;
+        }
+
+    }, 500);
+}
+
+function resetProgress() {
+    progressSlider.value = 0;
+    currentTimeDisplay.textContent = "0:00";
+    durationDisplay.textContent = "0:00";
+}
+
+progressSlider.addEventListener("input", function() {
+
+    isSeeking = true;
+
+    const total = player && player.getDuration
+        ? player.getDuration()
+        : 0;
+
+    if (total > 0) {
+        const targetTime = (Number(progressSlider.value) / 100) * total;
+        currentTimeDisplay.textContent = formatTime(targetTime);
+    }
+
+});
+
+progressSlider.addEventListener("change", function() {
+
+    if (!player || !player.seekTo) {
+        isSeeking = false;
+        return;
+    }
+
+    const total = player.getDuration() || 0;
+
+    if (total > 0) {
+        const targetTime = (Number(progressSlider.value) / 100) * total;
+        player.seekTo(targetTime, true);
+    }
+
+    isSeeking = false;
+});
 </script>
 
 </body>
