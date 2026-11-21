@@ -1,564 +1,536 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>AFTER THE VIBE - ILTVIBE</title>
+<title>AFTER THE VIBE - ILTVIBE</title>
+<meta name="theme-color" content="#000000">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+    box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      background: #0b0b0b;
-      color: #ffffff;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+:root {
+    --accent: #A78BFA;
+    --accent-rgb: 167, 139, 250;
+    --accent-soft: rgba(167, 139, 250, 0.12);
+    --accent-border: rgba(167, 139, 250, 0.35);
+    --accent-glow: rgba(167, 139, 250, 0.28);
+    --accent-backlight: rgba(167, 139, 250, 0.13);
+}
 
-    .container {
-      width: 100%;
-      max-width: 720px;
-      margin: auto;
-      padding: 45px 20px 60px;
-    }
+html {
+    background: #000;
+}
 
-    /* LOGO */
+body {
+    margin: 0;
+    background: #000;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    position: relative;
+    isolation: isolate;
+}
 
-    .logo {
-      text-align: center;
-      font-size: 40px;
-      font-weight: 800;
-      letter-spacing: 5px;
-      margin-bottom: 6px;
-    }
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            ellipse at 50% 0%,
+            var(--accent-backlight),
+            transparent 55%
+        ),
+        radial-gradient(
+            ellipse at 0% 50%,
+            rgba(var(--accent-rgb), 0.07),
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 100% 80%,
+            rgba(var(--accent-rgb), 0.06),
+            transparent 45%
+        );
+}
 
-    .tagline {
-      text-align: center;
-      color: #888;
-      font-size: 12px;
-      letter-spacing: 3px;
-      margin-bottom: 40px;
-    }
+.container {
+    width: 100%;
+    max-width: 720px;
+    margin: auto;
+    padding: 45px 20px 60px;
+}
 
-    /* AFTER THE VIBE BANNER */
+/* LOGO */
 
-    .album-cover {
-      width: 100%;
-      max-width: 700px;
-      margin: 0 auto 30px;
-    }
+.logo {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    margin-bottom: 6px;
+    text-shadow: 0 0 18px var(--accent-glow);
+}
 
-    .album-cover img {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      display: block;
-      border-radius: 16px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
-    }
+.tagline {
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 40px;
+}
 
-    /* ALBUM INFO */
+/* ALBUM COVER */
 
-    .album-title {
-      text-align: center;
-      font-size: 32px;
-      font-weight: 800;
-      margin: 0;
-    }
+.album-cover {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto 30px;
+}
 
-    .album-info {
-      text-align: center;
-      color: #777;
-      font-size: 13px;
-      margin-top: 8px;
-      margin-bottom: 35px;
-      letter-spacing: 1px;
-    }
+.album-cover img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+    border-radius: 16px;
+    border: 1px solid var(--accent-border);
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.65),
+        0 0 20px var(--accent-glow),
+        0 0 45px rgba(var(--accent-rgb), 0.08);
+}
 
-    /* TRACKLIST */
+/* ALBUM INFO */
 
-    .track {
-      display: flex;
-      align-items: center;
-      gap: 14px;
+.album-title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 800;
+    margin: 0;
+    text-shadow: 0 0 14px var(--accent-glow);
+}
 
-      background: #141414;
-      border: 1px solid #242424;
+.album-info {
+    text-align: center;
+    color: var(--accent);
+    font-size: 13px;
+    margin-top: 8px;
+    margin-bottom: 35px;
+    letter-spacing: 1px;
+}
 
-      border-radius: 14px;
+/* TRACKLIST */
 
-      padding: 16px 17px;
-      margin-bottom: 10px;
-
-      transition:
+.track {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #101010;
+    border: 1px solid rgba(var(--accent-rgb), 0.17);
+    border-radius: 14px;
+    padding: 16px 17px;
+    margin-bottom: 10px;
+    transition:
         background 0.2s ease,
         transform 0.2s ease,
-        border-color 0.2s ease;
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.track:hover {
+    background: var(--accent-soft);
+    border-color: var(--accent-border);
+    transform: translateY(-2px);
+    box-shadow: 0 0 18px rgba(var(--accent-rgb), 0.08);
+}
+
+.track-number {
+    width: 30px;
+    color: var(--accent);
+    font-size: 13px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.track-title {
+    flex: 1;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.35;
+    transition: color 0.2s ease;
+}
+
+.track:hover .track-title {
+    color: var(--accent);
+}
+
+.listen {
+    flex-shrink: 0;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid var(--accent-border);
+    border-radius: 20px;
+    padding: 7px 14px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: 0.2s ease;
+}
+
+.listen:hover {
+    background: var(--accent);
+    color: #000;
+    border-color: var(--accent);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* BACK BUTTON */
+
+.back {
+    display: block;
+    width: fit-content;
+    margin: 38px auto 0;
+    color: #999;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: 0.2s ease;
+}
+
+.back:hover {
+    color: var(--accent);
+    text-shadow: 0 0 12px var(--accent-glow);
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    margin-top: 55px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(var(--accent-rgb), 0.14);
+    color: #666;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* MOBILE */
+
+@media (max-width: 500px) {
+    .container {
+        padding: 35px 15px 50px;
     }
 
-    .track:hover {
-      background: #1c1c1c;
-      border-color: #383838;
-      transform: translateY(-2px);
+    .logo {
+        font-size: 32px;
     }
 
-    .track-number {
-      width: 30px;
-      color: #666;
-      font-size: 13px;
-      text-align: center;
-      flex-shrink: 0;
+    .album-title {
+        font-size: 27px;
+    }
+
+    .track {
+        padding: 14px 12px;
+        gap: 9px;
     }
 
     .track-title {
-      flex: 1;
-      text-align: left;
-      font-size: 15px;
-      font-weight: 600;
-      line-height: 1.35;
+        font-size: 14px;
     }
 
     .listen {
-      flex-shrink: 0;
-
-      color: #ffffff;
-      text-decoration: none;
-
-      border: 1px solid #444;
-      border-radius: 20px;
-
-      padding: 7px 14px;
-
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-
-      transition: 0.2s ease;
-    }
-
-    .listen:hover {
-      background: #ffffff;
-      color: #000000;
-      border-color: #ffffff;
-    }
-
-    /* BACK BUTTON */
-
-    .back {
-      display: block;
-      width: fit-content;
-
-      margin: 38px auto 0;
-
-      color: #777;
-      text-decoration: none;
-
-      font-size: 13px;
-      letter-spacing: 1px;
-
-      transition: 0.2s ease;
-    }
-
-    .back:hover {
-      color: #ffffff;
-    }
-
-    /* FOOTER */
-
-    footer {
-      text-align: center;
-
-      margin-top: 55px;
-
-      color: #444;
-
-      font-size: 11px;
-      letter-spacing: 2px;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 500px) {
-
-      .container {
-        padding: 35px 15px 50px;
-      }
-
-      .logo {
-        font-size: 32px;
-      }
-
-      .album-title {
-        font-size: 27px;
-      }
-
-      .track {
-        padding: 14px 12px;
-        gap: 9px;
-      }
-
-      .track-title {
-        font-size: 14px;
-      }
-
-      .listen {
         padding: 6px 10px;
         font-size: 10px;
-      }
-
     }
-  </style>
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
     <!-- ILTVIBE LOGO -->
 
     <div class="logo">
-      ILTVIBE
+        ILTVIBE
     </div>
 
     <div class="tagline">
-      I LIKE THE VIBE
+        I LIKE THE VIBE
     </div>
-
 
     <!-- AFTER THE VIBE BANNER -->
 
     <div class="album-cover">
-
-      <!--
-        PALITAN ANG "after-the-vibe.png"
-        KUNG IBA ANG FILE NAME NG BANNER
-      -->
-
-      <img
-        src="after-the-vibe.png"
-        alt="AFTER THE VIBE — ILTVIBE"
-      >
-
+        <img
+            src="after-the-vibe.png"
+            alt="AFTER THE VIBE — ILTVIBE"
+        >
     </div>
-
 
     <!-- ALBUM TITLE -->
 
     <h1 class="album-title">
-      AFTER THE VIBE
+        AFTER THE VIBE
     </h1>
 
     <div class="album-info">
-      ILTVIBE · 12 TRACKS
+        ILTVIBE · 12 TRACKS
     </div>
-
 
     <!-- TRACK 01 -->
 
     <div class="track">
-
-      <div class="track-number">
-        01
-      </div>
-
-      <div class="track-title">
-        Sinta
-      </div>
-
-      <a
-        class="listen"
-        href="https://youtu.be/JVf2LhLLwQI"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        LISTEN
-      </a>
-
+        <div class="track-number">01</div>
+        <div class="track-title">Sinta</div>
+        <a class="listen"
+           href="https://youtu.be/JVf2LhLLwQI"
+           target="_blank"
+           rel="noopener noreferrer">
+            LISTEN
+        </a>
     </div>
-
 
     <!-- TRACK 02 -->
 
     <div class="track">
-
-      <div class="track-number">
-        02
-      </div>
-
-      <div class="track-title">
-        Saranghae
-      </div>
-
-      <a
-        class="listen"
-        href="https://youtu.be/z2jtqb3GFmM"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        LISTEN
-      </a>
-
+        <div class="track-number">02</div>
+        <div class="track-title">Saranghae</div>
+        <a class="listen"
+           href="https://youtu.be/z2jtqb3GFmM"
+           target="_blank"
+           rel="noopener noreferrer">
+            LISTEN
+        </a>
     </div>
-
 
     <!-- TRACK 03 -->
 
     <div class="track">
-
-      <div class="track-number">
-        03
-      </div>
-
-      <div class="track-title">
-        Ano Ba Talaga Tayo?
-      </div>
-
-      <a
-        class="listen"
-        href="https://youtu.be/8Qc8zxYCC_g?si=27ZeT1TGXISuOmt8"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        LISTEN
-      </a>
-
+        <div class="track-number">03</div>
+        <div class="track-title">Ano Ba Talaga Tayo?</div>
+        <a class="listen"
+           href="https://youtu.be/8Qc8zxYCC_g?si=27ZeT1TGXISuOmt8"
+           target="_blank"
+           rel="noopener noreferrer">
+            LISTEN
+        </a>
     </div>
-
 
     <!-- TRACK 04 -->
 
     <div class="track">
-
-      <div class="track-number">
-        04
-      </div>
-
-      <div class="track-title">
-        Love Reverse
-      </div>
-
-      <a
-        class="listen"
-        href="https://youtu.be/Y1kovTyNP9M"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        LISTEN
-      </a>
-
+        <div class="track-number">04</div>
+        <div class="track-title">Love Reverse</div>
+        <a class="listen"
+           href="https://youtu.be/Y1kovTyNP9M"
+           target="_blank"
+           rel="noopener noreferrer">
+            LISTEN
+        </a>
     </div>
-
 
     <!-- TRACK 05 -->
 
     <div class="track">
-
-      <div class="track-number">
-        05
-      </div>
-
-      <div class="track-title">
-        Minamahal Kita
-      </div>
-
-      <a
-        class="listen"
-        href="https://youtu.be/JL3PRQacNM8"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        LISTEN
-      </a>
-
+        <div class="track-number">05</div>
+        <div class="track-title">Minamahal Kita</div>
+        <a class="listen"
+           href="https://youtu.be/JL3PRQacNM8"
+           target="_blank"
+           rel="noopener noreferrer">
+            LISTEN
+        </a>
     </div>
-
 
     <!-- TRACK 06 -->
 
     <div class="track">
-
-      <div class="track-number">
-        06
-      </div>
-
-      <div class="track-title">
-        Soulmyna
-      </div>
-
-      <a
-        class="listen"
-        href="https://youtu.be/wFKXNcHwGMw"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        LISTEN
-      </a>
-
+        <div class="track-number">06</div>
+        <div class="track-title">Soulmyna</div>
+        <a class="listen"
+           href="https://youtu.be/wFKXNcHwGMw"
+           target="_blank"
+           rel="noopener noreferrer">
+            LISTEN
+        </a>
     </div>
-
 
     <!-- TRACK 07 -->
 
     <div class="track">
-
-      <div class="track-number">
-        07
-      </div>
-
-      <div class="track-title">
-        7 Black Roses
-      </div>
-
-      <a
-        class="listen"
-        href="https://youtu.be/i5N_GbPTThU"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        LISTEN
-      </a>
-
+        <div class="track-number">07</div>
+        <div class="track-title">7 Black Roses</div>
+        <a class="listen"
+           href="https://youtu.be/i5N_GbPTThU"
+           target="_blank"
+           rel="noopener noreferrer">
+            LISTEN
+        </a>
     </div>
-
 
     <!-- TRACK 08 -->
 
     <div class="track">
-
-      <div class="track-number">
-        08
-      </div>
-
-      <div class="track-title">
-        IG OFFICIAL
-      </div>
-
-      <a
-        class="listen"
-        href="https://youtu.be/fwZX3KYTw-0"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        LISTEN
-      </a>
-
+        <div class="track-number">08</div>
+        <div class="track-title">IG OFFICIAL</div>
+        <a class="listen"
+           href="https://youtu.be/fwZX3KYTw-0"
+           target="_blank"
+           rel="noopener noreferrer">
+            LISTEN
+        </a>
     </div>
-
 
     <!-- TRACK 09 -->
 
     <div class="track">
-
-      <div class="track-number">
-        09
-      </div>
-
-      <div class="track-title">
-        8-3-1-6-15-18-5-22-5-18
-      </div>
-
-      <a
-        class="listen"
-        href="https://youtu.be/sNMVOV0R76Y"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        LISTEN
-      </a>
-
+        <div class="track-number">09</div>
+        <div class="track-title">8-3-1-6-15-18-5-22-5-18</div>
+        <a class="listen"
+           href="https://youtu.be/sNMVOV0R76Y"
+           target="_blank"
+           rel="noopener noreferrer">
+            LISTEN
+        </a>
     </div>
-
 
     <!-- TRACK 10 -->
 
     <div class="track">
-
-      <div class="track-number">
-        10
-      </div>
-
-      <div class="track-title">
-        Atluser
-      </div>
-
-      <a
-        class="listen"
-        href="https://youtu.be/U_jDcPdgYe4"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        LISTEN
-      </a>
-
+        <div class="track-number">10</div>
+        <div class="track-title">Atluser</div>
+        <a class="listen"
+           href="https://youtu.be/U_jDcPdgYe4"
+           target="_blank"
+           rel="noopener noreferrer">
+            LISTEN
+        </a>
     </div>
 
     <!-- TRACK 11 -->
 
     <div class="track">
-
-      <div class="track-number">
-        11
-      </div>
-
-      <div class="track-title">
-        Don't Forget Me
-      </div>
-
-      <a
-        class="listen"
-        href="https://youtu.be/ECn7hUfN2sM"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        LISTEN
-      </a>
-
+        <div class="track-number">11</div>
+        <div class="track-title">Don't Forget Me</div>
+        <a class="listen"
+           href="https://youtu.be/ECn7hUfN2sM"
+           target="_blank"
+           rel="noopener noreferrer">
+            LISTEN
+        </a>
     </div>
 
-      <!-- TRACK 12 -->
+    <!-- TRACK 12 -->
 
     <div class="track">
-
-      <div class="track-number">
-        12
-      </div>
-
-      <div class="track-title">
-        Usok
-      </div>
-
-      <a
-        class="listen"
-        href="https://youtu.be/T6XR7-9eSjk"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        LISTEN
-      </a>
-
+        <div class="track-number">12</div>
+        <div class="track-title">Usok</div>
+        <a class="listen"
+           href="https://youtu.be/T6XR7-9eSjk"
+           target="_blank"
+           rel="noopener noreferrer">
+            LISTEN
+        </a>
     </div>
-
 
     <!-- BACK TO HOME -->
 
-    <a
-      class="back"
-      href="index.html"
-    >
-      ← BACK TO ILTVIBE
+    <a class="back" href="index.html">
+        ← BACK TO ILTVIBE
     </a>
-
 
     <!-- FOOTER -->
 
     <footer>
-      ILTVIBE · I LIKE THE VIBE
+        ILTVIBE · I LIKE THE VIBE
     </footer>
 
-  </div>
+</div>
+
+<!-- RANDOM RGB THEME -->
+
+<script>
+const themes = [
+    { name: "Electric Purple", color: "#A78BFA", rgb: "167, 139, 250" },
+    { name: "Neon Blue", color: "#60A5FA", rgb: "96, 165, 250" },
+    { name: "Cyber Cyan", color: "#22D3EE", rgb: "34, 211, 238" },
+    { name: "Neon Pink", color: "#F472B6", rgb: "244, 114, 182" },
+    { name: "Champagne Gold", color: "#FBBF24", rgb: "251, 191, 36" },
+    { name: "Emerald Green", color: "#34D399", rgb: "52, 211, 153" },
+    { name: "Deep Crimson", color: "#FB7185", rgb: "251, 113, 133" },
+    { name: "Violet", color: "#C084FC", rgb: "192, 132, 252" }
+];
+
+let previousTheme = null;
+
+try {
+    previousTheme = localStorage.getItem("iltvibeTheme");
+} catch (error) {
+    previousTheme = null;
+}
+
+let availableThemes = themes.filter(
+    theme => theme.name !== previousTheme
+);
+
+if (availableThemes.length === 0) {
+    availableThemes = themes;
+}
+
+const selectedTheme =
+    availableThemes[
+        Math.floor(Math.random() * availableThemes.length)
+    ];
+
+const root = document.documentElement;
+
+root.style.setProperty("--accent", selectedTheme.color);
+root.style.setProperty("--accent-rgb", selectedTheme.rgb);
+
+root.style.setProperty(
+    "--accent-soft",
+    `rgba(${selectedTheme.rgb}, 0.12)`
+);
+
+root.style.setProperty(
+    "--accent-border",
+    `rgba(${selectedTheme.rgb}, 0.35)`
+);
+
+root.style.setProperty(
+    "--accent-glow",
+    `rgba(${selectedTheme.rgb}, 0.28)`
+);
+
+root.style.setProperty(
+    "--accent-backlight",
+    `rgba(${selectedTheme.rgb}, 0.13)`
+);
+
+try {
+    localStorage.setItem("iltvibeTheme", selectedTheme.name);
+} catch (error) {
+    // Page works even if browser storage is unavailable.
+}
+</script>
 
 </body>
 </html>
