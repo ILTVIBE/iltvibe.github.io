@@ -6,6 +6,7 @@
 
   <title>1004 (Cheon-sa) - ILTVIBE</title>
   <meta name="description" content="1004 (Cheon-sa) [Studio Version] - Official Lyrics by ILTVIBE.">
+  <meta name="theme-color" content="#000000">
 
   <style>
     * {
@@ -14,12 +15,41 @@
       padding: 0;
     }
 
+    :root {
+      --accent: #A78BFA;
+      --accent-rgb: 167, 139, 250;
+      --accent-soft: rgba(167, 139, 250, 0.10);
+      --accent-border: rgba(167, 139, 250, 0.35);
+      --accent-glow: rgba(167, 139, 250, 0.22);
+      --accent-backlight: rgba(167, 139, 250, 0.16);
+    }
+
+    html {
+      background: #000;
+      scroll-behavior: smooth;
+    }
+
     body {
-      background: #080808;
+      position: relative;
+      isolation: isolate;
+      min-height: 100vh;
+      background: #000;
       color: #f2f2f2;
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.8;
       padding: 40px 20px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 50% 0%, var(--accent-backlight), transparent 55%),
+        radial-gradient(ellipse at 0% 50%, rgba(var(--accent-rgb), 0.07), transparent 45%),
+        radial-gradient(ellipse at 100% 80%, rgba(var(--accent-rgb), 0.06), transparent 45%);
     }
 
     .container {
@@ -33,9 +63,12 @@
     }
 
     .logo {
+      display: inline-block;
       font-size: 28px;
       font-weight: 800;
       letter-spacing: 4px;
+      color: #fff;
+      text-shadow: 0 0 16px var(--accent-glow);
     }
 
     .tagline {
@@ -46,18 +79,21 @@
     }
 
     .song-header {
-      border-bottom: 1px solid #222;
+      border-bottom: 1px solid var(--accent-border);
       padding-bottom: 25px;
       margin-bottom: 40px;
+      box-shadow: 0 8px 18px -18px var(--accent);
     }
 
     .song-header h1 {
       font-size: 32px;
       margin-bottom: 8px;
+      color: #fff;
+      text-shadow: 0 0 18px var(--accent-glow);
     }
 
     .meta {
-      color: #777;
+      color: var(--accent);
       font-size: 12px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
@@ -69,10 +105,20 @@
 
     .section {
       margin-bottom: 34px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.018);
+      border: 1px solid rgba(var(--accent-rgb), 0.13);
+      border-radius: 12px;
+      transition: 0.25s ease;
+    }
+
+    .section:hover {
+      border-color: var(--accent-border);
+      box-shadow: 0 0 18px rgba(var(--accent-rgb), 0.08);
     }
 
     .section-title {
-      color: #777;
+      color: var(--accent);
       font-size: 11px;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -82,14 +128,17 @@
 
     .lyrics p {
       white-space: pre-line;
+      color: #e4e4e4;
     }
 
     .back {
       display: inline-block;
-      margin-top: 35px;
+      margin-top: 20px;
       padding: 10px 18px;
-      border: 1px solid #333;
-      color: #aaa;
+      border: 1px solid var(--accent-border);
+      border-radius: 6px;
+      color: var(--accent);
+      background: var(--accent-soft);
       text-decoration: none;
       font-size: 13px;
       transition: 0.2s;
@@ -97,17 +146,23 @@
 
     .back:hover {
       color: #fff;
-      border-color: #777;
+      border-color: var(--accent);
+      box-shadow: 0 0 16px var(--accent-glow);
     }
 
     footer {
       text-align: center;
       margin-top: 70px;
       padding-top: 25px;
-      border-top: 1px solid #1c1c1c;
-      color: #555;
+      border-top: 1px solid rgba(var(--accent-rgb), 0.25);
+      color: #666;
       font-size: 11px;
       letter-spacing: 1px;
+    }
+
+    footer strong {
+      color: var(--accent);
+      letter-spacing: 2px;
     }
 
     @media (max-width: 600px) {
@@ -125,6 +180,22 @@
 
       .lyrics {
         font-size: 15px;
+      }
+
+      .section {
+        padding: 17px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
@@ -343,19 +414,73 @@ Pero ikaw lang ang sagot ko.
     <a href="../lyrics.html" class="back">← Back to Lyrics Archive</a>
 
     <footer>
-      ILTVIBE · I LIKE THE VIBE
+      <strong>ILTVIBE</strong><br>
+      I LIKE THE VIBE<br><br>
+      Official Lyrics Archive<br>
+      Original lyrics and composition by 알윈 아놀린.<br>
+      © 2026 ILTVIBE - All rights reserved.
     </footer>
 
   </div>
 
+  <script>
+    const themes = [
+      { name: "Electric Purple", accent: "#A78BFA", rgb: "167, 139, 250" },
+      { name: "Neon Blue", accent: "#60A5FA", rgb: "96, 165, 250" },
+      { name: "Cyber Cyan", accent: "#22D3EE", rgb: "34, 211, 238" },
+      { name: "Neon Pink", accent: "#F472B6", rgb: "244, 114, 182" },
+      { name: "Champagne Gold", accent: "#FBBF24", rgb: "251, 191, 36" },
+      { name: "Emerald Green", accent: "#34D399", rgb: "52, 211, 153" },
+      { name: "Deep Crimson", accent: "#FB7185", rgb: "251, 113, 133" },
+      { name: "Violet", accent: "#C084FC", rgb: "192, 132, 252" }
+    ];
+
+    let previousTheme = null;
+
+    try {
+      previousTheme = localStorage.getItem("iltvibeTheme");
+    } catch (error) {
+      previousTheme = null;
+    }
+
+    let availableThemes = themes.filter(
+      theme => theme.name !== previousTheme
+    );
+
+    if (availableThemes.length === 0) {
+      availableThemes = themes;
+    }
+
+    const selectedTheme =
+      availableThemes[Math.floor(Math.random() * availableThemes.length)];
+
+    const root = document.documentElement;
+
+    root.style.setProperty("--accent", selectedTheme.accent);
+    root.style.setProperty("--accent-rgb", selectedTheme.rgb);
+    root.style.setProperty(
+      "--accent-soft",
+      `rgba(${selectedTheme.rgb}, 0.10)`
+    );
+    root.style.setProperty(
+      "--accent-border",
+      `rgba(${selectedTheme.rgb}, 0.35)`
+    );
+    root.style.setProperty(
+      "--accent-glow",
+      `rgba(${selectedTheme.rgb}, 0.22)`
+    );
+    root.style.setProperty(
+      "--accent-backlight",
+      `rgba(${selectedTheme.rgb}, 0.16)`
+    );
+
+    try {
+      localStorage.setItem("iltvibeTheme", selectedTheme.name);
+    } catch (error) {
+      // Theme still works even if localStorage is unavailable.
+    }
+  </script>
+
 </body>
-  <footer>
-  <strong>ILTVIBE</strong><br>
-  I LIKE THE VIBE<br><br>
-
-  Official Lyrics Archive<br>
-  Original lyrics and composition by 알윈 아놀린.<br>
-  © 2026 ILTVIBE - All rights reserved.
-
-  <br><br>
 </html>
