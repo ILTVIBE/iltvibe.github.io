@@ -212,6 +212,56 @@
       letter-spacing: 0.4px;
     }
 
+    /* GENRE NEON LED TYPOGRAPHY */
+
+    .genre-neon {
+      display: inline-block;
+      margin-top: 4px;
+      line-height: 2.1;
+    }
+
+    .genre-label {
+      display: block;
+      margin-bottom: 5px;
+      color: #999;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .genre-main {
+      display: block;
+      color: #e6fcff;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 1.4px;
+      text-shadow:
+        0 0 2px #ffffff,
+        0 0 5px #ffffff,
+        0 0 10px #00d9ff,
+        0 0 20px #00bfff,
+        0 0 38px #0077ff,
+        0 0 60px rgba(0, 153, 255, 0.65);
+      -webkit-text-stroke: 0.35px #8beeff;
+    }
+
+    .genre-secondary {
+      display: block;
+      margin-top: 3px;
+      color: #fff0fc;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-shadow:
+        0 0 2px #ffffff,
+        0 0 5px #ffffff,
+        0 0 10px #ff35d3,
+        0 0 20px #ec00ff,
+        0 0 38px #a000ff,
+        0 0 60px rgba(255, 0, 200, 0.65);
+      -webkit-text-stroke: 0.35px #ff9af0;
+    }
+
     .artist-about-link {
       display: inline-block;
       margin-top: 20px;
@@ -448,6 +498,16 @@
         max-width: 100%;
         border-radius: 10px;
       }
+
+      .genre-main {
+        font-size: 13px;
+        letter-spacing: 0.8px;
+      }
+
+      .genre-secondary {
+        font-size: 13px;
+        letter-spacing: 1px;
+      }
     }
 
     /* REDUCED MOTION */
@@ -503,7 +563,11 @@
       </div>
 
       <div class="artist-meta">
-        Genre: OPM Alternative Pop Rock / Cyber-Anito Neo-Folk
+        <div class="genre-neon">
+          <span class="genre-label">GENRE</span>
+          <span class="genre-main">OPM Alternative Pop Rock</span>
+          <span class="genre-secondary">Cyber-Anito Neo-Folk</span>
+        </div>
       </div>
 
       <a href="about.html" class="artist-about-link">
