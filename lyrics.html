@@ -18,8 +18,17 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --accent: #A78BFA;
+      --accent-rgb: 167,139,250;
+      --accent-soft: rgba(167,139,250,0.10);
+      --accent-border: rgba(167,139,250,0.35);
+      --accent-glow: rgba(167,139,250,0.28);
+    }
+
     html {
       scroll-behavior: smooth;
+      background: #000000;
     }
 
     body {
@@ -27,9 +36,25 @@
       background: #000000;
       color: #f2f2f2;
       font-family: Arial, Helvetica, sans-serif;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse at 50% 0%, var(--accent-glow), transparent 48%),
+        radial-gradient(ellipse at 0% 55%, rgba(var(--accent-rgb),0.08), transparent 42%),
+        radial-gradient(ellipse at 100% 85%, rgba(var(--accent-rgb),0.07), transparent 40%);
     }
 
     .container {
+      position: relative;
+      z-index: 1;
       width: min(900px, 92%);
       margin: auto;
       padding: 50px 0 24px;
@@ -40,7 +65,7 @@
     header {
       text-align: center;
       padding: 25px 0 50px;
-      border-bottom: 1px solid #242424;
+      border-bottom: 1px solid var(--accent-border);
       margin-bottom: 50px;
     }
 
@@ -50,6 +75,7 @@
       letter-spacing: 6px;
       line-height: 1;
       margin-bottom: 12px;
+      text-shadow: 0 0 22px var(--accent-glow);
     }
 
     .tagline {
@@ -64,6 +90,8 @@
       font-size: clamp(1.7rem, 5vw, 2.5rem);
       letter-spacing: 4px;
       font-weight: 500;
+      color: var(--accent);
+      text-shadow: 0 0 16px var(--accent-glow);
     }
 
     .intro {
@@ -85,7 +113,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 15px;
-      border-bottom: 1px solid #252525;
+      border-bottom: 1px solid var(--accent-border);
       padding-bottom: 12px;
       margin-bottom: 12px;
     }
@@ -94,10 +122,11 @@
       margin: 0;
       font-size: 1rem;
       letter-spacing: 2px;
+      color: var(--accent);
     }
 
     .album-title span {
-      color: #555;
+      color: #666;
       font-size: 0.72rem;
       letter-spacing: 1px;
     }
@@ -112,14 +141,16 @@
       border-bottom: 1px solid #171717;
       text-decoration: none;
       color: #ddd;
-      transition: 0.2s ease;
+      transition: 0.25s ease;
+      border-radius: 6px;
     }
 
     .track:hover {
-      background: #111;
+      background: var(--accent-soft);
       padding-left: 14px;
       padding-right: 14px;
       color: #fff;
+      box-shadow: 0 0 16px rgba(var(--accent-rgb),0.08);
     }
 
     .track-info {
@@ -130,7 +161,7 @@
     }
 
     .number {
-      color: #555;
+      color: var(--accent);
       font-size: 0.78rem;
       width: 25px;
       flex-shrink: 0;
@@ -142,20 +173,22 @@
     }
 
     .arrow {
-      color: #555;
+      color: #666;
       font-size: 1rem;
       margin-left: 15px;
+      transition: 0.2s ease;
     }
 
     .track:hover .arrow {
-      color: #aaa;
+      color: var(--accent);
+      transform: translateX(3px);
     }
 
     /* FOOTER */
 
     footer {
       text-align: center;
-      border-top: 1px solid #242424;
+      border-top: 1px solid var(--accent-border);
       margin-top: 35px;
       padding-top: 20px;
       color: #555;
@@ -164,7 +197,7 @@
     }
 
     footer strong {
-      color: #888;
+      color: var(--accent);
       letter-spacing: 1px;
     }
 
@@ -172,22 +205,22 @@
       display: inline-block;
       margin-top: 18px;
       padding: 9px 18px;
-      border: 1px solid #333;
+      border: 1px solid var(--accent-border);
       border-radius: 4px;
-      color: #777;
+      color: #888;
       text-decoration: none;
       transition: 0.2s ease;
     }
 
     .back:hover {
-      color: #fff;
-      border-color: #666;
+      color: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 14px var(--accent-glow);
     }
 
     /* MOBILE */
 
     @media (max-width: 600px) {
-
       .container {
         width: 92%;
         padding-top: 30px;
@@ -235,6 +268,18 @@
       footer {
         margin-top: 30px;
         padding-top: 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
       }
     }
   </style>
@@ -594,6 +639,69 @@
     </footer>
 
   </main>
+
+  <script>
+    const themes = [
+      { name: "Electric Purple", accent: "#A78BFA", rgb: "167,139,250" },
+      { name: "Neon Blue", accent: "#60A5FA", rgb: "96,165,250" },
+      { name: "Cyber Cyan", accent: "#22D3EE", rgb: "34,211,238" },
+      { name: "Neon Pink", accent: "#F472B6", rgb: "244,114,182" },
+      { name: "Champagne Gold", accent: "#FBBF24", rgb: "251,191,36" },
+      { name: "Emerald Green", accent: "#34D399", rgb: "52,211,153" },
+      { name: "Deep Crimson", accent: "#FB7185", rgb: "251,113,133" },
+      { name: "Violet", accent: "#C084FC", rgb: "192,132,252" }
+    ];
+
+    let previousTheme = null;
+
+    try {
+      previousTheme = localStorage.getItem("iltvibeTheme");
+    } catch (error) {
+      previousTheme = null;
+    }
+
+    let availableThemes = themes.filter(
+      theme => theme.name !== previousTheme
+    );
+
+    if (availableThemes.length === 0) {
+      availableThemes = themes;
+    }
+
+    const selectedTheme =
+      availableThemes[Math.floor(Math.random() * availableThemes.length)];
+
+    document.documentElement.style.setProperty(
+      "--accent",
+      selectedTheme.accent
+    );
+
+    document.documentElement.style.setProperty(
+      "--accent-rgb",
+      selectedTheme.rgb
+    );
+
+    document.documentElement.style.setProperty(
+      "--accent-soft",
+      `rgba(${selectedTheme.rgb},0.10)`
+    );
+
+    document.documentElement.style.setProperty(
+      "--accent-border",
+      `rgba(${selectedTheme.rgb},0.35)`
+    );
+
+    document.documentElement.style.setProperty(
+      "--accent-glow",
+      `rgba(${selectedTheme.rgb},0.28)`
+    );
+
+    try {
+      localStorage.setItem("iltvibeTheme", selectedTheme.name);
+    } catch (error) {
+      // The page still works if localStorage is unavailable.
+    }
+  </script>
 
 </body>
 </html>
