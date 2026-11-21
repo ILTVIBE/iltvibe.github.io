@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>ATLUSER - ILTVIBE</title>
-  <meta name="description" content="ALTLUSER - Official Lyrics and the Story Behind the Song by ILTVIBE.">
+  <meta name="description" content="ATLUSER - Official Lyrics and the Story Behind the Song by ILTVIBE.">
 
   <style>
     * {
@@ -15,12 +14,41 @@
       padding: 0;
     }
 
+    :root {
+      --accent: #A78BFA;
+      --accent-rgb: 167, 139, 250;
+      --accent-soft: rgba(167, 139, 250, 0.10);
+      --accent-border: rgba(167, 139, 250, 0.35);
+      --accent-glow: rgba(167, 139, 250, 0.22);
+      --accent-backlight: rgba(167, 139, 250, 0.16);
+    }
+
+    html {
+      background: #000;
+      scroll-behavior: smooth;
+    }
+
     body {
-      background: #080808;
+      position: relative;
+      isolation: isolate;
+      background: #000;
       color: #f2f2f2;
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.8;
       padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 50% 0%, var(--accent-backlight), transparent 55%),
+        radial-gradient(ellipse at 0% 50%, rgba(var(--accent-rgb), 0.07), transparent 45%),
+        radial-gradient(ellipse at 100% 80%, rgba(var(--accent-rgb), 0.06), transparent 45%);
     }
 
     .container {
@@ -35,7 +63,8 @@
       margin: 0 auto 35px;
       overflow: hidden;
       border-radius: 8px;
-      border: 1px solid #222;
+      border: 1px solid var(--accent-border);
+      box-shadow: 0 0 22px var(--accent-glow);
     }
 
     .thumbnail-banner img {
@@ -52,9 +81,11 @@
     }
 
     .logo {
+      color: var(--accent);
       font-size: 28px;
       font-weight: 800;
       letter-spacing: 4px;
+      text-shadow: 0 0 15px var(--accent-glow);
     }
 
     .tagline {
@@ -66,18 +97,21 @@
 
     .song-header {
       text-align: center;
-      border-bottom: 1px solid #222;
+      border-bottom: 1px solid var(--accent-border);
       padding-bottom: 25px;
       margin-bottom: 40px;
     }
 
     .song-header h1 {
+      color: var(--accent);
       font-size: 32px;
       margin-bottom: 8px;
+      text-shadow: 0 0 14px var(--accent-glow);
+      letter-spacing: 2px;
     }
 
     .meta {
-      color: #777;
+      color: #888;
       font-size: 12px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
@@ -89,11 +123,20 @@
     }
 
     .section {
-      margin-bottom: 34px;
+      margin-bottom: 24px;
+      padding: 20px;
+      border: 1px solid var(--accent-border);
+      border-radius: 10px;
+      background: linear-gradient(
+        145deg,
+        rgba(var(--accent-rgb), 0.055),
+        rgba(255, 255, 255, 0.012)
+      );
+      box-shadow: 0 0 14px rgba(var(--accent-rgb), 0.045);
     }
 
     .section-title {
-      color: #777;
+      color: var(--accent);
       font-size: 11px;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -103,16 +146,24 @@
 
     .lyrics p {
       white-space: pre-line;
+      color: #e5e5e5;
     }
 
     .story {
       text-align: center;
-      border-top: 1px solid #222;
+      border: 1px solid var(--accent-border);
+      border-radius: 10px;
       margin-top: 45px;
-      padding-top: 28px;
+      padding: 28px 22px;
+      background: linear-gradient(
+        145deg,
+        rgba(var(--accent-rgb), 0.07),
+        rgba(255, 255, 255, 0.01)
+      );
     }
 
     .story h2 {
+      color: var(--accent);
       font-size: 19px;
       margin-bottom: 14px;
       font-weight: 600;
@@ -128,26 +179,32 @@
       display: inline-block;
       margin-top: 35px;
       padding: 10px 18px;
-      border: 1px solid #333;
-      color: #aaa;
+      border: 1px solid var(--accent-border);
+      border-radius: 5px;
+      color: var(--accent);
       text-decoration: none;
       font-size: 13px;
-      transition: 0.2s;
+      transition: 0.2s ease;
     }
 
     .back:hover {
       color: #fff;
-      border-color: #777;
+      border-color: var(--accent);
+      box-shadow: 0 0 14px var(--accent-glow);
     }
 
     footer {
       text-align: center;
       margin-top: 70px;
       padding-top: 25px;
-      border-top: 1px solid #1c1c1c;
-      color: #555;
+      border-top: 1px solid var(--accent-border);
+      color: #666;
       font-size: 11px;
       letter-spacing: 1px;
+    }
+
+    footer strong {
+      color: var(--accent);
     }
 
     @media (max-width: 600px) {
@@ -167,50 +224,67 @@
         font-size: 15px;
       }
 
+      .section {
+        padding: 17px;
+      }
+
       .thumbnail-banner {
         margin-bottom: 28px;
       }
+
+      .story {
+        padding: 23px 17px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .back {
+        transition: none;
+      }
     }
   </style>
-
 </head>
 
 <body>
   <div class="container">
 
-<div class="thumbnail-banner">
-  <img
-    src="/atluser.png"
-    alt="ATLUSER - ILTVIBE Official Banner"
-  >
-</div>
+    <div class="thumbnail-banner">
+      <img
+        src="/atluser.png"
+        alt="ATLUSER - ILTVIBE Official Banner"
+      >
+    </div>
 
-<header>
-  <div class="logo">ILTVIBE</div>
-  <div class="tagline">I LIKE THE VIBE</div>
-</header>
+    <header>
+      <div class="logo">ILTVIBE</div>
+      <div class="tagline">I LIKE THE VIBE</div>
+    </header>
 
-<div class="song-header">
-  <h1>ATLUSER</h1>
-  <div class="meta">AFTER THE VIBE · OFFICIAL LYRICS</div>
-</div>
+    <div class="song-header">
+      <h1>ATLUSER</h1>
+      <div class="meta">AFTER THE VIBE · OFFICIAL LYRICS</div>
+    </div>
 
-<main class="lyrics">
+    <main class="lyrics">
 
-  <section class="section">
-    <div class="section-title">Intro</div>
-    <p>Wala munang salita,
+      <section class="section">
+        <div class="section-title">Intro</div>
+        <p>Wala munang salita,
 
 Wala munang sasabihin.
 
 Darating din ang oras,
 
 Na makikita nila.</p>
-</section>
+      </section>
 
-  <section class="section">
-    <div class="section-title">Verse 1</div>
-    <p>May pangarap akong hawak, hindi ko muna inilalabas,
+      <section class="section">
+        <div class="section-title">Verse 1</div>
+        <p>May pangarap akong hawak, hindi ko muna inilalabas,
 
 Habang tahimik ang paligid, ginagawa ko bawat bukas.
 Hindi lahat ng plano kailangan mong ikuwento,
@@ -220,20 +294,20 @@ Kapag may duda, ginagawa kong lakas,
 Kapag may mali, inaayos ko agad.
 Hindi man mabilis, basta hindi umaatras,
 Bawat maliit na hakbang, papalapit sa bukas.</p>
-</section>
+      </section>
 
-  <section class="section">
-    <div class="section-title">Pre-Chorus</div>
-    <p>Hindi nila kailangang malaman,
+      <section class="section">
+        <div class="section-title">Pre-Chorus</div>
+        <p>Hindi nila kailangang malaman,
 
 Kung saan ka patungo.
 Tuloy mo lang ang ginagawa,
 Hanggang maging totoo.</p>
-</section>
+      </section>
 
-  <section class="section">
-    <div class="section-title">Chorus</div>
-    <p>Hayaan mong makita,
+      <section class="section">
+        <div class="section-title">Chorus</div>
+        <p>Hayaan mong makita,
 
 Kapag tapos na ang lahat.
 Hindi salita ang sukatan,
@@ -243,11 +317,11 @@ Hayaan mong makita,
 Hindi mo kailangang ipagsigawan.
 Tahimik kang gumawa,
 Hanggang resulta ang maiwan.</p>
-</section>
+      </section>
 
-  <section class="section">
-    <div class="section-title">Verse 2</div>
-    <p>Walang shortcut, walang magic, puro tiyaga ang dala,
+      <section class="section">
+        <div class="section-title">Verse 2</div>
+        <p>Walang shortcut, walang magic, puro tiyaga ang dala,
 
 Bawat bagsak may aral, bawat mali may halaga.
 Kung may magsabing hindi kaya, hindi ko na pinapansin,
@@ -257,20 +331,20 @@ Edit, test, balik, hanggang mahanap ang paraan,
 Kung hindi gumana ngayon, bukas susubukan na naman.
 Hindi kailangan ng crowd para malaman kong tama,
 Kapag gumana na sa huli, sapat na ang resulta.</p>
-</section>
+      </section>
 
-  <section class="section">
-    <div class="section-title">Bridge</div>
-    <p>Kahit walang nakakakita,
+      <section class="section">
+        <div class="section-title">Bridge</div>
+        <p>Kahit walang nakakakita,
 
 Patuloy ka lang.
 Kahit walang naniniwala,
 Huwag kang bibitaw.</p>
-</section>
+      </section>
 
-  <section class="section">
-    <div class="section-title">Final Chorus</div>
-    <p>Hayaan mong makita,
+      <section class="section">
+        <div class="section-title">Final Chorus</div>
+        <p>Hayaan mong makita,
 
 Kapag tapos na ang lahat.
 Hindi salita ang sukatan,
@@ -280,46 +354,138 @@ Hayaan mong makita,
 Hindi mo kailangang ipagsigawan.
 Tahimik kang gumawa,
 Hanggang resulta ang maiwan.</p>
-</section>
+      </section>
 
-  <section class="section">
-    <div class="section-title">Outro</div>
-    <p>Wala munang salita.
+      <section class="section">
+        <div class="section-title">Outro</div>
+        <p>Wala munang salita.
 
 Gawa muna.
 
 Darating din ang araw.
 
 Makikita rin nila.</p>
-</section>
+      </section>
 
-</main>
+    </main>
 
-<section class="story">
-  <h2>The Story Behind the Song</h2>
+    <section class="story">
+      <h2>The Story Behind the Song</h2>
 
-  <p>
-    I started writing ATLUSER while spending hours coding, 
-    testing ideas, and fixing broken stuff until it finally worked. 
-    That whole process made me realize that you don't need an audience while
-    you're still figuring things out. 
-    You don't have to announce every move or explain your plans to anyone. 
-    Just focus on the work, learn from the mistakes, 
-    and let the results do the talking
-    <br><br>
-    “Wala munang salita. Gawa muna.”
-  </p>
-</section>
+      <p>
+        I started writing ATLUSER while spending hours coding,
+        testing ideas, and fixing broken stuff until it finally worked.
+        That whole process made me realize that you don't need an audience while
+        you're still figuring things out.
+        You don't have to announce every move or explain your plans to anyone.
+        Just focus on the work, learn from the mistakes,
+        and let the results do the talking
+        <br><br>
+        “Wala munang salita. Gawa muna.”
+      </p>
+    </section>
 
-<a href="../lyrics.html" class="back">← Back to Lyrics Archive</a>
+    <a href="../lyrics.html" class="back">← Back to Lyrics Archive</a>
 
-<footer>
-  <strong>ILTVIBE</strong><br>
-  I LIKE THE VIBE<br><br>
-  Songwriting / Lyrics / Composition: 알윈 아놀린<br>
-  © 2026 ILTVIBE - All rights reserved.
-</footer>
+    <footer>
+      <strong>ILTVIBE</strong><br>
+      I LIKE THE VIBE<br><br>
+      Songwriting / Lyrics / Composition: 알윈 아놀린<br>
+      © 2026 ILTVIBE - All rights reserved.
+    </footer>
 
   </div>
+
+  <script>
+    const themes = [
+      {
+        name: "Electric Purple",
+        color: "#A78BFA",
+        rgb: "167, 139, 250"
+      },
+      {
+        name: "Neon Blue",
+        color: "#60A5FA",
+        rgb: "96, 165, 250"
+      },
+      {
+        name: "Cyber Cyan",
+        color: "#22D3EE",
+        rgb: "34, 211, 238"
+      },
+      {
+        name: "Neon Pink",
+        color: "#F472B6",
+        rgb: "244, 114, 182"
+      },
+      {
+        name: "Champagne Gold",
+        color: "#FBBF24",
+        rgb: "251, 191, 36"
+      },
+      {
+        name: "Emerald Green",
+        color: "#34D399",
+        rgb: "52, 211, 153"
+      },
+      {
+        name: "Deep Crimson",
+        color: "#FB7185",
+        rgb: "251, 113, 133"
+      },
+      {
+        name: "Violet",
+        color: "#C084FC",
+        rgb: "192, 132, 252"
+      }
+    ];
+
+    let previousTheme = null;
+
+    try {
+      previousTheme = localStorage.getItem("iltvibeTheme");
+    } catch (error) {
+      previousTheme = null;
+    }
+
+    let availableThemes = themes.filter(
+      theme => theme.name !== previousTheme
+    );
+
+    if (availableThemes.length === 0) {
+      availableThemes = themes;
+    }
+
+    const selectedTheme =
+      availableThemes[Math.floor(Math.random() * availableThemes.length)];
+
+    const root = document.documentElement;
+
+    root.style.setProperty("--accent", selectedTheme.color);
+    root.style.setProperty("--accent-rgb", selectedTheme.rgb);
+    root.style.setProperty(
+      "--accent-soft",
+      `rgba(${selectedTheme.rgb}, 0.10)`
+    );
+    root.style.setProperty(
+      "--accent-border",
+      `rgba(${selectedTheme.rgb}, 0.35)`
+    );
+    root.style.setProperty(
+      "--accent-glow",
+      `rgba(${selectedTheme.rgb}, 0.22)`
+    );
+    root.style.setProperty(
+      "--accent-backlight",
+      `rgba(${selectedTheme.rgb}, 0.16)`
+    );
+
+    try {
+      localStorage.setItem("iltvibeTheme", selectedTheme.name);
+    } catch (error) {
+      // Theme still works even if local storage is unavailable.
+    }
+  </script>
+
 </body>
 </html>
