@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>ILTVIBE - Demo Archive</title>
 
   <style>
@@ -93,6 +92,44 @@
       line-height: 1.55;
     }
 
+    /* BEHIND EVERY ILTVIBE SONG */
+
+    .behind {
+      margin-bottom: 32px;
+      padding: 22px 20px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: linear-gradient(
+        145deg,
+        var(--card),
+        var(--card-hover)
+      );
+    }
+
+    .behind h2 {
+      margin: 0 0 14px;
+      font-size: 18px;
+      letter-spacing: 0.04em;
+    }
+
+    .behind p {
+      margin: 0;
+      color: #c6c9d2;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .behind p + p {
+      margin-top: 12px;
+    }
+
+    .signature {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+
     /* DEMO CARD */
 
     .demo {
@@ -178,6 +215,26 @@
       text-decoration: underline;
     }
 
+    /* BACK HOME BUTTON */
+
+    .back-home {
+      display: inline-block;
+      margin-top: 18px;
+      padding: 11px 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      transition: 0.2s ease;
+    }
+
+    .back-home:hover {
+      background: var(--card-hover);
+      border-color: var(--accent);
+      text-decoration: none;
+    }
+
   </style>
 </head>
 
@@ -217,6 +274,40 @@
     or production from the final official version.
 
   </div>
+
+  <!-- BEHIND EVERY ILTVIBE SONG -->
+
+  <section class="behind">
+
+    <h2>
+      BEHIND EVERY ILTVIBE SONG
+    </h2>
+
+    <p>
+      Making a song takes time. Some songs take me around
+      3 weeks, while others take 1, 2, or even 3 months
+      before I find a version I'm happy with.
+    </p>
+
+    <p>
+      I usually make several versions, listen to them over
+      and over, and try different sounds until I get what
+      I'm looking for. Sometimes I think I've found the
+      right one, then I try again because I feel something
+      is still missing.
+    </p>
+
+    <p>
+      That's part of making music for me. I don't want to
+      rush it. I just want each song to sound the way
+      I imagine it.
+    </p>
+
+    <div class="signature">
+      — ILTVIBE
+    </div>
+
+  </section>
 
   <!-- DEMO 01 -->
 
@@ -553,6 +644,12 @@
 <footer>
 
   ILTVIBE · DEMO ARCHIVE<br>
+
+  <a href="https://iltvibe.github.io/" class="back-home">
+    ← Back Home
+  </a>
+
+  <br><br>
 
   <a href="https://iltvibe.github.io/">
     Official Hub: iltvibe.github.io
