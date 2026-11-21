@@ -21,10 +21,15 @@
       --accent-soft: rgba(167,139,250,0.10);
       --accent-border: rgba(167,139,250,0.30);
       --accent-glow: rgba(167,139,250,0.20);
+      --accent-backlight: rgba(167,139,250,0.12);
     }
 
     * {
       box-sizing: border-box;
+    }
+
+    html {
+      background: #000000;
     }
 
     body {
@@ -33,18 +38,50 @@
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
       transition: color 0.4s ease;
+      position: relative;
+      isolation: isolate;
+    }
+
+    /* GLOBAL LED BACKLIGHT */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          ellipse at 50% 5%,
+          var(--accent-backlight),
+          transparent 48%
+        ),
+        radial-gradient(
+          ellipse at 0% 45%,
+          rgba(var(--accent-rgb), 0.045),
+          transparent 38%
+        ),
+        radial-gradient(
+          ellipse at 100% 75%,
+          rgba(var(--accent-rgb), 0.045),
+          transparent 38%
+        );
+      transition: background 0.6s ease;
     }
 
     header {
       text-align: center;
       padding: 55px 20px 35px;
+      position: relative;
     }
 
     .logo {
       font-size: 42px;
       font-weight: 800;
       letter-spacing: 4px;
-      text-shadow: 0 0 22px var(--accent-glow);
+      text-shadow:
+        0 0 12px var(--accent-glow),
+        0 0 28px var(--accent-backlight),
+        0 0 48px var(--accent-backlight);
       transition: text-shadow 0.4s ease;
     }
 
@@ -58,6 +95,7 @@
     main {
       width: min(900px, 92%);
       margin: auto;
+      position: relative;
     }
 
     .section-title {
@@ -66,6 +104,7 @@
       color: var(--accent);
       margin-bottom: 14px;
       text-transform: uppercase;
+      text-shadow: 0 0 12px var(--accent-glow);
       transition: color 0.4s ease;
     }
 
@@ -81,7 +120,10 @@
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid var(--accent-border);
-      box-shadow: 0 0 22px var(--accent-glow);
+      box-shadow:
+        0 0 12px var(--accent-glow),
+        0 0 28px var(--accent-backlight),
+        0 0 55px rgba(var(--accent-rgb), 0.08);
       transition: border-color 0.4s ease, box-shadow 0.4s ease;
     }
 
@@ -106,12 +148,15 @@
       letter-spacing: 2px;
       cursor: pointer;
       transition: 0.3s ease;
+      box-shadow: 0 0 16px var(--accent-backlight);
     }
 
     .random-btn:hover {
       background: var(--accent);
       color: #000;
-      box-shadow: 0 0 20px var(--accent-glow);
+      box-shadow:
+        0 0 20px var(--accent-glow),
+        0 0 35px var(--accent-backlight);
     }
 
     /* ARTIST */
@@ -129,11 +174,17 @@
       border-radius: 10px;
       border: 1px solid var(--accent-border);
       background: #0d0d0d;
+      box-shadow:
+        0 0 14px var(--accent-glow),
+        0 0 32px var(--accent-backlight),
+        0 0 55px rgba(var(--accent-rgb), 0.06);
       transition: border-color 0.4s ease, box-shadow 0.4s ease;
     }
 
     .artist img:hover {
-      box-shadow: 0 0 22px var(--accent-glow);
+      box-shadow:
+        0 0 20px var(--accent-glow),
+        0 0 42px var(--accent-backlight);
     }
 
     .artist-name {
@@ -142,6 +193,7 @@
       font-weight: 700;
       letter-spacing: 2px;
       color: var(--accent);
+      text-shadow: 0 0 16px var(--accent-glow);
       transition: color 0.4s ease;
     }
 
@@ -171,12 +223,15 @@
       font-size: 10px;
       letter-spacing: 2px;
       transition: 0.3s ease;
+      box-shadow: 0 0 14px var(--accent-backlight);
     }
 
     .artist-about-link:hover {
       background: var(--accent);
       color: #000;
-      box-shadow: 0 0 18px var(--accent-glow);
+      box-shadow:
+        0 0 18px var(--accent-glow),
+        0 0 30px var(--accent-backlight);
     }
 
     /* BEHIND THE VIBE */
@@ -188,7 +243,10 @@
       text-align: center;
       border-top: 1px solid var(--accent-border);
       border-bottom: 1px solid var(--accent-border);
-      transition: border-color 0.4s ease;
+      box-shadow:
+        0 0 20px rgba(var(--accent-rgb), 0.035),
+        0 0 35px var(--accent-backlight);
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
     }
 
     .about-title {
@@ -196,6 +254,7 @@
       font-size: 11px;
       letter-spacing: 3px;
       margin-bottom: 20px;
+      text-shadow: 0 0 12px var(--accent-glow);
       transition: color 0.4s ease;
     }
 
@@ -227,13 +286,19 @@
       color: #fff;
       text-decoration: none;
       transition: 0.3s ease;
+      box-shadow:
+        0 0 14px rgba(var(--accent-rgb), 0.025),
+        0 0 24px rgba(var(--accent-rgb), 0.025);
     }
 
     .album-card:hover {
       background: #141018;
       border-color: var(--accent);
       transform: translateY(-2px);
-      box-shadow: 0 0 20px var(--accent-glow);
+      box-shadow:
+        0 0 14px var(--accent-glow),
+        0 0 32px var(--accent-backlight),
+        0 0 48px rgba(var(--accent-rgb), 0.07);
     }
 
     .album-title {
@@ -284,6 +349,7 @@
       color: var(--accent);
       border-color: var(--accent);
       background: var(--accent-soft);
+      box-shadow: 0 0 18px var(--accent-backlight);
     }
 
     /* BUSINESS INQUIRIES */
@@ -295,6 +361,7 @@
       text-align: center;
       border-top: 1px solid var(--accent-border);
       border-bottom: 1px solid var(--accent-border);
+      box-shadow: 0 0 28px var(--accent-backlight);
     }
 
     .business-title {
@@ -302,6 +369,7 @@
       font-size: 11px;
       letter-spacing: 3px;
       margin-bottom: 15px;
+      text-shadow: 0 0 12px var(--accent-glow);
     }
 
     .business-description {
@@ -322,6 +390,7 @@
 
     .business-email:hover {
       color: #fff;
+      text-shadow: 0 0 12px var(--accent-glow);
     }
 
     /* FOOTER */
@@ -337,6 +406,7 @@
 
     footer strong {
       color: var(--accent);
+      text-shadow: 0 0 12px var(--accent-glow);
     }
 
     .ai-credit {
@@ -377,6 +447,16 @@
       .player {
         max-width: 100%;
         border-radius: 10px;
+      }
+    }
+
+    /* REDUCED MOTION */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
       }
     }
   </style>
@@ -571,7 +651,7 @@
 
     // RANDOM COLOR THEME
     // Black background stays permanent.
-    // Accent colors change on every refresh.
+    // Accent colors and LED backlight change on refresh.
 
     const themes = [
       {
@@ -666,6 +746,12 @@
     root.style.setProperty(
       "--accent-glow",
       `rgba(${selectedTheme.rgb}, 0.20)`
+    );
+
+    // LED BACKLIGHT COLOR
+    root.style.setProperty(
+      "--accent-backlight",
+      `rgba(${selectedTheme.rgb}, 0.12)`
     );
 
 
