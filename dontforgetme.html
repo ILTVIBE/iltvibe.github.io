@@ -14,12 +14,41 @@
       padding: 0;
     }
 
+    :root {
+      --accent: #A78BFA;
+      --accent-rgb: 167, 139, 250;
+      --accent-soft: rgba(167, 139, 250, 0.10);
+      --accent-border: rgba(167, 139, 250, 0.35);
+      --accent-glow: rgba(167, 139, 250, 0.22);
+      --accent-backlight: rgba(167, 139, 250, 0.16);
+    }
+
+    html {
+      background: #000;
+      scroll-behavior: smooth;
+    }
+
     body {
-      background: #080808;
+      position: relative;
+      isolation: isolate;
+      background: #000;
       color: #f2f2f2;
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.8;
       padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 50% 0%, var(--accent-backlight), transparent 55%),
+        radial-gradient(ellipse at 0% 50%, rgba(var(--accent-rgb), 0.07), transparent 45%),
+        radial-gradient(ellipse at 100% 80%, rgba(var(--accent-rgb), 0.06), transparent 45%);
     }
 
     .container {
@@ -34,7 +63,8 @@
       margin: 0 auto 35px;
       overflow: hidden;
       border-radius: 8px;
-      border: 1px solid #222;
+      border: 1px solid var(--accent-border);
+      box-shadow: 0 0 22px var(--accent-glow);
     }
 
     .thumbnail-banner img {
@@ -51,9 +81,11 @@
     }
 
     .logo {
+      color: var(--accent);
       font-size: 28px;
       font-weight: 800;
       letter-spacing: 4px;
+      text-shadow: 0 0 15px var(--accent-glow);
     }
 
     .tagline {
@@ -65,18 +97,20 @@
 
     .song-header {
       text-align: center;
-      border-bottom: 1px solid #222;
+      border-bottom: 1px solid var(--accent-border);
       padding-bottom: 25px;
       margin-bottom: 40px;
     }
 
     .song-header h1 {
+      color: var(--accent);
       font-size: 32px;
       margin-bottom: 8px;
+      text-shadow: 0 0 14px var(--accent-glow);
     }
 
     .meta {
-      color: #777;
+      color: #888;
       font-size: 12px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
@@ -88,11 +122,20 @@
     }
 
     .section {
-      margin-bottom: 34px;
+      margin-bottom: 24px;
+      padding: 20px;
+      border: 1px solid var(--accent-border);
+      border-radius: 10px;
+      background: linear-gradient(
+        145deg,
+        rgba(var(--accent-rgb), 0.055),
+        rgba(255, 255, 255, 0.012)
+      );
+      box-shadow: 0 0 14px rgba(var(--accent-rgb), 0.045);
     }
 
     .section-title {
-      color: #777;
+      color: var(--accent);
       font-size: 11px;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -102,16 +145,24 @@
 
     .lyrics p {
       white-space: pre-line;
+      color: #e5e5e5;
     }
 
     .story {
       text-align: center;
-      border-top: 1px solid #222;
+      border: 1px solid var(--accent-border);
+      border-radius: 10px;
       margin-top: 45px;
-      padding-top: 28px;
+      padding: 28px 22px;
+      background: linear-gradient(
+        145deg,
+        rgba(var(--accent-rgb), 0.07),
+        rgba(255, 255, 255, 0.01)
+      );
     }
 
     .story h2 {
+      color: var(--accent);
       font-size: 19px;
       margin-bottom: 14px;
       font-weight: 600;
@@ -123,30 +174,40 @@
       line-height: 1.9;
     }
 
+    .story p + p {
+      margin-top: 18px;
+    }
+
     .back {
       display: inline-block;
       margin-top: 35px;
       padding: 10px 18px;
-      border: 1px solid #333;
-      color: #aaa;
+      border: 1px solid var(--accent-border);
+      border-radius: 5px;
+      color: var(--accent);
       text-decoration: none;
       font-size: 13px;
-      transition: 0.2s;
+      transition: 0.2s ease;
     }
 
     .back:hover {
       color: #fff;
-      border-color: #777;
+      border-color: var(--accent);
+      box-shadow: 0 0 14px var(--accent-glow);
     }
 
     footer {
       text-align: center;
       margin-top: 70px;
       padding-top: 25px;
-      border-top: 1px solid #1c1c1c;
-      color: #555;
+      border-top: 1px solid var(--accent-border);
+      color: #666;
       font-size: 11px;
       letter-spacing: 1px;
+    }
+
+    footer strong {
+      color: var(--accent);
     }
 
     @media (max-width: 600px) {
@@ -166,8 +227,26 @@
         font-size: 15px;
       }
 
+      .section {
+        padding: 17px;
+      }
+
       .thumbnail-banner {
         margin-bottom: 28px;
+      }
+
+      .story {
+        padding: 23px 17px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .back {
+        transition: none;
       }
     }
   </style>
@@ -261,12 +340,13 @@ Huwag mo akong limutin... sa ngayon...</p>
     <section class="story">
       <h2>Song Credits</h2>
       <p>
-        Original Song: “Don't Forget Me” — Imagine Dragons<br>
+        Original Song: “Don't Forget Me” - Imagine Dragons<br>
         Original Songwriters: Dan Reynolds and the other officially credited songwriters<br>
         Tagalog Adaptation: ILTVIBE<br>
         Arrangement / Production: ILTVIBE
       </p>
-      <p style="margin-top: 18px;">
+
+      <p>
         This is an unofficial Tagalog adaptation of the original song.
         All rights to the original composition belong to their respective
         rights holders. Credit does not replace any permission that may
@@ -285,5 +365,97 @@ Huwag mo akong limutin... sa ngayon...</p>
     </footer>
 
   </div>
+
+  <script>
+    const themes = [
+      {
+        name: "Electric Purple",
+        color: "#A78BFA",
+        rgb: "167, 139, 250"
+      },
+      {
+        name: "Neon Blue",
+        color: "#60A5FA",
+        rgb: "96, 165, 250"
+      },
+      {
+        name: "Cyber Cyan",
+        color: "#22D3EE",
+        rgb: "34, 211, 238"
+      },
+      {
+        name: "Neon Pink",
+        color: "#F472B6",
+        rgb: "244, 114, 182"
+      },
+      {
+        name: "Champagne Gold",
+        color: "#FBBF24",
+        rgb: "251, 191, 36"
+      },
+      {
+        name: "Emerald Green",
+        color: "#34D399",
+        rgb: "52, 211, 153"
+      },
+      {
+        name: "Deep Crimson",
+        color: "#FB7185",
+        rgb: "251, 113, 133"
+      },
+      {
+        name: "Violet",
+        color: "#C084FC",
+        rgb: "192, 132, 252"
+      }
+    ];
+
+    let previousTheme = null;
+
+    try {
+      previousTheme = localStorage.getItem("iltvibeTheme");
+    } catch (error) {
+      previousTheme = null;
+    }
+
+    let availableThemes = themes.filter(
+      theme => theme.name !== previousTheme
+    );
+
+    if (availableThemes.length === 0) {
+      availableThemes = themes;
+    }
+
+    const selectedTheme =
+      availableThemes[Math.floor(Math.random() * availableThemes.length)];
+
+    const root = document.documentElement;
+
+    root.style.setProperty("--accent", selectedTheme.color);
+    root.style.setProperty("--accent-rgb", selectedTheme.rgb);
+    root.style.setProperty(
+      "--accent-soft",
+      `rgba(${selectedTheme.rgb}, 0.10)`
+    );
+    root.style.setProperty(
+      "--accent-border",
+      `rgba(${selectedTheme.rgb}, 0.35)`
+    );
+    root.style.setProperty(
+      "--accent-glow",
+      `rgba(${selectedTheme.rgb}, 0.22)`
+    );
+    root.style.setProperty(
+      "--accent-backlight",
+      `rgba(${selectedTheme.rgb}, 0.16)`
+    );
+
+    try {
+      localStorage.setItem("iltvibeTheme", selectedTheme.name);
+    } catch (error) {
+      // Theme still works even if local storage is unavailable.
+    }
+  </script>
+
 </body>
 </html>
