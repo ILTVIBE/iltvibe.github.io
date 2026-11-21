@@ -14,12 +14,52 @@
       padding: 0;
     }
 
+    :root {
+      --accent: #A78BFA;
+      --accent-rgb: 167, 139, 250;
+      --accent-soft: rgba(167, 139, 250, 0.10);
+      --accent-border: rgba(167, 139, 250, 0.35);
+      --accent-glow: rgba(167, 139, 250, 0.22);
+      --accent-backlight: rgba(167, 139, 250, 0.16);
+    }
+
+    html {
+      background: #000;
+      scroll-behavior: smooth;
+    }
+
     body {
-      background: #080808;
+      position: relative;
+      isolation: isolate;
+      background: #000;
       color: #f2f2f2;
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.8;
       padding: 40px 20px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          ellipse at 50% 0%,
+          var(--accent-backlight),
+          transparent 55%
+        ),
+        radial-gradient(
+          ellipse at 0% 50%,
+          rgba(var(--accent-rgb), 0.07),
+          transparent 45%
+        ),
+        radial-gradient(
+          ellipse at 100% 80%,
+          rgba(var(--accent-rgb), 0.06),
+          transparent 45%
+        );
     }
 
     .container {
@@ -33,8 +73,9 @@
       width: 100%;
       margin: 0 auto 35px;
       overflow: hidden;
-      border-radius: 8px;
-      border: 1px solid #222;
+      border-radius: 10px;
+      border: 1px solid var(--accent-border);
+      box-shadow: 0 0 22px var(--accent-glow);
     }
 
     .thumbnail-banner img {
@@ -54,6 +95,8 @@
       font-size: 28px;
       font-weight: 800;
       letter-spacing: 4px;
+      color: var(--accent);
+      text-shadow: 0 0 16px var(--accent-glow);
     }
 
     .tagline {
@@ -65,7 +108,7 @@
 
     .song-header {
       text-align: center;
-      border-bottom: 1px solid #222;
+      border-bottom: 1px solid var(--accent-border);
       padding-bottom: 25px;
       margin-bottom: 40px;
     }
@@ -73,6 +116,8 @@
     .song-header h1 {
       font-size: 32px;
       margin-bottom: 8px;
+      color: var(--accent);
+      text-shadow: 0 0 18px var(--accent-glow);
       overflow-wrap: anywhere;
     }
 
@@ -89,11 +134,20 @@
     }
 
     .section {
-      margin-bottom: 34px;
+      margin-bottom: 25px;
+      padding: 22px 20px;
+      border: 1px solid var(--accent-border);
+      border-radius: 10px;
+      background: linear-gradient(
+        135deg,
+        var(--accent-soft),
+        rgba(0, 0, 0, 0.35)
+      );
+      box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.05);
     }
 
     .section-title {
-      color: #777;
+      color: var(--accent);
       font-size: 11px;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -103,16 +157,25 @@
 
     .lyrics p {
       white-space: pre-line;
+      color: #ddd;
     }
 
     .story {
       text-align: center;
-      border-top: 1px solid #222;
+      border: 1px solid var(--accent-border);
+      border-radius: 10px;
       margin-top: 45px;
-      padding-top: 28px;
+      padding: 28px 22px;
+      background: linear-gradient(
+        135deg,
+        var(--accent-soft),
+        rgba(0, 0, 0, 0.45)
+      );
+      box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.05);
     }
 
     .story h2 {
+      color: var(--accent);
       font-size: 19px;
       margin-bottom: 14px;
       font-weight: 600;
@@ -127,27 +190,36 @@
     .back {
       display: inline-block;
       margin-top: 35px;
-      padding: 10px 18px;
-      border: 1px solid #333;
-      color: #aaa;
+      padding: 11px 18px;
+      border: 1px solid var(--accent-border);
+      border-radius: 9px;
+      color: var(--accent);
       text-decoration: none;
       font-size: 13px;
-      transition: 0.2s;
+      letter-spacing: 1px;
+      transition: 0.3s ease;
+      box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.08);
     }
 
     .back:hover {
       color: #fff;
-      border-color: #777;
+      background: var(--accent-soft);
+      box-shadow: 0 0 18px var(--accent-glow);
     }
 
     footer {
       text-align: center;
       margin-top: 70px;
       padding-top: 25px;
-      border-top: 1px solid #1c1c1c;
-      color: #555;
+      border-top: 1px solid var(--accent-border);
+      color: #666;
       font-size: 11px;
       letter-spacing: 1px;
+    }
+
+    footer strong {
+      color: var(--accent);
+      font-size: 13px;
     }
 
     @media (max-width: 600px) {
@@ -160,7 +232,8 @@
       }
 
       .song-header h1 {
-        font-size: 23px;
+        font-size: clamp(17px, 5vw, 23px);
+        letter-spacing: 1px;
       }
 
       .lyrics {
@@ -170,6 +243,26 @@
       .thumbnail-banner {
         margin-bottom: 28px;
       }
+
+      .section {
+        padding: 19px 16px;
+      }
+
+      .story {
+        padding: 24px 17px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
     }
   </style>
 </head>
@@ -177,6 +270,7 @@
 <body>
   <div class="container">
 
+    <!-- YOUTUBE THUMBNAIL BANNER -->
     <div class="thumbnail-banner">
       <img
         src="/8-3-1-forever.png"
@@ -184,11 +278,13 @@
       >
     </div>
 
+    <!-- ARTIST HEADER -->
     <header>
       <div class="logo">ILTVIBE</div>
       <div class="tagline">I LIKE THE VIBE</div>
     </header>
 
+    <!-- SONG HEADER -->
     <div class="song-header">
       <h1>8-3-1-6-15-18-5-22-5-18</h1>
       <div class="meta">AFTER THE VIBE · OFFICIAL LYRICS</div>
@@ -247,6 +343,7 @@ Ikaw ang aking habangbuhay.
 
     </main>
 
+    <!-- STORY -->
     <section class="story">
       <h2>The Story Behind the Song</h2>
 
@@ -255,6 +352,7 @@ Ikaw ang aking habangbuhay.
       </p>
     </section>
 
+    <!-- BACK TO ARCHIVE -->
     <a href="../lyrics.html" class="back">← Back to Lyrics Archive</a>
 
     <footer>
@@ -265,5 +363,99 @@ Ikaw ang aking habangbuhay.
     </footer>
 
   </div>
+
+  <script>
+    const themes = [
+      {
+        name: "Electric Purple",
+        accent: "#A78BFA",
+        rgb: "167, 139, 250"
+      },
+      {
+        name: "Neon Blue",
+        accent: "#60A5FA",
+        rgb: "96, 165, 250"
+      },
+      {
+        name: "Cyber Cyan",
+        accent: "#22D3EE",
+        rgb: "34, 211, 238"
+      },
+      {
+        name: "Neon Pink",
+        accent: "#F472B6",
+        rgb: "244, 114, 182"
+      },
+      {
+        name: "Champagne Gold",
+        accent: "#FBBF24",
+        rgb: "251, 191, 36"
+      },
+      {
+        name: "Emerald Green",
+        accent: "#34D399",
+        rgb: "52, 211, 153"
+      },
+      {
+        name: "Deep Crimson",
+        accent: "#FB7185",
+        rgb: "251, 113, 133"
+      },
+      {
+        name: "Violet",
+        accent: "#C084FC",
+        rgb: "192, 132, 252"
+      }
+    ];
+
+    let previousTheme = null;
+
+    try {
+      previousTheme = localStorage.getItem("iltvibeTheme");
+    } catch (error) {
+      previousTheme = null;
+    }
+
+    let availableThemes = themes.filter(
+      theme => theme.name !== previousTheme
+    );
+
+    if (availableThemes.length === 0) {
+      availableThemes = themes;
+    }
+
+    const selectedTheme =
+      availableThemes[
+        Math.floor(Math.random() * availableThemes.length)
+      ];
+
+    const root = document.documentElement;
+
+    root.style.setProperty("--accent", selectedTheme.accent);
+    root.style.setProperty("--accent-rgb", selectedTheme.rgb);
+    root.style.setProperty(
+      "--accent-soft",
+      `rgba(${selectedTheme.rgb}, 0.10)`
+    );
+    root.style.setProperty(
+      "--accent-border",
+      `rgba(${selectedTheme.rgb}, 0.35)`
+    );
+    root.style.setProperty(
+      "--accent-glow",
+      `rgba(${selectedTheme.rgb}, 0.22)`
+    );
+    root.style.setProperty(
+      "--accent-backlight",
+      `rgba(${selectedTheme.rgb}, 0.16)`
+    );
+
+    try {
+      localStorage.setItem("iltvibeTheme", selectedTheme.name);
+    } catch (error) {
+      // Page design still works if localStorage is unavailable.
+    }
+  </script>
+
 </body>
-  </html>
+</html>
