@@ -23,6 +23,7 @@
 
 html {
     background: #000;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -96,8 +97,288 @@ body::before {
     font-size: 12px;
     color: var(--accent);
     letter-spacing: 2px;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
+
+/* ==================================
+   ILTVIBE WALKMAN PLAYER
+================================== */
+
+.walkman-player {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 30px 12px 13px;
+    margin: 0 auto 35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(38, 38, 46, 0.98),
+            rgba(5, 5, 9, 0.99) 48%,
+            rgba(20, 16, 28, 0.98)
+        );
+
+    border: 1px solid rgba(var(--accent-rgb), 0.65);
+    border-radius: 13px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.12),
+        inset 0 -3px 8px rgba(0,0,0,0.9),
+        0 0 18px var(--accent-glow),
+        0 0 40px rgba(var(--accent-rgb), 0.12),
+        0 12px 30px rgba(0,0,0,0.65);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+}
+
+/* Walkman top label */
+
+.walkman-player::before {
+    content: "ILTVIBE  •  DIGITAL WALKMAN";
+    position: absolute;
+    top: 9px;
+    left: 16px;
+    right: 16px;
+    height: 13px;
+
+    color: var(--accent);
+    font-size: 7px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-align: center;
+
+    border-bottom: 1px solid rgba(var(--accent-rgb), 0.22);
+    text-shadow: 0 0 8px var(--accent-glow);
+}
+
+/* Small screw details */
+
+.walkman-player::after {
+    content: "";
+    position: absolute;
+    top: 11px;
+    left: 8px;
+    right: 8px;
+    height: 5px;
+    pointer-events: none;
+
+    background:
+        radial-gradient(circle, #777 0 2px, #222 2.5px, transparent 3px) left center / 8px 8px no-repeat,
+        radial-gradient(circle, #777 0 2px, #222 2.5px, transparent 3px) right center / 8px 8px no-repeat;
+}
+
+/* YouTube screen */
+
+.player-video {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 6px;
+    background: #000;
+
+    border: 2px solid rgba(var(--accent-rgb), 0.55);
+
+    box-shadow:
+        inset 0 0 15px #000,
+        0 0 12px var(--accent-glow),
+        0 0 25px rgba(var(--accent-rgb), 0.12);
+}
+
+.player-video iframe {
+    display: block;
+    width: 200px;
+    height: 200px;
+    border: 0;
+}
+
+/* Walkman information */
+
+.player-details {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 8px 5px 0;
+    position: relative;
+}
+
+.player-label {
+    color: var(--accent);
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    padding: 8px 9px;
+
+    background:
+        linear-gradient(
+            110deg,
+            rgba(var(--accent-rgb), 0.17),
+            rgba(20,20,25,0.8)
+        );
+
+    border: 1px solid rgba(var(--accent-rgb), 0.35);
+    border-radius: 3px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.06),
+        0 0 10px rgba(var(--accent-rgb), 0.08);
+}
+
+.player-song {
+    font-size: 17px;
+    font-weight: bold;
+    line-height: 1.4;
+    margin-bottom: 6px;
+    overflow-wrap: anywhere;
+
+    color: #fff;
+    text-shadow: 0 0 12px var(--accent-glow);
+}
+
+.player-artist {
+    position: relative;
+    color: #999;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+    padding: 10px 32px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.9),
+            rgba(var(--accent-rgb),0.07),
+            rgba(0,0,0,0.9)
+        );
+
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 4px;
+}
+
+/* Cassette reels */
+
+.player-artist::before,
+.player-artist::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 17px;
+    height: 17px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #08080c 0 3px,
+            var(--accent) 3.5px 4px,
+            transparent 4.5px
+        ),
+        conic-gradient(
+            from 0deg,
+            rgba(var(--accent-rgb), 0.7),
+            #17141e,
+            rgba(var(--accent-rgb), 0.7),
+            #17141e,
+            rgba(var(--accent-rgb), 0.7)
+        );
+
+    border: 1px solid rgba(var(--accent-rgb), 0.5);
+    box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.player-artist::before {
+    left: 7px;
+}
+
+.player-artist::after {
+    right: 7px;
+}
+
+/* Progress */
+
+.progress-area {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 14px;
+}
+
+.time {
+    color: #999;
+    font-size: 9px;
+    min-width: 29px;
+    font-variant-numeric: tabular-nums;
+}
+
+.progress-slider {
+    flex: 1;
+    min-width: 0;
+    height: 4px;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+/* Controls */
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+}
+
+.player-control {
+    width: 34px;
+    height: 34px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: #fff;
+    font-size: 19px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    border-radius: 50%;
+}
+
+.player-control:hover {
+    color: var(--accent);
+    text-shadow: 0 0 12px var(--accent-glow);
+    border-color: var(--accent-border);
+}
+
+.player-control.main {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #000;
+    font-size: 19px;
+
+    box-shadow:
+        0 0 12px var(--accent-glow),
+        0 0 22px rgba(var(--accent-rgb), 0.2);
+}
+
+.player-control.main:hover {
+    transform: scale(1.06);
+}
+
+.player-status {
+    color: #777;
+    font-size: 9px;
+    text-align: center;
+    margin-top: 12px;
+    letter-spacing: 1px;
+}
+
+/* ==================================
+   TRACKLIST
+================================== */
 
 .track {
     display: flex;
@@ -158,6 +439,8 @@ body::before {
     text-shadow: 0 0 10px var(--accent-glow);
 }
 
+/* Back link */
+
 .back {
     display: inline-block;
     margin-top: 35px;
@@ -173,6 +456,8 @@ body::before {
     text-shadow: 0 0 12px var(--accent-glow);
 }
 
+/* Footer */
+
 footer {
     text-align: center;
     margin-top: 50px;
@@ -181,364 +466,6 @@ footer {
     color: #666;
     font-size: 10px;
     letter-spacing: 2px;
-}
-
-/* ==================================
-   ILTVIBE RETRO MODERN CASSETTE DOCK
-================================== */
-
-.mini-player {
-    position: fixed;
-    z-index: 1000;
-    right: 18px;
-    bottom: 18px;
-    width: min(620px, calc(100% - 36px));
-    min-height: 220px;
-
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 25px 10px 10px;
-
-    background:
-        linear-gradient(145deg, rgba(35,35,42,0.98), rgba(5,5,9,0.99) 45%, rgba(18,15,25,0.98));
-
-    border: 1px solid rgba(var(--accent-rgb), 0.65);
-    border-radius: 13px;
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.12),
-        inset 0 -3px 8px rgba(0,0,0,0.9),
-        0 0 18px var(--accent-glow),
-        0 0 45px rgba(var(--accent-rgb), 0.15),
-        0 12px 35px rgba(0,0,0,0.85);
-
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-
-    transition:
-        width 0.3s ease,
-        min-height 0.3s ease,
-        padding 0.3s ease,
-        border-radius 0.3s ease;
-}
-
-/* Cassette top label */
-
-.mini-player::before {
-    content: "ILTVIBE  •  RETRO DIGITAL AUDIO";
-    position: absolute;
-    top: 7px;
-    left: 16px;
-    right: 16px;
-    height: 13px;
-
-    color: var(--accent);
-    font-size: 7px;
-    font-weight: bold;
-    letter-spacing: 3px;
-    text-align: center;
-
-    border-bottom: 1px solid rgba(var(--accent-rgb), 0.22);
-    text-shadow: 0 0 8px var(--accent-glow);
-}
-
-/* Cassette screw details */
-
-.mini-player::after {
-    content: "";
-    position: absolute;
-    top: 9px;
-    left: 8px;
-    right: 8px;
-    height: 5px;
-    pointer-events: none;
-
-    background:
-        radial-gradient(circle, #777 0 2px, #222 2.5px, transparent 3px) left center / 8px 8px no-repeat,
-        radial-gradient(circle, #777 0 2px, #222 2.5px, transparent 3px) right center / 8px 8px no-repeat;
-}
-
-/* Expand / collapse button */
-
-.player-toggle {
-    position: absolute;
-    top: 23px;
-    right: 13px;
-    z-index: 5;
-
-    padding: 6px 10px;
-    border: 1px solid var(--accent-border);
-    border-radius: 4px;
-
-    background: rgba(var(--accent-rgb), 0.10);
-    color: var(--accent);
-
-    font-family: inherit;
-    font-size: 9px;
-    font-weight: bold;
-    letter-spacing: 1px;
-
-    cursor: pointer;
-    transition: 0.2s ease;
-}
-
-.player-toggle:hover {
-    background: var(--accent);
-    color: #000;
-    box-shadow: 0 0 12px var(--accent-glow);
-}
-
-/* YouTube video */
-
-.player-video {
-    position: relative;
-    width: 200px;
-    height: 200px;
-    flex-shrink: 0;
-    overflow: hidden;
-    border-radius: 6px;
-    background: #000;
-
-    border: 2px solid rgba(var(--accent-rgb), 0.55);
-
-    box-shadow:
-        inset 0 0 15px #000,
-        0 0 12px var(--accent-glow),
-        0 0 25px rgba(var(--accent-rgb), 0.12);
-}
-
-.player-video iframe {
-    display: block;
-    width: 200px;
-    height: 200px;
-    border: 0;
-}
-
-/* Details panel */
-
-.player-details {
-    flex: 1;
-    min-width: 0;
-    padding: 15px 8px 5px 0;
-    position: relative;
-}
-
-/* Cassette label */
-
-.player-label {
-    position: relative;
-    color: var(--accent);
-    font-size: 9px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-    padding: 7px 9px;
-
-    background:
-        linear-gradient(110deg, rgba(var(--accent-rgb), 0.17), rgba(20,20,25,0.8));
-
-    border: 1px solid rgba(var(--accent-rgb), 0.35);
-    border-radius: 3px;
-
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.06),
-        0 0 10px rgba(var(--accent-rgb), 0.08);
-}
-
-.player-song {
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 1.4;
-    margin-bottom: 5px;
-    overflow-wrap: anywhere;
-
-    color: #fff;
-    text-shadow: 0 0 12px var(--accent-glow);
-}
-
-/* Cassette tape window */
-
-.player-artist {
-    position: relative;
-    color: #999;
-    font-size: 11px;
-    letter-spacing: 1px;
-    margin-bottom: 18px;
-
-    padding: 9px 32px;
-
-    background:
-        linear-gradient(90deg, rgba(0,0,0,0.9), rgba(var(--accent-rgb),0.07), rgba(0,0,0,0.9));
-
-    border: 1px solid rgba(255,255,255,0.09);
-    border-radius: 4px;
-}
-
-/* Reels */
-
-.player-artist::before,
-.player-artist::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 17px;
-    height: 17px;
-    transform: translateY(-50%);
-    border-radius: 50%;
-
-    background:
-        radial-gradient(circle, #08080c 0 3px, var(--accent) 3.5px 4px, transparent 4.5px),
-        conic-gradient(
-            from 0deg,
-            rgba(var(--accent-rgb), 0.7),
-            #17141e,
-            rgba(var(--accent-rgb), 0.7),
-            #17141e,
-            rgba(var(--accent-rgb), 0.7)
-        );
-
-    border: 1px solid rgba(var(--accent-rgb), 0.5);
-    box-shadow: 0 0 8px var(--accent-glow);
-}
-
-.player-artist::before {
-    left: 7px;
-}
-
-.player-artist::after {
-    right: 7px;
-}
-
-.progress-area {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    margin-bottom: 15px;
-}
-
-.time {
-    color: #999;
-    font-size: 9px;
-    min-width: 29px;
-    font-variant-numeric: tabular-nums;
-}
-
-.progress-slider {
-    flex: 1;
-    min-width: 0;
-    height: 4px;
-    accent-color: var(--accent);
-    cursor: pointer;
-}
-
-.player-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 18px;
-}
-
-.player-control {
-    width: 34px;
-    height: 34px;
-    border: 1px solid transparent;
-    background: transparent;
-    color: #fff;
-    font-size: 19px;
-    cursor: pointer;
-    transition: 0.2s ease;
-    border-radius: 50%;
-}
-
-.player-control:hover {
-    color: var(--accent);
-    text-shadow: 0 0 12px var(--accent-glow);
-    border-color: var(--accent-border);
-}
-
-.player-control.main {
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    background: var(--accent);
-    color: #000;
-    font-size: 19px;
-    box-shadow:
-        0 0 12px var(--accent-glow),
-        0 0 22px rgba(var(--accent-rgb), 0.2);
-}
-
-.player-control.main:hover {
-    transform: scale(1.06);
-}
-
-.player-status {
-    color: #777;
-    font-size: 9px;
-    text-align: center;
-    margin-top: 12px;
-    letter-spacing: 1px;
-}
-
-/* ==================================
-   COLLAPSED CASSETTE DOCK
-================================== */
-
-.mini-player.collapsed {
-    width: 285px;
-    min-height: 0;
-    display: block;
-    padding: 32px 14px 12px;
-    border-radius: 9px;
-}
-
-.mini-player.collapsed::before {
-    text-align: left;
-    left: 15px;
-    right: 15px;
-}
-
-.mini-player.collapsed .player-video,
-.mini-player.collapsed .player-details {
-    display: none;
-}
-
-.mini-player.collapsed .player-toggle {
-    top: 5px;
-    right: 12px;
-    padding: 5px 9px;
-}
-
-.collapsed-info {
-    display: none;
-}
-
-.mini-player.collapsed .collapsed-info {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-}
-
-.collapsed-song {
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-
-    color: #fff;
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-shadow: 0 0 8px var(--accent-glow);
-}
-
-.collapsed-indicator {
-    flex-shrink: 0;
-    color: var(--accent);
-    font-size: 8px;
-    letter-spacing: 1px;
 }
 
 /* ==================================
@@ -575,18 +502,12 @@ footer {
         font-size: 9px;
     }
 
-    .mini-player {
-        right: 10px;
-        bottom: 10px;
-        width: calc(100% - 20px);
-        max-height: calc(100dvh - 20px);
-        overflow-y: auto;
-
+    .walkman-player {
         flex-direction: column;
         align-items: center;
-        gap: 10px;
-
-        padding: 27px 10px 12px;
+        gap: 12px;
+        padding: 30px 10px 14px;
+        margin-bottom: 30px;
     }
 
     .player-video,
@@ -601,17 +522,20 @@ footer {
     }
 
     .player-label {
-        padding-right: 85px;
+        padding-right: 9px;
         font-size: 8px;
+        text-align: center;
     }
 
     .player-song {
-        font-size: 14px;
+        font-size: 15px;
+        text-align: center;
     }
 
     .player-artist {
         font-size: 9px;
-        margin-bottom: 12px;
+        margin-bottom: 13px;
+        text-align: center;
     }
 
     .player-controls {
@@ -619,38 +543,23 @@ footer {
     }
 
     .player-control {
-        width: 30px;
+        width: 32px;
         height: 32px;
         font-size: 17px;
     }
 
     .player-control.main {
-        width: 38px;
-        height: 38px;
+        width: 40px;
+        height: 40px;
     }
 
     .player-status {
-        margin-top: 8px;
-    }
-
-    .player-toggle {
-        top: 22px;
-        right: 12px;
-    }
-
-    .mini-player.collapsed {
-        width: min(285px, calc(100% - 20px));
-        right: 10px;
-        padding: 32px 13px 12px;
-    }
-
-    .mini-player.collapsed .player-toggle {
-        top: 5px;
+        margin-top: 9px;
     }
 }
 
 @media (max-width: 360px) {
-    .mini-player:not(.collapsed) {
+    .walkman-player {
         padding-left: 7px;
         padding-right: 7px;
     }
@@ -687,6 +596,78 @@ footer {
 
     <div class="album-title">EP VIBE</div>
     <div class="album-info">ILTVIBE · 08 TRACKS</div>
+
+    <!-- ILTVIBE DIGITAL WALKMAN -->
+
+    <div class="walkman-player">
+
+        <div class="player-video">
+            <div id="yt-player"></div>
+        </div>
+
+        <div class="player-details">
+
+            <div class="player-label">
+                ILTVIBE DIGITAL WALKMAN
+            </div>
+
+            <div class="player-song" id="player-song">
+                FUBU
+            </div>
+
+            <div class="player-artist">
+                ILTVIBE · EP VIBE
+            </div>
+
+            <div class="progress-area">
+                <span class="time" id="current-time">0:00</span>
+
+                <input
+                    type="range"
+                    class="progress-slider"
+                    id="progress"
+                    min="0"
+                    max="100"
+                    value="0"
+                    aria-label="Song progress"
+                >
+
+                <span class="time" id="duration">0:00</span>
+            </div>
+
+            <div class="player-controls">
+
+                <button
+                    class="player-control"
+                    id="previous"
+                    type="button"
+                    aria-label="Previous track"
+                >|◀</button>
+
+                <button
+                    class="player-control main"
+                    id="play-pause"
+                    type="button"
+                    aria-label="Play"
+                >▶</button>
+
+                <button
+                    class="player-control"
+                    id="next"
+                    type="button"
+                    aria-label="Next track"
+                >▶|</button>
+
+            </div>
+
+            <div class="player-status" id="player-status">
+                SELECT A TRACK TO PLAY
+            </div>
+
+        </div>
+    </div>
+
+    <!-- TRACKLIST -->
 
     <div class="track" data-index="0">
         <div class="track-name">01. FUBU</div>
@@ -736,74 +717,6 @@ footer {
 
 </div>
 
-<!-- ILTVIBE RETRO MODERN CASSETTE PLAYER -->
-
-<div class="mini-player collapsed" id="mini-player">
-
-    <button
-        class="player-toggle"
-        id="player-toggle"
-        type="button"
-        aria-expanded="false"
-        aria-label="Expand cassette player"
-    >
-        EXPAND ＋
-    </button>
-
-    <div class="collapsed-info">
-        <span class="collapsed-song" id="collapsed-song">FUBU</span>
-        <span class="collapsed-indicator" id="collapsed-indicator">CASSETTE DOCK</span>
-    </div>
-
-    <div class="player-video">
-        <div id="yt-player"></div>
-    </div>
-
-    <div class="player-details">
-
-        <div class="player-label">ILTVIBE MINI PLAYER</div>
-
-        <div class="player-song" id="player-song">
-            FUBU
-        </div>
-
-        <div class="player-artist">
-            ILTVIBE · EP VIBE
-        </div>
-
-        <div class="progress-area">
-            <span class="time" id="current-time">0:00</span>
-
-            <input
-                type="range"
-                class="progress-slider"
-                id="progress"
-                min="0"
-                max="100"
-                value="0"
-                aria-label="Song progress"
-            >
-
-            <span class="time" id="duration">0:00</span>
-        </div>
-
-        <div class="player-controls">
-
-            <button class="player-control" id="previous" type="button" aria-label="Previous track">|◀</button>
-
-            <button class="player-control main" id="play-pause" type="button" aria-label="Play">▶</button>
-
-            <button class="player-control" id="next" type="button" aria-label="Next track">▶|</button>
-
-        </div>
-
-        <div class="player-status" id="player-status">
-            SELECT A TRACK TO PLAY
-        </div>
-
-    </div>
-</div>
-
 <script>
 /* ==================================
    RANDOM RGB THEME
@@ -828,13 +741,16 @@ try {
     previousTheme = null;
 }
 
-let availableThemes = themes.filter(theme => theme.name !== previousTheme);
+let availableThemes = themes.filter(
+    theme => theme.name !== previousTheme
+);
 
 if (availableThemes.length === 0) {
     availableThemes = themes;
 }
 
-const selectedTheme = availableThemes[Math.floor(Math.random() * availableThemes.length)];
+const selectedTheme =
+    availableThemes[Math.floor(Math.random() * availableThemes.length)];
 
 const root = document.documentElement;
 
@@ -848,7 +764,7 @@ root.style.setProperty("--accent-backlight", `rgba(${selectedTheme.rgb}, 0.13)`)
 try {
     localStorage.setItem("iltvibeTheme", selectedTheme.name);
 } catch (error) {
-    // The page still works if browser storage is unavailable.
+    // Page remains functional if browser storage is unavailable.
 }
 
 
@@ -873,56 +789,11 @@ let progressTimer = null;
 let isSeeking = false;
 
 const songTitle = document.getElementById("player-song");
-const collapsedSong = document.getElementById("collapsed-song");
-const collapsedIndicator = document.getElementById("collapsed-indicator");
-
 const playPauseButton = document.getElementById("play-pause");
 const progressSlider = document.getElementById("progress");
 const currentTimeDisplay = document.getElementById("current-time");
 const durationDisplay = document.getElementById("duration");
 const playerStatus = document.getElementById("player-status");
-
-const miniPlayer = document.getElementById("mini-player");
-const playerToggle = document.getElementById("player-toggle");
-
-
-/* ==================================
-   EXPAND / COLLAPSE PLAYER
-================================== */
-
-function expandPlayer() {
-    miniPlayer.classList.remove("collapsed");
-
-    playerToggle.textContent = "COLLAPSE −";
-    playerToggle.setAttribute("aria-expanded", "true");
-    playerToggle.setAttribute("aria-label", "Collapse cassette player");
-}
-
-function collapsePlayer() {
-
-    // Pause before hiding the YouTube video.
-    if (player && player.getPlayerState) {
-        if (player.getPlayerState() === YT.PlayerState.PLAYING) {
-            player.pauseVideo();
-        }
-    }
-
-    miniPlayer.classList.add("collapsed");
-
-    playerToggle.textContent = "EXPAND ＋";
-    playerToggle.setAttribute("aria-expanded", "false");
-    playerToggle.setAttribute("aria-label", "Expand cassette player");
-}
-
-playerToggle.addEventListener("click", function() {
-
-    if (miniPlayer.classList.contains("collapsed")) {
-        expandPlayer();
-    } else {
-        collapsePlayer();
-    }
-
-});
 
 
 /* ==================================
@@ -960,14 +831,12 @@ window.onYouTubeIframeAPIReady = function() {
                     playPauseButton.textContent = "Ⅱ";
                     playPauseButton.setAttribute("aria-label", "Pause");
                     playerStatus.textContent = "NOW PLAYING";
-                    collapsedIndicator.textContent = "NOW PLAYING";
                 }
 
                 else if (event.data === YT.PlayerState.PAUSED) {
                     playPauseButton.textContent = "▶";
                     playPauseButton.setAttribute("aria-label", "Play");
                     playerStatus.textContent = "PAUSED";
-                    collapsedIndicator.textContent = "PAUSED";
                 }
 
                 else if (event.data === YT.PlayerState.ENDED) {
@@ -976,13 +845,11 @@ window.onYouTubeIframeAPIReady = function() {
 
                 else if (event.data === YT.PlayerState.BUFFERING) {
                     playerStatus.textContent = "LOADING...";
-                    collapsedIndicator.textContent = "LOADING...";
                 }
             },
 
             onError: function() {
                 playerStatus.textContent = "VIDEO UNAVAILABLE";
-                collapsedIndicator.textContent = "UNAVAILABLE";
             }
         }
     });
@@ -1009,13 +876,7 @@ function selectTrack(index) {
     const track = tracks[currentTrack];
 
     songTitle.textContent = track.title;
-    collapsedSong.textContent = track.title;
-
     playerStatus.textContent = "LOADING...";
-    collapsedIndicator.textContent = "LOADING...";
-
-    // Reveal the video when a track is selected.
-    expandPlayer();
 
     player.loadVideoById(track.id);
 
@@ -1069,7 +930,9 @@ playPauseButton.addEventListener("click", function() {
 });
 
 document.getElementById("previous").addEventListener("click", function() {
-    const previousIndex = (currentTrack - 1 + tracks.length) % tracks.length;
+    const previousIndex =
+        (currentTrack - 1 + tracks.length) % tracks.length;
+
     selectTrack(previousIndex);
 });
 
@@ -1145,7 +1008,9 @@ progressSlider.addEventListener("input", function() {
         : 0;
 
     if (total > 0) {
-        const targetTime = (Number(progressSlider.value) / 100) * total;
+        const targetTime =
+            (Number(progressSlider.value) / 100) * total;
+
         currentTimeDisplay.textContent = formatTime(targetTime);
     }
 
@@ -1161,7 +1026,9 @@ progressSlider.addEventListener("change", function() {
     const total = player.getDuration() || 0;
 
     if (total > 0) {
-        const targetTime = (Number(progressSlider.value) / 100) * total;
+        const targetTime =
+            (Number(progressSlider.value) / 100) * total;
+
         player.seekTo(targetTime, true);
     }
 
