@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +16,14 @@
 :root {
     --accent: #A78BFA;
     --accent-rgb: 167, 139, 250;
-    --accent-soft: rgba(167,139,250,.12);
-    --accent-border: rgba(167,139,250,.35);
-    --accent-glow: rgba(167,139,250,.28);
-    --accent-backlight: rgba(167,139,250,.13);
+    --accent-soft: rgba(167, 139, 250, 0.12);
+    --accent-border: rgba(167, 139, 250, 0.35);
+    --accent-glow: rgba(167, 139, 250, 0.28);
+    --accent-backlight: rgba(167, 139, 250, 0.13);
+}
+
+html {
+    background: #000;
 }
 
 body {
@@ -26,719 +31,287 @@ body {
     background: #000;
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    position: relative;
+    isolation: isolate;
 }
 
-/* ==================================
-   MAIN CONTAINER
-================================== */
-
-.page {
-    width: 100%;
-    max-width: 900px;
-    margin: auto;
-    padding: 25px 20px 60px;
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            ellipse at 50% 0%,
+            var(--accent-backlight),
+            transparent 55%
+        ),
+        radial-gradient(
+            ellipse at 0% 50%,
+            rgba(var(--accent-rgb), 0.07),
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 100% 80%,
+            rgba(var(--accent-rgb), 0.06),
+            transparent 45%
+        );
 }
 
-/* ==================================
-   ALBUM HEADER
-================================== */
+.container {
+    width: 90%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 0 80px;
+}
 
-.album-header {
+.header {
     text-align: center;
     margin-bottom: 30px;
 }
 
-.album-art {
-    width: 100%;
-    max-width: 700px;
-    aspect-ratio: 16 / 9;
-    margin: auto;
-    border-radius: 16px;
-
-    background:
-        radial-gradient(circle at 70% 30%,
-        rgba(167,139,250,.25), transparent 45%),
-        linear-gradient(135deg,#10101b,#050505 65%);
-
-    border: 1px solid rgba(255,255,255,.08);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.album-art span {
-    font-size: clamp(30px, 7vw, 65px);
-    font-weight: 900;
+.logo {
+    font-size: 32px;
+    font-weight: 700;
     letter-spacing: 5px;
-    color: #fff;
-    text-shadow: 0 0 25px var(--accent-glow);
+    margin-bottom: 8px;
+    text-shadow: 0 0 18px var(--accent-glow);
 }
 
-.album-header h1 {
-    font-size: clamp(23px, 5vw, 36px);
-    margin: 25px 0 8px;
-    font-weight: 900;
-}
-
-.album-header p {
-    color: var(--accent);
-    font-size: 14px;
+.tagline {
+    font-size: 12px;
     letter-spacing: 3px;
-    font-weight: bold;
-}
-
-/* ==================================
-   WALKMAN PLAYER - DESKTOP
-================================== */
-
-.walkman {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1.2fr .8fr;
-    gap: 15px;
-    padding: 12px;
-    margin: 30px auto;
-
-    background: #08070c;
-    border: 1px solid var(--accent-border);
-    border-radius: 19px;
-
-    box-shadow:
-        0 0 25px var(--accent-backlight),
-        inset 0 0 15px rgba(255,255,255,.015);
-
-    position: relative;
-    z-index: 50;
-}
-
-/* ==================================
-   YOUTUBE SCREEN
-================================== */
-
-.youtube-section {
-    min-width: 0;
-    background: #000;
-    border: 1px solid var(--accent-border);
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-.youtube-top {
-    height: 38px;
-    display: flex;
-    align-items: center;
-    padding: 0 12px;
-    gap: 10px;
-    background: #08070c;
-}
-
-.artist-avatar {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: linear-gradient(135deg,#292338,#111);
-    border: 1px solid var(--accent-border);
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 10px;
-    font-weight: bold;
-    color: var(--accent);
-}
-
-.artist-name {
-    font-size: 13px;
-    font-weight: bold;
-    flex: 1;
-}
-
-.top-icon {
-    font-size: 19px;
-    color: #ddd;
-}
-
-.video-container {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #000;
-    overflow: hidden;
-}
-
-#yt-player,
-.video-container iframe {
-    width: 100% !important;
-    height: 100% !important;
-    display: block;
-}
-
-/* ==================================
-   WALKMAN INFORMATION
-================================== */
-
-.walkman-info {
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 5px 4px;
-}
-
-.player-label {
-    font-size: 10px;
-    font-weight: bold;
-    letter-spacing: 3px;
-    color: var(--accent);
-    margin-bottom: 12px;
-}
-
-#player-song {
-    font-size: clamp(15px, 2vw, 21px);
-    font-weight: 800;
-    margin: 0 0 6px;
-    overflow-wrap: anywhere;
-}
-
-.player-subtitle {
-    font-size: 10px;
-    color: #777;
-    letter-spacing: 1.5px;
-    margin-bottom: 15px;
-}
-
-/* ==================================
-   PROGRESS BAR
-================================== */
-
-.time-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 10px;
     color: #999;
 }
 
-#progress {
-    flex: 1;
-    min-width: 0;
-    height: 4px;
-
-    appearance: none;
-    -webkit-appearance: none;
-
-    background: #444;
-    border-radius: 10px;
-    outline: none;
-    cursor: pointer;
+.banner {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    border: 1px solid var(--accent-border);
+    box-shadow:
+        0 0 18px var(--accent-glow),
+        0 0 45px rgba(var(--accent-rgb), 0.08);
 }
 
-#progress::-webkit-slider-thumb {
-    appearance: none;
-    -webkit-appearance: none;
-
-    width: 15px;
-    height: 15px;
-
-    border-radius: 50%;
-    background: var(--accent);
-
-    box-shadow: 0 0 10px var(--accent-glow);
-}
-
-#progress::-moz-range-thumb {
-    width: 15px;
-    height: 15px;
-    border: none;
-    border-radius: 50%;
-    background: var(--accent);
-}
-
-/* ==================================
-   WALKMAN CONTROLS
-================================== */
-
-.controls {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-    margin-top: 15px;
-}
-
-.control-btn {
-    border: none;
-    background: transparent;
-    color: #fff;
-    font-size: 19px;
-    cursor: pointer;
-    padding: 5px;
-}
-
-.control-btn:active {
-    transform: scale(.9);
-}
-
-#play-pause {
-    width: 54px;
-    height: 42px;
-    border-radius: 50%;
-
-    background: var(--accent);
-    color: #090711;
-
-    font-size: 21px;
-    font-weight: bold;
-
-    box-shadow: 0 0 18px var(--accent-glow);
-}
-
-#player-status {
-    text-align: center;
-    font-size: 9px;
+.album-title {
+    font-size: 30px;
+    font-weight: 700;
     letter-spacing: 2px;
-    color: #666;
-    margin-top: 10px;
+    margin-bottom: 8px;
+    text-shadow: 0 0 14px var(--accent-glow);
 }
 
-/* ==================================
-   TRACKLIST
-================================== */
-
-.tracklist {
-    margin-top: 35px;
+.album-info {
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    margin-bottom: 30px;
 }
 
 .track {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 15px;
-
-    min-height: 82px;
-    padding: 15px 20px;
-    margin-bottom: 15px;
-
-    background: #101010;
-    border: 1px solid rgba(255,255,255,.055);
-    border-radius: 22px;
-
-    transition: .25s ease;
+    padding: 17px 12px;
+    border-bottom: 1px solid rgba(var(--accent-rgb), 0.16);
+    transition: 0.25s ease;
 }
 
-.track.active {
-    border-color: var(--accent-border);
+.track:hover {
     background: var(--accent-soft);
-
-    box-shadow: 0 0 15px var(--accent-backlight);
+    border-bottom-color: var(--accent-border);
+    box-shadow: 0 0 18px rgba(var(--accent-rgb), 0.06);
 }
 
-.track-number {
+.track-name {
+    font-size: 15px;
+    line-height: 1.4;
+    transition: 0.2s ease;
+}
+
+.track:hover .track-name {
     color: var(--accent);
-    font-size: 18px;
-    font-weight: bold;
-    min-width: 32px;
-}
-
-.track-title {
-    flex: 1;
-    font-size: 17px;
-    font-weight: bold;
 }
 
 .listen-btn {
+    flex-shrink: 0;
+    display: inline-block;
+    padding: 9px 16px;
     border: 1px solid var(--accent-border);
-    border-radius: 30px;
-
-    background: transparent;
+    border-radius: 3px;
     color: #fff;
-
-    padding: 10px 19px;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 1px;
-
+    background: transparent;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 2px;
     cursor: pointer;
-    min-width: 90px;
+    transition: 0.2s ease;
 }
 
 .listen-btn:hover {
-    background: var(--accent-soft);
-}
-
-.track.active .listen-btn {
-    color: var(--accent);
+    background: var(--accent);
+    color: #000;
     border-color: var(--accent);
+    box-shadow: 0 0 15px var(--accent-glow);
 }
 
-/* ==================================
-   MOBILE - FIXED WALKMAN
-================================== */
+.back {
+    display: inline-block;
+    margin-top: 35px;
+    color: #999;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 2px;
+    transition: 0.2s ease;
+}
+
+.back:hover {
+    color: var(--accent);
+    text-shadow: 0 0 12px var(--accent-glow);
+}
+
+footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(var(--accent-rgb), 0.14);
+    color: #666;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
 
 @media (max-width: 600px) {
-
-    /* Space for the permanently fixed player */
-
-    body {
-        padding-top: 155px;
+    .container {
+        width: 88%;
+        padding-top: 30px;
+        padding-bottom: 80px;
     }
 
-    .page {
-        padding: 15px 12px 45px;
+    .logo {
+        font-size: 27px;
+        letter-spacing: 4px;
     }
 
-    .album-header {
-        margin-bottom: 20px;
-    }
-
-    .album-header h1 {
-        margin-top: 18px;
-    }
-
-    /* TRUE FIXED PLAYER */
-
-    .walkman {
-        position: fixed !important;
-
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-
-        width: 100% !important;
-        max-width: 100% !important;
-
-        margin: 0 !important;
-
-        z-index: 99999;
-
-        grid-template-columns: 1.12fr .88fr;
-        gap: 9px;
-        padding: 9px;
-
-        border-radius: 0 0 15px 15px;
-
-        background: rgba(7,6,11,.97);
-
-        backdrop-filter: blur(14px);
-        -webkit-backdrop-filter: blur(14px);
-
-        box-shadow:
-            0 5px 25px rgba(0,0,0,.8),
-            0 0 20px var(--accent-backlight);
-    }
-
-    .youtube-top {
-        height: 30px;
-        padding: 0 7px;
-        gap: 6px;
-    }
-
-    .artist-avatar {
-        width: 23px;
-        height: 23px;
-        font-size: 8px;
-    }
-
-    .artist-name {
-        font-size: 11px;
-    }
-
-    .top-icon {
-        font-size: 15px;
-    }
-
-    .walkman-info {
-        padding: 3px;
-    }
-
-    .player-label {
-        font-size: 8px;
-        letter-spacing: 1.5px;
-        margin-bottom: 8px;
-    }
-
-    #player-song {
-        font-size: 14px;
-        line-height: 1.2;
-        margin-bottom: 5px;
-    }
-
-    .player-subtitle {
-        font-size: 8px;
-        letter-spacing: .8px;
-        margin-bottom: 10px;
-    }
-
-    .time-row {
-        gap: 5px;
-        font-size: 9px;
-    }
-
-    #progress::-webkit-slider-thumb {
-        width: 13px;
-        height: 13px;
-    }
-
-    .controls {
-        gap: 9px;
-        margin-top: 12px;
-    }
-
-    .control-btn {
-        font-size: 15px;
-        padding: 3px;
-    }
-
-    #play-pause {
-        width: 43px;
-        height: 37px;
-        font-size: 18px;
-    }
-
-    #player-status {
-        font-size: 7px;
-        letter-spacing: 1px;
-        margin-top: 7px;
-    }
-
-    /* TRACKLIST */
-
-    .tracklist {
-        margin-top: 25px;
+    .album-title {
+        font-size: 24px;
     }
 
     .track {
-        min-height: 72px;
-        padding: 13px 15px;
-        gap: 10px;
-        border-radius: 19px;
+        padding: 15px 8px;
     }
 
-    .track-number {
-        font-size: 16px;
-        min-width: 27px;
-    }
-
-    .track-title {
+    .track-name {
         font-size: 14px;
     }
 
     .listen-btn {
-        padding: 9px 12px;
-        min-width: 75px;
-        font-size: 10px;
+        padding: 8px 12px;
+        font-size: 9px;
     }
-
 }
 
-/* ==================================
-   SMALL MOBILE
-================================== */
-
-@media (max-width: 360px) {
-
-    .walkman {
-        gap: 6px;
-        padding: 7px;
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
     }
-
-    .player-label {
-        font-size: 7px;
-        letter-spacing: 1px;
-    }
-
-    #player-song {
-        font-size: 12px;
-    }
-
-    .controls {
-        gap: 5px;
-    }
-
-    #play-pause {
-        width: 37px;
-        height: 34px;
-    }
-
-    .time-row {
-        font-size: 8px;
-    }
-
-    .track-title {
-        font-size: 13px;
-    }
-
 }
-
 </style>
 </head>
 
 <body>
 
-<main class="page">
+<div class="container">
 
-    <!-- ALBUM HEADER -->
+    <div class="header">
+        <div class="logo">ILTVIBE</div>
+        <div class="tagline">I LIKE THE VIBE</div>
+    </div>
 
-    <header class="album-header">
+    <img
+        src="ep-vibe.png"
+        alt="EP VIBE — ILTVIBE"
+        class="banner"
+    >
 
-        <div class="album-art">
-            <span>EP VIBE</span>
-        </div>
+    <div class="album-title">EP VIBE</div>
+    <div class="album-info">ILTVIBE · 08 TRACKS</div>
 
-        <h1>EP VIBE</h1>
-        <p>ILTVIBE · 8 TRACKS</p>
+    <div class="track">
+        <div class="track-name">01. FUBU</div>
+        <a class="listen-btn"
+           href="https://www.youtube.com/watch?v=aqJ6blP4fXc"
+           target="_blank" rel="noopener noreferrer">PLAY</a>
+    </div>
 
-    </header>
+    <div class="track">
+        <div class="track-name">02. Makaibang Mundo</div>
+        <a class="listen-btn"
+           href="https://www.youtube.com/watch?v=lowiO4EZ-Y8"
+           target="_blank" rel="noopener noreferrer">PLAY</a>
+    </div>
 
+    <div class="track">
+        <div class="track-name">03. Zhynn</div>
+        <a class="listen-btn"
+           href="https://www.youtube.com/watch?v=yj2BXvdIbvw"
+           target="_blank" rel="noopener noreferrer">PLAY</a>
+    </div>
 
-    <!-- WALKMAN PLAYER -->
+    <div class="track">
+        <div class="track-name">04. Ikaw Pa Rin</div>
+        <a class="listen-btn"
+           href="https://www.youtube.com/watch?v=t9k3DmYtcZ8"
+           target="_blank" rel="noopener noreferrer">PLAY</a>
+    </div>
 
-    <section class="walkman">
+    <div class="track">
+        <div class="track-name">05. 1004</div>
+        <a class="listen-btn"
+           href="https://www.youtube.com/watch?v=mDQvJEzrIWo"
+           target="_blank" rel="noopener noreferrer">PLAY</a>
+    </div>
 
-        <div class="youtube-section">
+    <div class="track">
+        <div class="track-name">06. ELAINE</div>
+        <a class="listen-btn"
+           href="https://www.youtube.com/watch?v=3wu6LRun8Aw"
+           target="_blank" rel="noopener noreferrer">PLAY</a>
+    </div>
 
-            <div class="youtube-top">
+    <div class="track">
+        <div class="track-name">07. Sa'yo Lang</div>
+        <a class="listen-btn"
+           href="https://www.youtube.com/watch?v=M-WCmXS8E3c"
+           target="_blank" rel="noopener noreferrer">PLAY</a>
+    </div>
 
-                <div class="artist-avatar">ILT</div>
+    <div class="track">
+        <div class="track-name">08. Ikaw Pa Rin (Studio Version)</div>
+        <a class="listen-btn"
+           href="https://www.youtube.com/watch?v=S4h_bfXUUuU"
+           target="_blank" rel="noopener noreferrer">PLAY</a>
+    </div>
 
-                <div class="artist-name">ILTVIBE</div>
+    <a href="index.html" class="back">← BACK TO ILTVIBE</a>
 
-                <span class="top-icon">▣</span>
-                <span class="top-icon">⚙</span>
+    <footer>
+        © 2026 ILTVIBE · I LIKE THE VIBE
+    </footer>
 
-            </div>
-
-            <div class="video-container">
-                <div id="yt-player"></div>
-            </div>
-
-        </div>
-
-
-        <!-- WALKMAN CONTROLS -->
-
-        <div class="walkman-info">
-
-            <div class="player-label">
-                ILTVIBE MINI PLAYER
-            </div>
-
-            <h2 id="player-song">FUBU</h2>
-
-            <div class="player-subtitle">
-                ILTVIBE · EP VIBE
-            </div>
-
-            <div class="time-row">
-
-                <span id="current-time">0:00</span>
-
-                <input
-                    type="range"
-                    id="progress"
-                    min="0"
-                    max="100"
-                    value="0"
-                >
-
-                <span id="duration">0:00</span>
-
-            </div>
-
-            <div class="controls">
-
-                <button
-                    class="control-btn"
-                    id="previous"
-                    aria-label="Previous"
-                >|◀</button>
-
-                <button
-                    class="control-btn"
-                    id="play-pause"
-                    aria-label="Play"
-                >▶</button>
-
-                <button
-                    class="control-btn"
-                    id="next"
-                    aria-label="Next"
-                >▶|</button>
-
-            </div>
-
-            <div id="player-status">
-                READY TO PLAY
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- TRACKLIST -->
-
-    <section class="tracklist">
-
-        <div class="track">
-            <span class="track-number">01</span>
-            <span class="track-title">FUBU</span>
-            <button class="listen-btn">PLAY</button>
-        </div>
-
-        <div class="track">
-            <span class="track-number">02</span>
-            <span class="track-title">Makaibang Mundo</span>
-            <button class="listen-btn">PLAY</button>
-        </div>
-
-        <div class="track">
-            <span class="track-number">03</span>
-            <span class="track-title">Zhynn</span>
-            <button class="listen-btn">PLAY</button>
-        </div>
-
-        <div class="track">
-            <span class="track-number">04</span>
-            <span class="track-title">Ikaw Pa Rin</span>
-            <button class="listen-btn">PLAY</button>
-        </div>
-
-        <div class="track">
-            <span class="track-number">05</span>
-            <span class="track-title">1004</span>
-            <button class="listen-btn">PLAY</button>
-        </div>
-
-        <div class="track">
-            <span class="track-number">06</span>
-            <span class="track-title">ELAINE</span>
-            <button class="listen-btn">PLAY</button>
-        </div>
-
-        <div class="track">
-            <span class="track-number">07</span>
-            <span class="track-title">Sa'yo Lang</span>
-            <button class="listen-btn">PLAY</button>
-        </div>
-
-        <div class="track">
-            <span class="track-number">08</span>
-            <span class="track-title">Ikaw Pa Rin (Studio Version)</span>
-            <button class="listen-btn">PLAY</button>
-        </div>
-
-    </section>
-
-</main>
-
+</div>
 
 <script>
-
-/* ==================================
-   RANDOM RGB THEME
-================================== */
+/* RANDOM RGB THEME */
 
 const themes = [
     { name: "Electric Purple", color: "#A78BFA", rgb: "167, 139, 250" },
@@ -755,13 +328,15 @@ let previousTheme = null;
 
 try {
     previousTheme = localStorage.getItem("iltvibeTheme");
-} catch (error) {}
+} catch (error) {
+    previousTheme = null;
+}
 
 let availableThemes = themes.filter(
     theme => theme.name !== previousTheme
 );
 
-if (!availableThemes.length) {
+if (availableThemes.length === 0) {
     availableThemes = themes;
 }
 
@@ -779,354 +354,9 @@ root.style.setProperty("--accent-backlight", `rgba(${selectedTheme.rgb}, 0.13)`)
 
 try {
     localStorage.setItem("iltvibeTheme", selectedTheme.name);
-} catch (error) {}
-
-
-/* ==================================
-   EP VIBE TRACKLIST
-================================== */
-
-const tracks = [
-    { title: "FUBU", id: "aqJ6blP4fXc" },
-    { title: "Makaibang Mundo", id: "lowiO4EZ-Y8" },
-    { title: "Zhynn", id: "yj2BXvdIbvw" },
-    { title: "Ikaw Pa Rin", id: "t9k3DmYtcZ8" },
-    { title: "1004", id: "mDQvJEzrIWo" },
-    { title: "ELAINE", id: "3wu6LRun8Aw" },
-    { title: "Sa'yo Lang", id: "M-WCmXS8E3c" },
-    { title: "Ikaw Pa Rin (Studio Version)", id: "S4h_bfXUUuU" }
-];
-
-let currentTrack = 0;
-let player = null;
-let playerReady = false;
-let progressTimer = null;
-let isSeeking = false;
-
-const songTitle = document.getElementById("player-song");
-const playPauseButton = document.getElementById("play-pause");
-const progressSlider = document.getElementById("progress");
-const currentTimeDisplay = document.getElementById("current-time");
-const durationDisplay = document.getElementById("duration");
-const playerStatus = document.getElementById("player-status");
-
-
-/* ==================================
-   YOUTUBE IFRAME API
-================================== */
-
-const youtubeScript = document.createElement("script");
-youtubeScript.src = "https://www.youtube.com/iframe_api";
-
-document.head.appendChild(youtubeScript);
-
-window.onYouTubeIframeAPIReady = function() {
-
-    player = new YT.Player("yt-player", {
-
-        width: "200",
-        height: "200",
-
-        videoId: tracks[0].id,
-
-        playerVars: {
-            autoplay: 0,
-            controls: 1,
-            playsinline: 1,
-            rel: 0,
-            enablejsapi: 1,
-            origin: window.location.origin
-        },
-
-        events: {
-
-            onReady: function() {
-
-                playerReady = true;
-
-                playerStatus.textContent = "READY TO PLAY";
-
-                updateTrackHighlight();
-                startProgressTimer();
-
-            },
-
-            onStateChange: function(event) {
-
-                if (event.data === YT.PlayerState.PLAYING) {
-
-                    playPauseButton.textContent = "Ⅱ";
-                    playPauseButton.setAttribute("aria-label", "Pause");
-
-                    playerStatus.textContent = "NOW PLAYING";
-
-                    updateTrackHighlight();
-
-                }
-
-                else if (event.data === YT.PlayerState.PAUSED) {
-
-                    playPauseButton.textContent = "▶";
-                    playPauseButton.setAttribute("aria-label", "Play");
-
-                    playerStatus.textContent = "PAUSED";
-
-                }
-
-                else if (event.data === YT.PlayerState.ENDED) {
-
-                    playNextTrack();
-
-                }
-
-                else if (event.data === YT.PlayerState.BUFFERING) {
-
-                    playerStatus.textContent = "LOADING...";
-
-                }
-
-                else if (event.data === YT.PlayerState.CUED) {
-
-                    playPauseButton.textContent = "▶";
-                    playerStatus.textContent = "READY TO PLAY";
-
-                }
-
-            },
-
-            onError: function() {
-
-                playerStatus.textContent = "VIDEO UNAVAILABLE";
-
-            }
-
-        }
-
-    });
-
-};
-
-
-/* ==================================
-   TRACK SELECTION
-================================== */
-
-function selectTrack(index) {
-
-    if (index < 0 || index >= tracks.length) return;
-
-    currentTrack = index;
-
-    const track = tracks[currentTrack];
-
-    songTitle.textContent = track.title;
-
-    resetProgress();
-    updateTrackHighlight();
-
-    if (!playerReady || !player) {
-
-        playerStatus.textContent = "PLAYER IS LOADING...";
-        return;
-
-    }
-
-    playerStatus.textContent = "LOADING...";
-
-    player.loadVideoById({
-        videoId: track.id,
-        suggestedQuality: "large"
-    });
-
+} catch (error) {
+    // The page still works if browser storage is unavailable.
 }
-
-function updateTrackHighlight() {
-
-    document.querySelectorAll(".track").forEach((element, index) => {
-
-        const button = element.querySelector(".listen-btn");
-
-        if (index === currentTrack) {
-
-            element.classList.add("active");
-            button.textContent = "SELECTED";
-
-        } else {
-
-            element.classList.remove("active");
-            button.textContent = "PLAY";
-
-        }
-
-    });
-
-}
-
-document.querySelectorAll(".track").forEach((element, index) => {
-
-    element.querySelector(".listen-btn").addEventListener("click", () => {
-
-        selectTrack(index);
-
-    });
-
-});
-
-
-/* ==================================
-   WALKMAN PLAY / PAUSE
-================================== */
-
-playPauseButton.addEventListener("click", function() {
-
-    if (!playerReady || !player) {
-
-        playerStatus.textContent = "PLAYER IS LOADING...";
-        return;
-
-    }
-
-    const state = player.getPlayerState();
-
-    if (state === YT.PlayerState.PLAYING) {
-
-        player.pauseVideo();
-
-    } else {
-
-        player.unMute();
-        player.playVideo();
-
-        playerStatus.textContent = "LOADING...";
-
-    }
-
-});
-
-
-/* ==================================
-   PREVIOUS / NEXT
-================================== */
-
-document.getElementById("previous").addEventListener("click", function() {
-
-    const previousIndex =
-        (currentTrack - 1 + tracks.length) % tracks.length;
-
-    selectTrack(previousIndex);
-
-});
-
-document.getElementById("next").addEventListener("click", function() {
-
-    playNextTrack();
-
-});
-
-function playNextTrack() {
-
-    const nextIndex = (currentTrack + 1) % tracks.length;
-
-    selectTrack(nextIndex);
-
-}
-
-
-/* ==================================
-   PROGRESS BAR
-================================== */
-
-function formatTime(seconds) {
-
-    if (!Number.isFinite(seconds)) return "0:00";
-
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = Math.floor(seconds % 60);
-
-    return minutes + ":" +
-        String(remainingSeconds).padStart(2, "0");
-
-}
-
-function startProgressTimer() {
-
-    if (progressTimer) clearInterval(progressTimer);
-
-    progressTimer = setInterval(function() {
-
-        if (!playerReady || !player || isSeeking) return;
-
-        const current = player.getCurrentTime() || 0;
-        const total = player.getDuration() || 0;
-
-        currentTimeDisplay.textContent = formatTime(current);
-        durationDisplay.textContent = formatTime(total);
-
-        progressSlider.value = total > 0
-            ? (current / total) * 100
-            : 0;
-
-    }, 500);
-
-}
-
-function resetProgress() {
-
-    progressSlider.value = 0;
-
-    currentTimeDisplay.textContent = "0:00";
-    durationDisplay.textContent = "0:00";
-
-}
-
-
-/* ==================================
-   SEEKING
-================================== */
-
-progressSlider.addEventListener("input", function() {
-
-    isSeeking = true;
-
-    const total = playerReady && player
-        ? player.getDuration()
-        : 0;
-
-    if (total > 0) {
-
-        const targetTime =
-            (Number(progressSlider.value) / 100) * total;
-
-        currentTimeDisplay.textContent = formatTime(targetTime);
-
-    }
-
-});
-
-progressSlider.addEventListener("change", function() {
-
-    if (!playerReady || !player) {
-
-        isSeeking = false;
-        return;
-
-    }
-
-    const total = player.getDuration() || 0;
-
-    if (total > 0) {
-
-        const targetTime =
-            (Number(progressSlider.value) / 100) * total;
-
-        player.seekTo(targetTime, true);
-
-    }
-
-    isSeeking = false;
-
-});
-
 </script>
 
 </body>
