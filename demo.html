@@ -10,37 +10,68 @@
   <style>
     :root {
       --bg: #000000;
-      --card: #101218;
-      --card-hover: #171321;
+      --card: #0c0c0c;
+      --card-hover: #111111;
       --text: #f5f5f7;
       --muted: #9297a4;
-      --line: rgba(255,255,255,0.09);
-      --accent: #a78bfa;
+
+      --accent: #A78BFA;
+      --accent-rgb: 167,139,250;
+      --accent-soft: rgba(167,139,250,0.10);
+      --accent-border: rgba(167,139,250,0.35);
+      --accent-glow: rgba(167,139,250,0.28);
     }
 
     * {
       box-sizing: border-box;
     }
 
+    html {
+      background: #000000;
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
+      background: #000000;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      position: relative;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
       background:
         radial-gradient(
           ellipse at 50% 0%,
-          rgba(124, 58, 237, 0.16),
+          var(--accent-glow),
+          transparent 48%
+        ),
+        radial-gradient(
+          ellipse at 0% 55%,
+          rgba(var(--accent-rgb),0.08),
           transparent 42%
         ),
-        #000000;
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
+        radial-gradient(
+          ellipse at 100% 85%,
+          rgba(var(--accent-rgb),0.07),
+          transparent 40%
+        );
     }
 
     /* HEADER */
 
     header {
+      position: relative;
+      z-index: 1;
       text-align: center;
       padding: 42px 20px 28px;
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid var(--accent-border);
     }
 
     .logo {
@@ -48,7 +79,7 @@
       font-weight: 800;
       letter-spacing: 0.18em;
       color: #ffffff;
-      text-shadow: 0 0 18px rgba(167,139,250,0.25);
+      text-shadow: 0 0 18px var(--accent-glow);
     }
 
     .tagline {
@@ -61,6 +92,8 @@
     /* MAIN */
 
     main {
+      position: relative;
+      z-index: 1;
       width: min(760px, calc(100% - 30px));
       margin: auto;
       padding: 35px 0 60px;
@@ -74,8 +107,9 @@
     .intro h1 {
       margin: 0 0 10px;
       font-size: clamp(30px, 8vw, 44px);
-      color: #ffffff;
+      color: var(--accent);
       letter-spacing: 0.03em;
+      text-shadow: 0 0 18px var(--accent-glow);
     }
 
     .intro p {
@@ -91,10 +125,10 @@
     .notice {
       margin-bottom: 25px;
       padding: 14px 16px;
-      border: 1px solid var(--line);
+      border: 1px solid var(--accent-border);
       border-left: 3px solid var(--accent);
       border-radius: 14px;
-      background: rgba(255,255,255,0.025);
+      background: var(--accent-soft);
       color: #c6c9d2;
       font-size: 12px;
       line-height: 1.55;
@@ -105,21 +139,24 @@
     .behind {
       margin-bottom: 32px;
       padding: 22px 20px;
-      border: 1px solid rgba(167,139,250,0.20);
+      border: 1px solid var(--accent-border);
       border-radius: 16px;
       background: linear-gradient(
         145deg,
         #111018,
-        #0b0b10
+        #080808
       );
-      box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+      box-shadow:
+        0 10px 35px rgba(0,0,0,0.35),
+        0 0 20px rgba(var(--accent-rgb),0.07);
     }
 
     .behind h2 {
       margin: 0 0 14px;
       font-size: 18px;
       letter-spacing: 0.04em;
-      color: #d8ccff;
+      color: var(--accent);
+      text-shadow: 0 0 12px var(--accent-glow);
     }
 
     .behind p {
@@ -145,7 +182,7 @@
     .demo {
       margin-bottom: 22px;
       overflow: hidden;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(255,255,255,0.10);
       border-radius: 18px;
       background: linear-gradient(
         145deg,
@@ -153,12 +190,16 @@
         var(--card-hover)
       );
       box-shadow: 0 15px 45px rgba(0,0,0,0.30);
-      transition: border-color 0.25s ease, transform 0.25s ease;
+      transition: border-color 0.25s ease, transform 0.25s ease,
+                  box-shadow 0.25s ease;
     }
 
     .demo:hover {
-      border-color: rgba(167,139,250,0.35);
+      border-color: var(--accent-border);
       transform: translateY(-2px);
+      box-shadow:
+        0 15px 45px rgba(0,0,0,0.35),
+        0 0 20px rgba(var(--accent-rgb),0.10);
     }
 
     .demo-info {
@@ -181,10 +222,10 @@
       display: inline-block;
       margin-top: 9px;
       padding: 4px 8px;
-      border: 1px solid rgba(157,124,255,0.40);
+      border: 1px solid var(--accent-border);
       border-radius: 999px;
-      background: rgba(157,124,255,0.08);
-      color: #c5b8ff;
+      background: var(--accent-soft);
+      color: var(--accent);
       font-size: 10px;
       letter-spacing: 0.08em;
     }
@@ -217,21 +258,24 @@
     /* FOOTER */
 
     footer {
+      position: relative;
+      z-index: 1;
       text-align: center;
       padding: 15px 20px 40px;
       color: var(--muted);
       font-size: 12px;
       line-height: 1.7;
-      border-top: 1px solid var(--line);
+      border-top: 1px solid var(--accent-border);
     }
 
     footer a {
       color: var(--text);
       text-decoration: none;
+      transition: 0.2s ease;
     }
 
     footer a:hover {
-      color: #c5b8ff;
+      color: var(--accent);
       text-decoration: underline;
     }
 
@@ -241,7 +285,7 @@
       display: inline-block;
       margin-top: 18px;
       padding: 11px 24px;
-      border: 1px solid rgba(167,139,250,0.30);
+      border: 1px solid var(--accent-border);
       border-radius: 8px;
       color: var(--text);
       text-decoration: none;
@@ -250,11 +294,51 @@
     }
 
     .back-home:hover {
-      background: rgba(157,124,255,0.10);
+      background: var(--accent-soft);
       border-color: var(--accent);
+      box-shadow: 0 0 15px var(--accent-glow);
       text-decoration: none;
     }
 
+    /* MOBILE */
+
+    @media (max-width: 500px) {
+      header {
+        padding: 35px 20px 25px;
+      }
+
+      .logo {
+        font-size: 24px;
+      }
+
+      main {
+        padding-top: 30px;
+      }
+
+      .behind {
+        padding: 19px 16px;
+      }
+
+      .demo-info {
+        padding: 16px;
+      }
+
+      .demo-title {
+        font-size: 16px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
   </style>
 </head>
 
@@ -354,6 +438,7 @@
       <iframe
         src="https://www.youtube.com/embed/pwDb1W2qojU?rel=0"
         title="ILTVIBE - 1004 Demo"
+        loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen>
       </iframe>
@@ -387,6 +472,7 @@
       <iframe
         src="https://www.youtube.com/embed/WH34hKf--rc?rel=0"
         title="ILTVIBE - Sinta Demo"
+        loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen>
       </iframe>
@@ -410,7 +496,7 @@
       </div>
 
       <div class="demo-label">
-        Demo
+        DEMO
       </div>
 
     </div>
@@ -420,6 +506,7 @@
       <iframe
         src="https://www.youtube.com/embed/fbWJb4N8zz4?rel=0"
         title="ILTVIBE Demo 03"
+        loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen>
       </iframe>
@@ -453,6 +540,7 @@
       <iframe
         src="https://www.youtube.com/embed/2YRIVjCZGzs?rel=0"
         title="ILTVIBE Demo 04"
+        loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen>
       </iframe>
@@ -486,6 +574,7 @@
       <iframe
         src="https://www.youtube.com/embed/VIDEO_ID_05?rel=0"
         title="ILTVIBE Demo 05"
+        loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen>
       </iframe>
@@ -519,6 +608,7 @@
       <iframe
         src="https://www.youtube.com/embed/VIDEO_ID_06?rel=0"
         title="ILTVIBE Demo 06"
+        loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen>
       </iframe>
@@ -552,6 +642,7 @@
       <iframe
         src="https://www.youtube.com/embed/VIDEO_ID_07?rel=0"
         title="ILTVIBE Demo 07"
+        loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen>
       </iframe>
@@ -585,6 +676,7 @@
       <iframe
         src="https://www.youtube.com/embed/VIDEO_ID_08?rel=0"
         title="ILTVIBE Demo 08"
+        loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen>
       </iframe>
@@ -618,6 +710,7 @@
       <iframe
         src="https://www.youtube.com/embed/VIDEO_ID_09?rel=0"
         title="ILTVIBE Demo 09"
+        loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen>
       </iframe>
@@ -651,6 +744,7 @@
       <iframe
         src="https://www.youtube.com/embed/VIDEO_ID_10?rel=0"
         title="ILTVIBE Demo 10"
+        loading="lazy"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen>
       </iframe>
@@ -676,6 +770,69 @@
   </a>
 
 </footer>
+
+<script>
+  const themes = [
+    { name: "Electric Purple", accent: "#A78BFA", rgb: "167,139,250" },
+    { name: "Neon Blue", accent: "#60A5FA", rgb: "96,165,250" },
+    { name: "Cyber Cyan", accent: "#22D3EE", rgb: "34,211,238" },
+    { name: "Neon Pink", accent: "#F472B6", rgb: "244,114,182" },
+    { name: "Champagne Gold", accent: "#FBBF24", rgb: "251,191,36" },
+    { name: "Emerald Green", accent: "#34D399", rgb: "52,211,153" },
+    { name: "Deep Crimson", accent: "#FB7185", rgb: "251,113,133" },
+    { name: "Violet", accent: "#C084FC", rgb: "192,132,252" }
+  ];
+
+  let previousTheme = null;
+
+  try {
+    previousTheme = localStorage.getItem("iltvibeTheme");
+  } catch (error) {
+    previousTheme = null;
+  }
+
+  let availableThemes = themes.filter(
+    theme => theme.name !== previousTheme
+  );
+
+  if (availableThemes.length === 0) {
+    availableThemes = themes;
+  }
+
+  const selectedTheme =
+    availableThemes[Math.floor(Math.random() * availableThemes.length)];
+
+  document.documentElement.style.setProperty(
+    "--accent",
+    selectedTheme.accent
+  );
+
+  document.documentElement.style.setProperty(
+    "--accent-rgb",
+    selectedTheme.rgb
+  );
+
+  document.documentElement.style.setProperty(
+    "--accent-soft",
+    `rgba(${selectedTheme.rgb},0.10)`
+  );
+
+  document.documentElement.style.setProperty(
+    "--accent-border",
+    `rgba(${selectedTheme.rgb},0.35)`
+  );
+
+  document.documentElement.style.setProperty(
+    "--accent-glow",
+    `rgba(${selectedTheme.rgb},0.28)`
+  );
+
+  try {
+    localStorage.setItem("iltvibeTheme", selectedTheme.name);
+  } catch (error) {
+    // The page still works if localStorage is unavailable.
+  }
+</script>
 
 </body>
 </html>
