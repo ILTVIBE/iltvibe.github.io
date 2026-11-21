@@ -5,464 +5,468 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>EP VIBE - ILTVIBE</title>
-<meta name="description" content="EP VIBE - Official Album by ILTVIBE.">
+<meta name="theme-color" content="#000000">
 
 <style>
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 }
 
 :root {
-    --accent: #a855f7;
-    --accent-rgb: 168, 85, 247;
+    --accent: #A78BFA;
+    --accent-rgb: 167, 139, 250;
+    --accent-soft: rgba(167, 139, 250, 0.12);
+    --accent-border: rgba(167, 139, 250, 0.35);
+    --accent-glow: rgba(167, 139, 250, 0.28);
+    --accent-backlight: rgba(167, 139, 250, 0.13);
+}
+
+html {
+    background: #000;
 }
 
 body {
-    background: #050505;
+    margin: 0;
+    background: #000;
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
     min-height: 100vh;
-    padding-bottom: 110px;
+    position: relative;
+    isolation: isolate;
 }
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
+    z-index: -1;
     pointer-events: none;
     background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(var(--accent-rgb), 0.12),
-            transparent 45%
-        );
-    z-index: -1;
+        radial-gradient(ellipse at 50% 0%, var(--accent-backlight), transparent 55%),
+        radial-gradient(ellipse at 0% 50%, rgba(var(--accent-rgb), 0.07), transparent 45%),
+        radial-gradient(ellipse at 100% 80%, rgba(var(--accent-rgb), 0.06), transparent 45%);
 }
 
-/* HEADER */
+.container {
+    width: 90%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 0 280px;
+}
 
-header {
-    width: 100%;
-    padding: 22px 18px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.header {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .logo {
-    color: var(--accent);
-    font-size: 19px;
-    font-weight: 900;
-    letter-spacing: 2px;
-    text-shadow: 0 0 12px rgba(var(--accent-rgb), .5);
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    margin-bottom: 8px;
+    text-shadow: 0 0 18px var(--accent-glow);
 }
 
-.back-link {
-    color: #aaa;
-    text-decoration: none;
-    font-size: 13px;
-    transition: .3s;
+.tagline {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: #999;
 }
 
-.back-link:hover {
-    color: var(--accent);
-}
-
-/* ALBUM */
-
-.container {
-    width: min(100% - 32px, 680px);
-    margin: 15px auto 60px;
-}
-
-.album-cover {
+.banner {
     width: 100%;
-    border-radius: 15px;
-    overflow: hidden;
-    border: 1px solid rgba(var(--accent-rgb), .35);
-    box-shadow: 0 0 30px rgba(var(--accent-rgb), .13);
-}
-
-.album-cover img {
-    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
     display: block;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    border: 1px solid var(--accent-border);
+    box-shadow:
+        0 0 18px var(--accent-glow),
+        0 0 45px rgba(var(--accent-rgb), 0.08);
+}
+
+.album-title {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    text-shadow: 0 0 14px var(--accent-glow);
 }
 
 .album-info {
-    margin: 25px 0 30px;
-}
-
-.album-info h1 {
-    font-size: clamp(30px, 8vw, 48px);
-    font-weight: 900;
-    letter-spacing: 3px;
-    color: #fff;
-}
-
-.album-info .artist {
+    font-size: 12px;
     color: var(--accent);
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 3px;
-    margin-top: 8px;
-}
-
-.album-info .count {
-    color: #777;
-    font-size: 11px;
     letter-spacing: 2px;
-    margin-top: 8px;
-}
-
-/* TRACKLIST */
-
-.tracklist {
-    border-top: 1px solid #242424;
+    margin-bottom: 30px;
 }
 
 .track {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 15px;
     padding: 17px 12px;
-    border-bottom: 1px solid #202020;
-    transition: .25s;
-    cursor: pointer;
+    border-bottom: 1px solid rgba(var(--accent-rgb), 0.16);
+    transition: 0.25s ease;
 }
 
 .track:hover {
-    background: rgba(var(--accent-rgb), .07);
+    background: var(--accent-soft);
+    border-bottom-color: var(--accent-border);
+    box-shadow: 0 0 18px rgba(var(--accent-rgb), 0.06);
+}
+
+.track-name {
+    font-size: 15px;
+    line-height: 1.4;
+    transition: 0.2s ease;
+}
+
+.track:hover .track-name {
+    color: var(--accent);
+}
+
+.listen-btn {
+    flex-shrink: 0;
+    display: inline-block;
+    padding: 9px 16px;
+    border: 1px solid var(--accent-border);
+    border-radius: 3px;
+    color: #fff;
+    background: transparent;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.listen-btn:hover {
+    background: var(--accent);
+    color: #000;
+    border-color: var(--accent);
+    box-shadow: 0 0 15px var(--accent-glow);
 }
 
 .track.active {
-    background: rgba(var(--accent-rgb), .10);
+    background: var(--accent-soft);
+    border-bottom-color: var(--accent-border);
 }
 
-.track-number {
-    color: #666;
-    font-size: 12px;
-    width: 22px;
-}
-
-.track.active .track-number {
+.track.active .track-name {
     color: var(--accent);
+    text-shadow: 0 0 10px var(--accent-glow);
 }
 
-.track-details {
-    flex: 1;
-    min-width: 0;
+.back {
+    display: inline-block;
+    margin-top: 35px;
+    color: #999;
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 2px;
+    transition: 0.2s ease;
 }
 
-.track-title {
-    font-size: 14px;
-    font-weight: bold;
-    color: #eee;
-}
-
-.track.active .track-title {
+.back:hover {
     color: var(--accent);
+    text-shadow: 0 0 12px var(--accent-glow);
 }
-
-.track-artist {
-    color: #666;
-    font-size: 10px;
-    margin-top: 5px;
-    letter-spacing: 1px;
-}
-
-.track-action {
-    border: 1px solid rgba(var(--accent-rgb), .5);
-    color: var(--accent);
-    background: transparent;
-    padding: 7px 13px;
-    border-radius: 20px;
-    font-size: 10px;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: .25s;
-}
-
-.track-action:hover {
-    background: var(--accent);
-    color: #000;
-}
-
-/* FOOTER */
 
 footer {
     text-align: center;
-    color: #555;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(var(--accent-rgb), 0.14);
+    color: #666;
     font-size: 10px;
     letter-spacing: 2px;
-    padding: 30px 15px;
 }
 
-/* FLOATING MINI PLAYER */
+/* ==================================
+   ILTVIBE MINI PLAYER
+================================== */
 
 .mini-player {
     position: fixed;
     z-index: 1000;
     left: 50%;
-    bottom: 18px;
+    bottom: 12px;
     transform: translateX(-50%);
-    width: min(92%, 440px);
-    background: rgba(15, 15, 18, .96);
-    border: 1px solid rgba(var(--accent-rgb), .55);
-    border-radius: 13px;
-    padding: 11px 13px;
+    width: min(720px, calc(100% - 24px));
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    background: rgba(8, 8, 12, 0.97);
+    border: 1px solid var(--accent-border);
+    border-radius: 10px;
     box-shadow:
-        0 0 22px rgba(var(--accent-rgb), .18),
-        0 8px 30px rgba(0,0,0,.7);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    transition: .3s ease;
+        0 0 18px var(--accent-glow),
+        0 0 45px rgba(var(--accent-rgb), 0.12);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.mini-player:hover {
-    border-color: var(--accent);
-    box-shadow: 0 0 25px rgba(var(--accent-rgb), .3);
-}
-
-.mini-icon {
-    width: 40px;
-    height: 40px;
+.player-video {
+    width: 200px;
+    height: 200px;
     flex-shrink: 0;
-    border-radius: 9px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(var(--accent-rgb), .14);
-    color: var(--accent);
-    font-size: 19px;
-    box-shadow: inset 0 0 12px rgba(var(--accent-rgb), .12);
+    overflow: hidden;
+    border-radius: 5px;
+    background: #000;
+    border: 1px solid rgba(var(--accent-rgb), 0.3);
 }
 
-.mini-info {
+.player-video iframe {
+    display: block;
+    width: 200px;
+    height: 200px;
+    border: 0;
+}
+
+.player-details {
     flex: 1;
     min-width: 0;
+    padding: 5px 8px 5px 0;
+    cursor: default;
+    transition: all 0.3s ease;
 }
 
-.mini-title {
-    font-size: 12px;
-    font-weight: bold;
-    color: #fff;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.mini-subtitle {
+.player-label {
+    color: var(--accent);
     font-size: 9px;
-    color: var(--accent);
-    letter-spacing: 1.5px;
-    margin-top: 5px;
-}
-
-.mini-expand {
-    color: var(--accent);
-    font-size: 19px;
-    padding: 5px;
-}
-
-/* EXPANDED PLAYER */
-
-.player-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 1100;
-    background: rgba(0,0,0,.82);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    display: none;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 15px;
-}
-
-.player-overlay.open {
-    display: flex;
-}
-
-.expanded-player {
-    width: min(100%, 430px);
-    background: #101012;
-    border: 1px solid rgba(var(--accent-rgb), .5);
-    border-radius: 19px;
-    padding: 17px;
-    box-shadow: 0 0 35px rgba(var(--accent-rgb), .18);
-    animation: slideUp .3s ease;
-}
-
-@keyframes slideUp {
-    from {
-        transform: translateY(35px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.player-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 14px;
-}
-
-.player-brand {
-    color: var(--accent);
-    font-size: 11px;
-    font-weight: bold;
-    letter-spacing: 3px;
-}
-
-.close-player {
-    width: 32px;
-    height: 32px;
-    border: 1px solid #333;
-    border-radius: 50%;
-    color: #aaa;
-    background: #191919;
-    font-size: 17px;
-    cursor: pointer;
-}
-
-.youtube-frame {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    min-height: 200px;
-    background: #000;
-    border-radius: 11px;
-    overflow: hidden;
-    border: 1px solid rgba(var(--accent-rgb), .3);
-}
-
-#yt-player {
-    width: 100%;
-    height: 100%;
-}
-
-#yt-player iframe {
-    width: 100%;
-    height: 100%;
-}
-
-.now-playing {
-    margin: 17px 0 12px;
-}
-
-.now-playing-label {
-    font-size: 9px;
-    color: var(--accent);
     letter-spacing: 2px;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
 }
 
-.now-playing-title {
-    color: white;
-    font-size: 17px;
+.player-song {
+    font-size: 16px;
     font-weight: bold;
+    line-height: 1.4;
+    margin-bottom: 5px;
+    overflow-wrap: anywhere;
 }
 
-.now-playing-artist {
-    color: #777;
-    font-size: 10px;
-    margin-top: 5px;
+.player-artist {
+    color: #888;
+    font-size: 11px;
     letter-spacing: 1px;
+    margin-bottom: 18px;
 }
-
-/* PROGRESS */
 
 .progress-area {
-    margin: 16px 0 8px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 15px;
+}
+
+.time {
+    color: #999;
+    font-size: 9px;
+    min-width: 29px;
+    font-variant-numeric: tabular-nums;
 }
 
 .progress-slider {
-    width: 100%;
+    flex: 1;
+    min-width: 0;
     height: 4px;
     accent-color: var(--accent);
     cursor: pointer;
 }
 
-.time-labels {
-    display: flex;
-    justify-content: space-between;
-    color: #777;
-    font-size: 9px;
-    margin-top: 7px;
-}
-
-/* CONTROLS */
-
-.controls {
+.player-controls {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 30px;
-    margin: 16px 0 10px;
+    gap: 18px;
 }
 
-.control-btn {
-    background: transparent;
+.player-control {
+    width: 34px;
+    height: 34px;
     border: none;
-    color: #ddd;
-    font-size: 22px;
+    background: transparent;
+    color: #fff;
+    font-size: 19px;
     cursor: pointer;
-    transition: .2s;
+    transition: 0.2s ease;
 }
 
-.control-btn:hover {
+.player-control:hover {
     color: var(--accent);
-    transform: scale(1.1);
+    text-shadow: 0 0 12px var(--accent-glow);
 }
 
-.play-btn {
-    width: 49px;
-    height: 49px;
+.player-control.main {
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     background: var(--accent);
-    color: #080808;
+    color: #000;
     font-size: 19px;
-    font-weight: bold;
-    box-shadow: 0 0 20px rgba(var(--accent-rgb), .35);
+    box-shadow: 0 0 15px var(--accent-glow);
 }
 
-.play-btn:hover {
-    color: #000;
-    background: #fff;
+.player-control.main:hover {
+    transform: scale(1.06);
 }
 
 .player-status {
-    text-align: center;
-    color: #666;
+    color: #777;
     font-size: 9px;
-    letter-spacing: 1.5px;
-    margin-top: 10px;
+    text-align: center;
+    margin-top: 12px;
+    letter-spacing: 1px;
 }
 
-@media (max-width: 480px) {
+/* ==================================
+   COMPACT PLAYER MODE
+================================== */
+
+.mini-player.compact .player-details {
+    align-self: center;
+    height: 48px;
+    padding: 0 8px 0 0;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.mini-player.compact .player-details::after {
+    content: "TAP TO EXPAND  ＋";
+    display: block;
+    color: var(--accent);
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    margin-top: 5px;
+}
+
+.mini-player.compact .player-label,
+.mini-player.compact .player-artist,
+.mini-player.compact .progress-area,
+.mini-player.compact .player-controls,
+.mini-player.compact .player-status {
+    display: none;
+}
+
+.mini-player.compact .player-song {
+    font-size: 13px;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 600px) {
     .container {
-        margin-top: 5px;
+        width: 88%;
+        padding-top: 30px;
+        padding-bottom: 280px;
     }
 
-    .player-overlay {
-        padding: 10px;
+    .logo {
+        font-size: 27px;
+        letter-spacing: 4px;
     }
 
-    .expanded-player {
-        padding: 13px;
+    .album-title {
+        font-size: 24px;
     }
 
-    .controls {
-        gap: 25px;
+    .track {
+        padding: 15px 8px;
+    }
+
+    .track-name {
+        font-size: 14px;
+    }
+
+    .listen-btn {
+        padding: 8px 12px;
+        font-size: 9px;
+    }
+
+    .mini-player {
+        gap: 10px;
+        padding: 8px;
+        min-height: 216px;
+    }
+
+    .player-video,
+    .player-video iframe {
+        width: 200px;
+        height: 200px;
+    }
+
+    .player-details {
+        padding-right: 2px;
+    }
+
+    .player-song {
+        font-size: 13px;
+    }
+
+    .player-artist {
+        font-size: 9px;
+        margin-bottom: 14px;
+    }
+
+    .player-controls {
+        gap: 8px;
+    }
+
+    .player-control {
+        width: 29px;
+        height: 32px;
+        font-size: 17px;
+    }
+
+    .player-control.main {
+        width: 37px;
+        height: 37px;
+    }
+
+    .player-label {
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 360px) {
+    .mini-player {
+        gap: 7px;
+        padding: 6px;
+    }
+
+    .player-video,
+    .player-video iframe {
+        width: 200px;
+        height: 200px;
+    }
+
+    .player-controls {
+        gap: 3px;
+    }
+
+    .player-control {
+        width: 25px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
     }
 }
 </style>
@@ -470,178 +474,165 @@ footer {
 
 <body>
 
-<header>
-    <div class="logo">ILTVIBE</div>
-    <a href="index.html" class="back-link">← BACK</a>
-</header>
+<div class="container">
 
-<main class="container">
-
-    <div class="album-cover">
-        <img src="ep-vibe.png" alt="EP VIBE Album Cover">
+    <div class="header">
+        <div class="logo">ILTVIBE</div>
+        <div class="tagline">I LIKE THE VIBE</div>
     </div>
 
-    <section class="album-info">
-        <h1>EP VIBE</h1>
-        <div class="artist">ILTVIBE</div>
-        <div class="count">08 TRACKS</div>
-    </section>
+    <img
+        src="ep-vibe.png"
+        alt="EP VIBE — ILTVIBE"
+        class="banner"
+    >
 
-    <section class="tracklist" id="tracklist">
+    <div class="album-title">EP VIBE</div>
+    <div class="album-info">ILTVIBE · 08 TRACKS</div>
 
-        <div class="track" data-index="0">
-            <span class="track-number">01</span>
-            <div class="track-details">
-                <div class="track-title">FUBU</div>
-                <div class="track-artist">ILTVIBE</div>
-            </div>
-            <button class="track-action">PLAY</button>
-        </div>
-
-        <div class="track" data-index="1">
-            <span class="track-number">02</span>
-            <div class="track-details">
-                <div class="track-title">Makaibang Mundo</div>
-                <div class="track-artist">ILTVIBE</div>
-            </div>
-            <button class="track-action">PLAY</button>
-        </div>
-
-        <div class="track" data-index="2">
-            <span class="track-number">03</span>
-            <div class="track-details">
-                <div class="track-title">Zhynn</div>
-                <div class="track-artist">ILTVIBE</div>
-            </div>
-            <button class="track-action">PLAY</button>
-        </div>
-
-        <div class="track" data-index="3">
-            <span class="track-number">04</span>
-            <div class="track-details">
-                <div class="track-title">Ikaw Pa Rin</div>
-                <div class="track-artist">ILTVIBE</div>
-            </div>
-            <button class="track-action">PLAY</button>
-        </div>
-
-        <div class="track" data-index="4">
-            <span class="track-number">05</span>
-            <div class="track-details">
-                <div class="track-title">1004</div>
-                <div class="track-artist">ILTVIBE</div>
-            </div>
-            <button class="track-action">PLAY</button>
-        </div>
-
-        <div class="track" data-index="5">
-            <span class="track-number">06</span>
-            <div class="track-details">
-                <div class="track-title">ELAINE</div>
-                <div class="track-artist">ILTVIBE</div>
-            </div>
-            <button class="track-action">PLAY</button>
-        </div>
-
-        <div class="track" data-index="6">
-            <span class="track-number">07</span>
-            <div class="track-details">
-                <div class="track-title">Sa'yo Lang</div>
-                <div class="track-artist">ILTVIBE</div>
-            </div>
-            <button class="track-action">PLAY</button>
-        </div>
-
-        <div class="track" data-index="7">
-            <span class="track-number">08</span>
-            <div class="track-details">
-                <div class="track-title">Ikaw Pa Rin (Studio Version)</div>
-                <div class="track-artist">ILTVIBE</div>
-            </div>
-            <button class="track-action">PLAY</button>
-        </div>
-
-    </section>
-
-</main>
-
-<footer>
-    © 2026 ILTVIBE · I LIKE THE VIBE
-</footer>
-
-<!-- COMPACT FLOATING PLAYER -->
-
-<div class="mini-player" id="miniPlayer" role="button" tabindex="0" aria-label="Open music player">
-    <div class="mini-icon">♫</div>
-    <div class="mini-info">
-        <div class="mini-title" id="miniTitle">EP VIBE</div>
-        <div class="mini-subtitle">ILTVIBE · MINI PLAYER</div>
+    <div class="track" data-index="0">
+        <div class="track-name">01. FUBU</div>
+        <button class="listen-btn" type="button">PLAY</button>
     </div>
-    <div class="mini-expand">⌃</div>
+
+    <div class="track" data-index="1">
+        <div class="track-name">02. Makaibang Mundo</div>
+        <button class="listen-btn" type="button">PLAY</button>
+    </div>
+
+    <div class="track" data-index="2">
+        <div class="track-name">03. Zhynn</div>
+        <button class="listen-btn" type="button">PLAY</button>
+    </div>
+
+    <div class="track" data-index="3">
+        <div class="track-name">04. Ikaw Pa Rin</div>
+        <button class="listen-btn" type="button">PLAY</button>
+    </div>
+
+    <div class="track" data-index="4">
+        <div class="track-name">05. 1004</div>
+        <button class="listen-btn" type="button">PLAY</button>
+    </div>
+
+    <div class="track" data-index="5">
+        <div class="track-name">06. ELAINE</div>
+        <button class="listen-btn" type="button">PLAY</button>
+    </div>
+
+    <div class="track" data-index="6">
+        <div class="track-name">07. Sa'yo Lang</div>
+        <button class="listen-btn" type="button">PLAY</button>
+    </div>
+
+    <div class="track" data-index="7">
+        <div class="track-name">08. Ikaw Pa Rin (Studio Version)</div>
+        <button class="listen-btn" type="button">PLAY</button>
+    </div>
+
+    <a href="index.html" class="back">← BACK TO ILTVIBE</a>
+
+    <footer>
+        © 2026 ILTVIBE · I LIKE THE VIBE
+    </footer>
+
 </div>
 
-<!-- EXPANDED PLAYER -->
+<!-- ILTVIBE MINI PLAYER -->
 
-<div class="player-overlay" id="playerOverlay">
-    <div class="expanded-player">
+<div class="mini-player" id="mini-player">
 
-        <div class="player-top">
-            <div class="player-brand">ILTVIBE PLAYER</div>
-            <button class="close-player" id="closePlayer" aria-label="Close player">×</button>
+    <div class="player-video">
+        <div id="yt-player"></div>
+    </div>
+
+    <div class="player-details" id="player-details">
+
+        <div class="player-label">ILTVIBE MINI PLAYER</div>
+
+        <div class="player-song" id="player-song">
+            FUBU
         </div>
 
-        <div class="youtube-frame">
-            <div id="yt-player"></div>
-        </div>
-
-        <div class="now-playing">
-            <div class="now-playing-label">NOW PLAYING</div>
-            <div class="now-playing-title" id="currentTitle">FUBU</div>
-            <div class="now-playing-artist">ILTVIBE · EP VIBE</div>
+        <div class="player-artist">
+            ILTVIBE · EP VIBE
         </div>
 
         <div class="progress-area">
+            <span class="time" id="current-time">0:00</span>
+
             <input
                 type="range"
-                id="progressSlider"
                 class="progress-slider"
+                id="progress"
                 min="0"
                 max="100"
                 value="0"
+                aria-label="Song progress"
             >
-            <div class="time-labels">
-                <span id="currentTime">0:00</span>
-                <span id="duration">0:00</span>
-            </div>
+
+            <span class="time" id="duration">0:00</span>
         </div>
 
-        <div class="controls">
-            <button class="control-btn" id="prevBtn" aria-label="Previous">|◀</button>
-            <button class="control-btn play-btn" id="playBtn" aria-label="Play">▶</button>
-            <button class="control-btn" id="nextBtn" aria-label="Next">▶|</button>
+        <div class="player-controls">
+
+            <button
+                class="player-control"
+                id="previous"
+                type="button"
+                aria-label="Previous track"
+            >|◀</button>
+
+            <button
+                class="player-control main"
+                id="play-pause"
+                type="button"
+                aria-label="Play"
+            >▶</button>
+
+            <button
+                class="player-control"
+                id="next"
+                type="button"
+                aria-label="Next track"
+            >▶|</button>
+
         </div>
 
-        <div class="player-status" id="playerStatus">READY TO PLAY</div>
+        <div class="player-status" id="player-status">
+            SELECT A TRACK TO PLAY
+        </div>
 
     </div>
 </div>
 
 <script>
-/* RANDOM RGB THEME */
+/* ==================================
+   RANDOM RGB THEME
+================================== */
 
 const themes = [
-    { name: "Electric Purple", color: "#a855f7", rgb: "168, 85, 247" },
-    { name: "Neon Blue", color: "#3b82f6", rgb: "59, 130, 246" },
-    { name: "Cyber Cyan", color: "#06b6d4", rgb: "6, 182, 212" },
-    { name: "Neon Pink", color: "#ec4899", rgb: "236, 72, 153" },
-    { name: "Champagne Gold", color: "#d4af37", rgb: "212, 175, 55" },
-    { name: "Emerald Green", color: "#10b981", rgb: "16, 185, 129" },
-    { name: "Deep Crimson", color: "#dc2626", rgb: "220, 38, 38" },
-    { name: "Violet", color: "#8b5cf6", rgb: "139, 92, 246" }
+    { name: "Electric Purple", color: "#A78BFA", rgb: "167, 139, 250" },
+    { name: "Neon Blue", color: "#60A5FA", rgb: "96, 165, 250" },
+    { name: "Cyber Cyan", color: "#22D3EE", rgb: "34, 211, 238" },
+    { name: "Neon Pink", color: "#F472B6", rgb: "244, 114, 182" },
+    { name: "Champagne Gold", color: "#FBBF24", rgb: "251, 191, 36" },
+    { name: "Emerald Green", color: "#34D399", rgb: "52, 211, 153" },
+    { name: "Deep Crimson", color: "#FB7185", rgb: "251, 113, 133" },
+    { name: "Violet", color: "#C084FC", rgb: "192, 132, 252" }
 ];
 
-let previousTheme = localStorage.getItem("iltvibeTheme");
-let availableThemes = themes.filter(t => t.name !== previousTheme);
+let previousTheme = null;
+
+try {
+    previousTheme = localStorage.getItem("iltvibeTheme");
+} catch (error) {
+    previousTheme = null;
+}
+
+let availableThemes = themes.filter(
+    theme => theme.name !== previousTheme
+);
 
 if (availableThemes.length === 0) {
     availableThemes = themes;
@@ -650,13 +641,25 @@ if (availableThemes.length === 0) {
 const selectedTheme =
     availableThemes[Math.floor(Math.random() * availableThemes.length)];
 
-document.documentElement.style.setProperty("--accent", selectedTheme.color);
-document.documentElement.style.setProperty("--accent-rgb", selectedTheme.rgb);
+const root = document.documentElement;
 
-localStorage.setItem("iltvibeTheme", selectedTheme.name);
+root.style.setProperty("--accent", selectedTheme.color);
+root.style.setProperty("--accent-rgb", selectedTheme.rgb);
+root.style.setProperty("--accent-soft", `rgba(${selectedTheme.rgb}, 0.12)`);
+root.style.setProperty("--accent-border", `rgba(${selectedTheme.rgb}, 0.35)`);
+root.style.setProperty("--accent-glow", `rgba(${selectedTheme.rgb}, 0.28)`);
+root.style.setProperty("--accent-backlight", `rgba(${selectedTheme.rgb}, 0.13)`);
+
+try {
+    localStorage.setItem("iltvibeTheme", selectedTheme.name);
+} catch (error) {
+    // The page still works if browser storage is unavailable.
+}
 
 
-/* TRACK DATA */
+/* ==================================
+   EP VIBE TRACKLIST
+================================== */
 
 const tracks = [
     { title: "FUBU", id: "aqJ6blP4fXc" },
@@ -669,136 +672,171 @@ const tracks = [
     { title: "Ikaw Pa Rin (Studio Version)", id: "S4h_bfXUUuU" }
 ];
 
-let currentIndex = 0;
+let currentTrack = 0;
 let player = null;
-let playerReady = false;
 let progressTimer = null;
+let isSeeking = false;
+
+const miniPlayer = document.getElementById("mini-player");
+const playerDetails = document.getElementById("player-details");
+const songTitle = document.getElementById("player-song");
+const playPauseButton = document.getElementById("play-pause");
+const progressSlider = document.getElementById("progress");
+const currentTimeDisplay = document.getElementById("current-time");
+const durationDisplay = document.getElementById("duration");
+const playerStatus = document.getElementById("player-status");
 
 
-/* ELEMENTS */
+/* ==================================
+   PLAYER COLLAPSE / EXPAND
+================================== */
 
-const overlay = document.getElementById("playerOverlay");
-const miniPlayer = document.getElementById("miniPlayer");
-const miniTitle = document.getElementById("miniTitle");
-const currentTitle = document.getElementById("currentTitle");
-const playBtn = document.getElementById("playBtn");
-const statusText = document.getElementById("playerStatus");
-const progressSlider = document.getElementById("progressSlider");
+function collapsePlayer() {
+    miniPlayer.classList.add("compact");
+}
+
+function expandPlayer() {
+    miniPlayer.classList.remove("compact");
+}
+
+/* Tap the details panel to expand while playing. */
+playerDetails.addEventListener("click", function() {
+    if (miniPlayer.classList.contains("compact")) {
+        expandPlayer();
+    }
+});
 
 
-/* YOUTUBE API */
+/* ==================================
+   YOUTUBE IFRAME PLAYER API
+================================== */
 
-const tag = document.createElement("script");
-tag.src = "https://www.youtube.com/iframe_api";
-document.head.appendChild(tag);
+const youtubeScript = document.createElement("script");
+youtubeScript.src = "https://www.youtube.com/iframe_api";
+
+const firstScript = document.getElementsByTagName("script")[0];
+firstScript.parentNode.insertBefore(youtubeScript, firstScript);
 
 window.onYouTubeIframeAPIReady = function() {
+
     player = new YT.Player("yt-player", {
-        width: "100%",
-        height: "100%",
-        videoId: tracks[currentIndex].id,
+        width: "200",
+        height: "200",
+        videoId: tracks[0].id,
+
         playerVars: {
-            autoplay: 0,
-            controls: 1,
             playsinline: 1,
             rel: 0
         },
+
         events: {
             onReady: function() {
-                playerReady = true;
-                updateTitles();
-                statusText.textContent = "READY TO PLAY";
+                playerStatus.textContent = "READY TO PLAY";
+                updateTrackHighlight();
+                startProgressTimer();
             },
-            onStateChange: onPlayerStateChange
+
+            onStateChange: function(event) {
+
+                if (event.data === YT.PlayerState.PLAYING) {
+                    playPauseButton.textContent = "Ⅱ";
+                    playPauseButton.setAttribute("aria-label", "Pause");
+                    playerStatus.textContent = "NOW PLAYING";
+
+                    // Automatically collapse when playback starts.
+                    collapsePlayer();
+                }
+
+                else if (event.data === YT.PlayerState.PAUSED) {
+                    playPauseButton.textContent = "▶";
+                    playPauseButton.setAttribute("aria-label", "Play");
+                    playerStatus.textContent = "PAUSED";
+
+                    // Keep the player expanded when paused.
+                    expandPlayer();
+                }
+
+                else if (event.data === YT.PlayerState.ENDED) {
+                    playNextTrack();
+                }
+
+                else if (event.data === YT.PlayerState.BUFFERING) {
+                    playerStatus.textContent = "LOADING...";
+                }
+            },
+
+            onError: function() {
+                playerStatus.textContent = "VIDEO UNAVAILABLE";
+            }
         }
     });
 };
 
 
-/* PLAYER DISPLAY */
+/* ==================================
+   TRACK SELECTION
+================================== */
 
-function openPlayer() {
-    overlay.classList.add("open");
-    document.body.style.overflow = "hidden";
-}
+function selectTrack(index) {
 
-function closePlayer() {
-    if (playerReady && player) {
-        player.pauseVideo();
+    if (!player || !player.loadVideoById) {
+        playerStatus.textContent = "PLAYER IS LOADING...";
+        return;
     }
 
-    overlay.classList.remove("open");
-    document.body.style.overflow = "";
+    if (index < 0 || index >= tracks.length) {
+        return;
+    }
+
+    currentTrack = index;
+
+    const track = tracks[currentTrack];
+
+    songTitle.textContent = track.title;
+    playerStatus.textContent = "LOADING...";
+
+    // Start the selected track.
+    player.loadVideoById(track.id);
+
+    updateTrackHighlight();
+    resetProgress();
 }
 
+function updateTrackHighlight() {
 
-/* MINI PLAYER */
+    document.querySelectorAll(".track").forEach((element, index) => {
 
-miniPlayer.addEventListener("click", openPlayer);
+        const button = element.querySelector(".listen-btn");
 
-miniPlayer.addEventListener("keydown", function(e) {
-    if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        openPlayer();
-    }
-});
+        if (index === currentTrack) {
+            element.classList.add("active");
+            button.textContent = "PLAYING";
+        } else {
+            element.classList.remove("active");
+            button.textContent = "PLAY";
+        }
 
-document.getElementById("closePlayer").addEventListener("click", closePlayer);
-
-overlay.addEventListener("click", function(e) {
-    if (e.target === overlay) {
-        closePlayer();
-    }
-});
-
-
-/* TRACK SELECTION */
-
-function selectTrack(index, autoplay = true) {
-    currentIndex = (index + tracks.length) % tracks.length;
-
-    updateTitles();
-    updateTracklist();
-
-    if (!playerReady || !player) return;
-
-    player.loadVideoById(tracks[currentIndex].id);
-
-    if (autoplay) {
-        statusText.textContent = "LOADING...";
-    }
-}
-
-function updateTitles() {
-    const title = tracks[currentIndex].title;
-
-    miniTitle.textContent = title;
-    currentTitle.textContent = title;
-}
-
-function updateTracklist() {
-    document.querySelectorAll(".track").forEach((track, index) => {
-        const button = track.querySelector(".track-action");
-
-        track.classList.toggle("active", index === currentIndex);
-        button.textContent = index === currentIndex ? "SELECTED" : "PLAY";
     });
 }
 
-document.querySelectorAll(".track").forEach(track => {
-    track.addEventListener("click", function() {
-        const index = Number(this.dataset.index);
+document.querySelectorAll(".track").forEach((element, index) => {
 
-        openPlayer();
-        selectTrack(index, true);
+    element.querySelector(".listen-btn").addEventListener("click", () => {
+        selectTrack(index);
     });
+
 });
 
 
-/* PLAY / PAUSE */
+/* ==================================
+   PLAYER CONTROLS
+================================== */
 
-playBtn.addEventListener("click", function() {
-    if (!playerReady || !player) return;
+playPauseButton.addEventListener("click", function() {
+
+    if (!player || !player.getPlayerState) {
+        return;
+    }
 
     const state = player.getPlayerState();
 
@@ -809,86 +847,105 @@ playBtn.addEventListener("click", function() {
     }
 });
 
-
-/* NEXT / PREVIOUS */
-
-document.getElementById("nextBtn").addEventListener("click", function() {
-    selectTrack(currentIndex + 1, true);
+document.getElementById("previous").addEventListener("click", function() {
+    const previousIndex = (currentTrack - 1 + tracks.length) % tracks.length;
+    selectTrack(previousIndex);
 });
 
-document.getElementById("prevBtn").addEventListener("click", function() {
-    selectTrack(currentIndex - 1, true);
+document.getElementById("next").addEventListener("click", function() {
+    playNextTrack();
 });
 
-
-/* YOUTUBE PLAYER STATE */
-
-function onPlayerStateChange(event) {
-    if (event.data === YT.PlayerState.PLAYING) {
-        playBtn.textContent = "Ⅱ";
-        statusText.textContent = "NOW PLAYING";
-    }
-
-    if (event.data === YT.PlayerState.PAUSED) {
-        playBtn.textContent = "▶";
-        statusText.textContent = "PAUSED";
-    }
-
-    if (event.data === YT.PlayerState.ENDED) {
-        selectTrack(currentIndex + 1, true);
-    }
-
-    if (event.data === YT.PlayerState.BUFFERING) {
-        statusText.textContent = "BUFFERING...";
-    }
-
-    if (event.data === YT.PlayerState.CUED) {
-        playBtn.textContent = "▶";
-    }
-
-    updateTracklist();
+function playNextTrack() {
+    const nextIndex = (currentTrack + 1) % tracks.length;
+    selectTrack(nextIndex);
 }
 
 
-/* PROGRESS BAR */
+/* ==================================
+   PROGRESS BAR
+================================== */
 
 function formatTime(seconds) {
-    if (!Number.isFinite(seconds)) return "0:00";
 
-    const min = Math.floor(seconds / 60);
-    const sec = Math.floor(seconds % 60);
+    if (!Number.isFinite(seconds)) {
+        return "0:00";
+    }
 
-    return min + ":" + String(sec).padStart(2, "0");
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = Math.floor(seconds % 60);
+
+    return minutes + ":" + String(remainingSeconds).padStart(2, "0");
 }
 
-function updateProgress() {
-    if (!playerReady || !player) return;
+function startProgressTimer() {
 
-    const duration = player.getDuration();
-    const current = player.getCurrentTime();
-
-    if (duration > 0) {
-        progressSlider.value = (current / duration) * 100;
-        document.getElementById("currentTime").textContent =
-            formatTime(current);
-        document.getElementById("duration").textContent =
-            formatTime(duration);
+    if (progressTimer) {
+        clearInterval(progressTimer);
     }
+
+    progressTimer = setInterval(function() {
+
+        if (!player || !player.getCurrentTime) {
+            return;
+        }
+
+        if (isSeeking) {
+            return;
+        }
+
+        const current = player.getCurrentTime() || 0;
+        const total = player.getDuration() || 0;
+
+        currentTimeDisplay.textContent = formatTime(current);
+        durationDisplay.textContent = formatTime(total);
+
+        if (total > 0) {
+            progressSlider.value = (current / total) * 100;
+        } else {
+            progressSlider.value = 0;
+        }
+
+    }, 500);
 }
 
-progressSlider.addEventListener("change", function() {
-    if (!playerReady || !player) return;
+function resetProgress() {
+    progressSlider.value = 0;
+    currentTimeDisplay.textContent = "0:00";
+    durationDisplay.textContent = "0:00";
+}
 
-    const duration = player.getDuration();
+progressSlider.addEventListener("input", function() {
 
-    if (duration > 0) {
-        const seekTo = (Number(this.value) / 100) * duration;
-        player.seekTo(seekTo, true);
+    isSeeking = true;
+
+    const total = player && player.getDuration
+        ? player.getDuration()
+        : 0;
+
+    if (total > 0) {
+        const targetTime = (Number(progressSlider.value) / 100) * total;
+        currentTimeDisplay.textContent = formatTime(targetTime);
     }
+
 });
 
-progressTimer = setInterval(updateProgress, 1000);
+progressSlider.addEventListener("change", function() {
 
+    if (!player || !player.seekTo) {
+        isSeeking = false;
+        return;
+    }
+
+    const total = player.getDuration() || 0;
+
+    if (total > 0) {
+        const targetTime = (Number(progressSlider.value) / 100) * total;
+        player.seekTo(targetTime, true);
+    }
+
+    isSeeking = false;
+});
 </script>
 
 </body>
