@@ -12,12 +12,52 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --accent: #A78BFA;
+      --accent-rgb: 167, 139, 250;
+      --accent-soft: rgba(167, 139, 250, 0.10);
+      --accent-border: rgba(167, 139, 250, 0.35);
+      --accent-glow: rgba(167, 139, 250, 0.22);
+      --accent-backlight: rgba(167, 139, 250, 0.16);
+    }
+
+    html {
+      background: #000;
+      scroll-behavior: smooth;
+    }
+
     body {
+      position: relative;
+      isolation: isolate;
       margin: 0;
-      background: #080808;
+      background: #000;
       color: #fff;
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.8;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          ellipse at 50% 0%,
+          var(--accent-backlight),
+          transparent 55%
+        ),
+        radial-gradient(
+          ellipse at 0% 50%,
+          rgba(var(--accent-rgb), 0.07),
+          transparent 45%
+        ),
+        radial-gradient(
+          ellipse at 100% 80%,
+          rgba(var(--accent-rgb), 0.06),
+          transparent 45%
+        );
     }
 
     .container {
@@ -29,8 +69,9 @@
       width: 100%;
       margin: 35px auto 0;
       overflow: hidden;
-      border: 1px solid #222;
-      border-radius: 8px;
+      border: 1px solid var(--accent-border);
+      border-radius: 10px;
+      box-shadow: 0 0 22px var(--accent-glow);
     }
 
     .thumbnail-banner img {
@@ -50,11 +91,13 @@
       font-size: 28px;
       font-weight: 800;
       letter-spacing: 4px;
+      color: var(--accent);
+      text-shadow: 0 0 16px var(--accent-glow);
     }
 
     .tagline {
       margin-top: 8px;
-      color: #666;
+      color: #777;
       font-size: 10px;
       letter-spacing: 3px;
     }
@@ -62,18 +105,20 @@
     .song-header {
       text-align: center;
       padding: 25px 0 45px;
-      border-bottom: 1px solid #1d1d1d;
+      border-bottom: 1px solid var(--accent-border);
     }
 
     .song-title {
       font-size: 32px;
       font-weight: 700;
       letter-spacing: 2px;
+      color: var(--accent);
+      text-shadow: 0 0 18px var(--accent-glow);
     }
 
     .song-meta {
       margin-top: 10px;
-      color: #666;
+      color: #777;
       font-size: 10px;
       letter-spacing: 2px;
     }
@@ -83,12 +128,21 @@
     }
 
     .lyrics-section {
-      margin-bottom: 42px;
+      margin-bottom: 30px;
+      padding: 22px 20px;
+      border: 1px solid var(--accent-border);
+      border-radius: 10px;
+      background: linear-gradient(
+        135deg,
+        var(--accent-soft),
+        rgba(0, 0, 0, 0.35)
+      );
+      box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.05);
     }
 
     .section-label {
       margin-bottom: 14px;
-      color: #666;
+      color: var(--accent);
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 2px;
@@ -101,7 +155,11 @@
       font-size: 15px;
     }
 
-    .chorus {
+    .lyrics p:last-child {
+      margin-bottom: 0;
+    }
+
+    .chorus p {
       color: #fff;
     }
 
@@ -109,40 +167,53 @@
       margin: 50px 0;
       padding: 28px 20px;
       text-align: center;
-      border-top: 1px solid #1d1d1d;
-      border-bottom: 1px solid #1d1d1d;
+      border: 1px solid var(--accent-border);
+      border-radius: 10px;
+      background: var(--accent-soft);
+      box-shadow: 0 0 22px var(--accent-glow);
     }
 
     .code-title {
       margin-bottom: 20px;
-      color: #666;
+      color: var(--accent);
       font-size: 10px;
       letter-spacing: 3px;
       text-transform: uppercase;
     }
 
     .code {
-      color: #fff;
+      color: var(--accent);
       font-size: 18px;
       font-weight: 700;
       letter-spacing: 8px;
       line-height: 2;
+      text-shadow: 0 0 15px var(--accent-glow);
     }
 
     .story {
-      padding: 30px 0;
-      border-top: 1px solid #1d1d1d;
+      margin: 20px 0;
+      padding: 30px 22px;
+      border: 1px solid var(--accent-border);
+      border-radius: 10px;
+      background: linear-gradient(
+        135deg,
+        var(--accent-soft),
+        rgba(0, 0, 0, 0.45)
+      );
       text-align: center;
     }
 
     .story h2 {
+      margin-top: 0;
       margin-bottom: 12px;
+      color: var(--accent);
       font-size: 19px;
       font-weight: 600;
     }
 
     .story p {
-      color: #999;
+      margin-bottom: 0;
+      color: #aaa;
       font-size: 14px;
       line-height: 1.9;
     }
@@ -155,26 +226,34 @@
     .back a {
       display: inline-block;
       padding: 11px 18px;
-      border: 1px solid #222;
+      border: 1px solid var(--accent-border);
       border-radius: 9px;
-      color: #888;
+      color: var(--accent);
       text-decoration: none;
       font-size: 10px;
       letter-spacing: 2px;
+      transition: 0.3s ease;
+      box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.08);
     }
 
     .back a:hover {
       color: #fff;
-      background: #111;
+      background: var(--accent-soft);
+      box-shadow: 0 0 18px var(--accent-glow);
     }
 
     footer {
       text-align: center;
       padding: 50px 20px 35px;
-      border-top: 1px solid #1c1c1c;
-      color: #444;
+      border-top: 1px solid var(--accent-border);
+      color: #666;
       font-size: 9px;
       letter-spacing: 2px;
+    }
+
+    footer strong {
+      color: var(--accent);
+      font-size: 13px;
     }
 
     @media (max-width: 600px) {
@@ -194,12 +273,32 @@
         font-size: 27px;
       }
 
+      .lyrics-section {
+        padding: 19px 16px;
+      }
+
       .lyrics p {
         font-size: 14px;
       }
 
       .code {
         font-size: 16px;
+      }
+
+      .story {
+        padding: 25px 17px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
       }
     }
   </style>
@@ -420,5 +519,112 @@
     © 2026 ILTVIBE - All rights reserved.
   </footer>
 
+  <script>
+    const themes = [
+      {
+        name: "Electric Purple",
+        accent: "#A78BFA",
+        rgb: "167, 139, 250"
+      },
+      {
+        name: "Neon Blue",
+        accent: "#60A5FA",
+        rgb: "96, 165, 250"
+      },
+      {
+        name: "Cyber Cyan",
+        accent: "#22D3EE",
+        rgb: "34, 211, 238"
+      },
+      {
+        name: "Neon Pink",
+        accent: "#F472B6",
+        rgb: "244, 114, 182"
+      },
+      {
+        name: "Champagne Gold",
+        accent: "#FBBF24",
+        rgb: "251, 191, 36"
+      },
+      {
+        name: "Emerald Green",
+        accent: "#34D399",
+        rgb: "52, 211, 153"
+      },
+      {
+        name: "Deep Crimson",
+        accent: "#FB7185",
+        rgb: "251, 113, 133"
+      },
+      {
+        name: "Violet",
+        accent: "#C084FC",
+        rgb: "192, 132, 252"
+      }
+    ];
+
+    let previousTheme = null;
+
+    try {
+      previousTheme = localStorage.getItem("iltvibeTheme");
+    } catch (error) {
+      previousTheme = null;
+    }
+
+    let availableThemes = themes.filter(
+      theme => theme.name !== previousTheme
+    );
+
+    if (availableThemes.length === 0) {
+      availableThemes = themes;
+    }
+
+    const selectedTheme =
+      availableThemes[
+        Math.floor(Math.random() * availableThemes.length)
+      ];
+
+    const root = document.documentElement;
+
+    root.style.setProperty(
+      "--accent",
+      selectedTheme.accent
+    );
+
+    root.style.setProperty(
+      "--accent-rgb",
+      selectedTheme.rgb
+    );
+
+    root.style.setProperty(
+      "--accent-soft",
+      `rgba(${selectedTheme.rgb}, 0.10)`
+    );
+
+    root.style.setProperty(
+      "--accent-border",
+      `rgba(${selectedTheme.rgb}, 0.35)`
+    );
+
+    root.style.setProperty(
+      "--accent-glow",
+      `rgba(${selectedTheme.rgb}, 0.22)`
+    );
+
+    root.style.setProperty(
+      "--accent-backlight",
+      `rgba(${selectedTheme.rgb}, 0.16)`
+    );
+
+    try {
+      localStorage.setItem(
+        "iltvibeTheme",
+        selectedTheme.name
+      );
+    } catch (error) {
+      // Page design still works if localStorage is unavailable.
+    }
+  </script>
+
 </body>
-        </html>
+</html>
