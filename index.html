@@ -9,15 +9,30 @@
   <title>ILTVIBE - I LIKE THE VIBE</title>
 
   <style>
+    :root {
+      --bg: #000000;
+      --card: #101010;
+      --text: #ffffff;
+      --muted: #888888;
+
+      /* Default theme */
+      --accent: #a78bfa;
+      --accent-rgb: 167, 139, 250;
+      --accent-soft: rgba(167,139,250,0.10);
+      --accent-border: rgba(167,139,250,0.30);
+      --accent-glow: rgba(167,139,250,0.20);
+    }
+
     * {
       box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      background: #080808;
-      color: #fff;
+      background: #000000;
+      color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
+      transition: color 0.4s ease;
     }
 
     header {
@@ -29,6 +44,8 @@
       font-size: 42px;
       font-weight: 800;
       letter-spacing: 4px;
+      text-shadow: 0 0 22px var(--accent-glow);
+      transition: text-shadow 0.4s ease;
     }
 
     .tagline {
@@ -46,9 +63,10 @@
     .section-title {
       font-size: 12px;
       letter-spacing: 2px;
-      color: #888;
+      color: var(--accent);
       margin-bottom: 14px;
       text-transform: uppercase;
+      transition: color 0.4s ease;
     }
 
     /* RANDOM VIBE */
@@ -62,7 +80,9 @@
       background: #111;
       border-radius: 12px;
       overflow: hidden;
-      border: 1px solid #1d1d1d;
+      border: 1px solid var(--accent-border);
+      box-shadow: 0 0 22px var(--accent-glow);
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
     }
 
     .player iframe {
@@ -78,19 +98,20 @@
       max-width: 640px;
       margin: 12px auto 0;
       padding: 14px;
-      border: 1px solid #222;
+      border: 1px solid var(--accent-border);
       border-radius: 10px;
-      background: #111;
-      color: #aaa;
+      background: var(--accent-soft);
+      color: var(--accent);
       font-size: 11px;
       letter-spacing: 2px;
       cursor: pointer;
-      transition: 0.2s ease;
+      transition: 0.3s ease;
     }
 
     .random-btn:hover {
-      background: #151515;
-      color: #fff;
+      background: var(--accent);
+      color: #000;
+      box-shadow: 0 0 20px var(--accent-glow);
     }
 
     /* ARTIST */
@@ -106,8 +127,13 @@
       aspect-ratio: 16 / 9;
       object-fit: contain;
       border-radius: 10px;
-      border: 1px solid #222;
+      border: 1px solid var(--accent-border);
       background: #0d0d0d;
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .artist img:hover {
+      box-shadow: 0 0 22px var(--accent-glow);
     }
 
     .artist-name {
@@ -115,6 +141,8 @@
       font-size: 25px;
       font-weight: 700;
       letter-spacing: 2px;
+      color: var(--accent);
+      transition: color 0.4s ease;
     }
 
     .artist-subtitle {
@@ -136,18 +164,19 @@
       display: inline-block;
       margin-top: 20px;
       padding: 11px 18px;
-      border: 1px solid #292929;
+      border: 1px solid var(--accent-border);
       border-radius: 8px;
-      color: #aaa;
+      color: var(--accent);
       text-decoration: none;
       font-size: 10px;
       letter-spacing: 2px;
-      transition: 0.2s ease;
+      transition: 0.3s ease;
     }
 
     .artist-about-link:hover {
-      background: #151515;
-      color: #fff;
+      background: var(--accent);
+      color: #000;
+      box-shadow: 0 0 18px var(--accent-glow);
     }
 
     /* BEHIND THE VIBE */
@@ -157,15 +186,17 @@
       margin: 65px auto 0;
       padding: 30px 22px;
       text-align: center;
-      border-top: 1px solid #1d1d1d;
-      border-bottom: 1px solid #1d1d1d;
+      border-top: 1px solid var(--accent-border);
+      border-bottom: 1px solid var(--accent-border);
+      transition: border-color 0.4s ease;
     }
 
     .about-title {
-      color: #777;
+      color: var(--accent);
       font-size: 11px;
       letter-spacing: 3px;
       margin-bottom: 20px;
+      transition: color 0.4s ease;
     }
 
     .about-text {
@@ -195,18 +226,25 @@
       border-radius: 12px;
       color: #fff;
       text-decoration: none;
-      transition: 0.2s ease;
+      transition: 0.3s ease;
     }
 
     .album-card:hover {
-      background: #151515;
+      background: #141018;
+      border-color: var(--accent);
       transform: translateY(-2px);
+      box-shadow: 0 0 20px var(--accent-glow);
     }
 
     .album-title {
       font-size: 14px;
       font-weight: 700;
       letter-spacing: 1px;
+      transition: color 0.3s ease;
+    }
+
+    .album-card:hover .album-title {
+      color: var(--accent);
     }
 
     .album-subtitle {
@@ -239,11 +277,13 @@
       text-decoration: none;
       font-size: 10px;
       letter-spacing: 1px;
+      transition: 0.3s ease;
     }
 
     .socials a:hover {
-      color: #fff;
-      background: #111;
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--accent-soft);
     }
 
     /* BUSINESS INQUIRIES */
@@ -253,12 +293,12 @@
       margin: 55px auto 0;
       padding: 28px 20px;
       text-align: center;
-      border-top: 1px solid #1d1d1d;
-      border-bottom: 1px solid #1d1d1d;
+      border-top: 1px solid var(--accent-border);
+      border-bottom: 1px solid var(--accent-border);
     }
 
     .business-title {
-      color: #888;
+      color: var(--accent);
       font-size: 11px;
       letter-spacing: 3px;
       margin-bottom: 15px;
@@ -273,10 +313,11 @@
     .business-email {
       display: inline-block;
       margin-top: 15px;
-      color: #d8bd69;
+      color: var(--accent);
       font-size: 13px;
       letter-spacing: 0.5px;
       text-decoration: none;
+      transition: color 0.3s ease;
     }
 
     .business-email:hover {
@@ -292,6 +333,10 @@
       font-size: 10px;
       letter-spacing: 2px;
       line-height: 1.8;
+    }
+
+    footer strong {
+      color: var(--accent);
     }
 
     .ai-credit {
@@ -402,7 +447,7 @@
       <div class="about-title">BEHIND THE VIBE</div>
 
       <div class="about-text">
-        Bawat kanta ay alaala ng isang sandali sa buhay ko - 
+        Bawat kanta ay alaala ng isang sandali sa buhay ko -
         mga bagay na ayokong tuluyang makalimutan.
       </div>
 
@@ -524,7 +569,108 @@
 
   <script>
 
+    // RANDOM COLOR THEME
+    // Black background stays permanent.
+    // Accent colors change on every refresh.
+
+    const themes = [
+      {
+        name: "Electric Purple",
+        accent: "#A78BFA",
+        rgb: "167, 139, 250"
+      },
+      {
+        name: "Neon Blue",
+        accent: "#60A5FA",
+        rgb: "96, 165, 250"
+      },
+      {
+        name: "Cyber Cyan",
+        accent: "#22D3EE",
+        rgb: "34, 211, 238"
+      },
+      {
+        name: "Neon Pink",
+        accent: "#F472B6",
+        rgb: "244, 114, 182"
+      },
+      {
+        name: "Champagne Gold",
+        accent: "#FBBF24",
+        rgb: "251, 191, 36"
+      },
+      {
+        name: "Emerald Green",
+        accent: "#34D399",
+        rgb: "52, 211, 153"
+      },
+      {
+        name: "Deep Crimson",
+        accent: "#FB7185",
+        rgb: "251, 113, 133"
+      },
+      {
+        name: "Violet",
+        accent: "#C084FC",
+        rgb: "192, 132, 252"
+      }
+    ];
+
+    let selectedTheme;
+
+    try {
+      const previousTheme = localStorage.getItem("iltvibeTheme");
+
+      let availableThemes = themes.filter(
+        theme => theme.name !== previousTheme
+      );
+
+      if (availableThemes.length === 0) {
+        availableThemes = themes;
+      }
+
+      selectedTheme = availableThemes[
+        Math.floor(Math.random() * availableThemes.length)
+      ];
+
+      localStorage.setItem("iltvibeTheme", selectedTheme.name);
+
+    } catch (error) {
+      selectedTheme = themes[
+        Math.floor(Math.random() * themes.length)
+      ];
+    }
+
+    const root = document.documentElement;
+
+    root.style.setProperty(
+      "--accent",
+      selectedTheme.accent
+    );
+
+    root.style.setProperty(
+      "--accent-rgb",
+      selectedTheme.rgb
+    );
+
+    root.style.setProperty(
+      "--accent-soft",
+      `rgba(${selectedTheme.rgb}, 0.10)`
+    );
+
+    root.style.setProperty(
+      "--accent-border",
+      `rgba(${selectedTheme.rgb}, 0.30)`
+    );
+
+    root.style.setProperty(
+      "--accent-glow",
+      `rgba(${selectedTheme.rgb}, 0.20)`
+    );
+
+
     // RANDOM VIBE VIDEOS
+
     const videos = [
       "S4h_bfXUUuU",
       "t9k3DmYtcZ8",
@@ -547,7 +693,9 @@
         "?autoplay=1";
     }
 
+
     // RANDOM VIBE ART
+
     const logos = [
       "falls.png",
       "dark-thorns.png",
@@ -573,5 +721,4 @@
   </script>
 
 </body>
-  </html>
-  
+</html>
