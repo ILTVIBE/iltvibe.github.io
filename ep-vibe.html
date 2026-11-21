@@ -63,7 +63,7 @@ body::before {
     width: 90%;
     max-width: 720px;
     margin: 0 auto;
-    padding: 40px 0 280px;
+    padding: 40px 0 150px;
 }
 
 .header {
@@ -110,8 +110,42 @@ body::before {
     font-size: 12px;
     color: var(--accent);
     letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+/* YOUTUBE VIDEO */
+
+.youtube-section {
     margin-bottom: 30px;
 }
+
+.youtube-label {
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.youtube-frame {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    background: #080808;
+    border: 1px solid var(--accent-border);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 0 18px var(--accent-glow);
+}
+
+.youtube-frame iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+}
+
+/* TRACKLIST */
 
 .track {
     display: flex;
@@ -139,6 +173,16 @@ body::before {
     color: var(--accent);
 }
 
+.track.active {
+    background: var(--accent-soft);
+    border-bottom-color: var(--accent-border);
+}
+
+.track.active .track-name {
+    color: var(--accent);
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
 .listen-btn {
     flex-shrink: 0;
     display: inline-block;
@@ -147,8 +191,8 @@ body::before {
     border-radius: 3px;
     color: #fff;
     background: transparent;
-    text-decoration: none;
     font-family: inherit;
+    text-decoration: none;
     font-size: 10px;
     letter-spacing: 2px;
     cursor: pointer;
@@ -160,16 +204,6 @@ body::before {
     color: #000;
     border-color: var(--accent);
     box-shadow: 0 0 15px var(--accent-glow);
-}
-
-.track.active {
-    background: var(--accent-soft);
-    border-bottom-color: var(--accent-border);
-}
-
-.track.active .track-name {
-    color: var(--accent);
-    text-shadow: 0 0 10px var(--accent-glow);
 }
 
 .back {
@@ -197,113 +231,98 @@ footer {
     letter-spacing: 2px;
 }
 
-/* ==================================
-   ILTVIBE MINI PLAYER
-================================== */
+/* =================================
+   FLOATING SLIM MINI PLAYER
+================================= */
 
 .mini-player {
     position: fixed;
     z-index: 1000;
     left: 50%;
-    bottom: 12px;
+    bottom: 14px;
     transform: translateX(-50%);
-    width: min(720px, calc(100% - 24px));
-    min-height: 220px;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 10px;
+    width: min(680px, calc(100% - 24px));
+    padding: 12px 16px 10px;
     background: rgba(8, 8, 12, 0.97);
     border: 1px solid var(--accent-border);
-    border-radius: 10px;
+    border-radius: 12px;
     box-shadow:
         0 0 18px var(--accent-glow),
-        0 0 45px rgba(var(--accent-rgb), 0.12);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+        0 0 40px rgba(var(--accent-rgb), 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 
-.player-video {
-    width: 200px;
-    height: 200px;
+.player-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.player-art {
+    width: 42px;
+    height: 42px;
     flex-shrink: 0;
-    overflow: hidden;
-    border-radius: 5px;
-    background: #000;
-    border: 1px solid rgba(var(--accent-rgb), 0.3);
+    border-radius: 7px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(var(--accent-rgb), 0.35),
+            #090909 75%
+        );
+    border: 1px solid var(--accent-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-size: 18px;
+    box-shadow: 0 0 12px var(--accent-glow);
 }
 
-.player-video iframe {
-    display: block;
-    width: 200px;
-    height: 200px;
-    border: 0;
-}
-
-.player-details {
+.player-info {
     flex: 1;
     min-width: 0;
-    padding: 5px 8px 5px 0;
 }
 
 .player-label {
+    font-size: 8px;
     color: var(--accent);
-    font-size: 9px;
     letter-spacing: 2px;
-    margin-bottom: 10px;
+    margin-bottom: 4px;
 }
 
 .player-song {
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 1.4;
-    margin-bottom: 5px;
-    overflow-wrap: anywhere;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .player-artist {
     color: #888;
-    font-size: 11px;
-    letter-spacing: 1px;
-    margin-bottom: 18px;
-}
-
-.progress-area {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    margin-bottom: 15px;
-}
-
-.time {
-    color: #999;
     font-size: 9px;
-    min-width: 29px;
-    font-variant-numeric: tabular-nums;
-}
-
-.progress-slider {
-    flex: 1;
-    min-width: 0;
-    height: 4px;
-    accent-color: var(--accent);
-    cursor: pointer;
+    margin-top: 3px;
+    letter-spacing: 1px;
 }
 
 .player-controls {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 18px;
+    gap: 9px;
+    flex-shrink: 0;
 }
 
 .player-control {
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
     background: transparent;
     color: #fff;
-    font-size: 19px;
+    font-size: 16px;
     cursor: pointer;
     transition: 0.2s ease;
 }
@@ -314,32 +333,57 @@ footer {
 }
 
 .player-control.main {
-    width: 42px;
-    height: 42px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     background: var(--accent);
     color: #000;
-    font-size: 19px;
-    box-shadow: 0 0 15px var(--accent-glow);
+    font-size: 15px;
+    box-shadow: 0 0 13px var(--accent-glow);
 }
 
 .player-control.main:hover {
-    transform: scale(1.06);
+    transform: scale(1.07);
+}
+
+.progress-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.time {
+    min-width: 27px;
+    font-size: 9px;
+    color: #888;
+    font-variant-numeric: tabular-nums;
+}
+
+.progress-slider {
+    flex: 1;
+    min-width: 0;
+    height: 3px;
+    accent-color: var(--accent);
+    cursor: pointer;
 }
 
 .player-status {
-    color: #777;
-    font-size: 9px;
     text-align: center;
-    margin-top: 12px;
-    letter-spacing: 1px;
+    color: #666;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    margin-top: 7px;
 }
 
+/* MOBILE */
+
 @media (max-width: 600px) {
+
     .container {
         width: 88%;
         padding-top: 30px;
-        padding-bottom: 280px;
+        padding-bottom: 140px;
     }
 
     .logo {
@@ -365,60 +409,24 @@ footer {
     }
 
     .mini-player {
-        gap: 10px;
-        padding: 8px;
-        min-height: 216px;
+        width: calc(100% - 20px);
+        bottom: 10px;
+        padding: 10px 11px 8px;
+        border-radius: 10px;
     }
 
-    .player-video,
-    .player-video iframe {
-        width: 200px;
-        height: 200px;
+    .player-top {
+        gap: 9px;
     }
 
-    .player-details {
-        padding-right: 2px;
+    .player-art {
+        width: 38px;
+        height: 38px;
+        font-size: 16px;
     }
 
     .player-song {
-        font-size: 13px;
-    }
-
-    .player-artist {
-        font-size: 9px;
-        margin-bottom: 14px;
-    }
-
-    .player-controls {
-        gap: 8px;
-    }
-
-    .player-control {
-        width: 29px;
-        height: 32px;
-        font-size: 17px;
-    }
-
-    .player-control.main {
-        width: 37px;
-        height: 37px;
-    }
-
-    .player-label {
-        font-size: 8px;
-    }
-}
-
-@media (max-width: 360px) {
-    .mini-player {
-        gap: 7px;
-        padding: 6px;
-    }
-
-    .player-video,
-    .player-video iframe {
-        width: 200px;
-        height: 200px;
+        font-size: 12px;
     }
 
     .player-controls {
@@ -426,7 +434,38 @@ footer {
     }
 
     .player-control {
-        width: 25px;
+        width: 27px;
+        height: 29px;
+        font-size: 14px;
+    }
+
+    .player-control.main {
+        width: 33px;
+        height: 33px;
+    }
+
+    .progress-area {
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 350px) {
+
+    .player-controls {
+        gap: 0;
+    }
+
+    .player-control {
+        width: 24px;
+    }
+
+    .player-art {
+        width: 34px;
+        height: 34px;
+    }
+
+    .player-label {
+        font-size: 7px;
     }
 }
 
@@ -457,6 +496,22 @@ footer {
 
     <div class="album-title">EP VIBE</div>
     <div class="album-info">ILTVIBE · 08 TRACKS</div>
+
+    <!-- VISIBLE YOUTUBE PLAYER -->
+
+    <div class="youtube-section">
+
+        <div class="youtube-label">
+            NOW PLAYING · YOUTUBE
+        </div>
+
+        <div class="youtube-frame">
+            <div id="yt-player"></div>
+        </div>
+
+    </div>
+
+    <!-- TRACKLIST -->
 
     <div class="track" data-index="0">
         <div class="track-name">01. FUBU</div>
@@ -506,40 +561,29 @@ footer {
 
 </div>
 
-<!-- ILTVIBE MINI PLAYER -->
+
+<!-- FLOATING MINI PLAYER -->
 
 <div class="mini-player">
 
-    <div class="player-video">
-        <div id="yt-player"></div>
-    </div>
+    <div class="player-top">
 
-    <div class="player-details">
+        <div class="player-art">♫</div>
 
-        <div class="player-label">ILTVIBE MINI PLAYER</div>
+        <div class="player-info">
 
-        <div class="player-song" id="player-song">
-            FUBU
-        </div>
+            <div class="player-label">
+                ILTVIBE · EP VIBE
+            </div>
 
-        <div class="player-artist">
-            ILTVIBE · EP VIBE
-        </div>
+            <div class="player-song" id="player-song">
+                FUBU
+            </div>
 
-        <div class="progress-area">
-            <span class="time" id="current-time">0:00</span>
+            <div class="player-artist">
+                OFFICIAL AUDIO
+            </div>
 
-            <input
-                type="range"
-                class="progress-slider"
-                id="progress"
-                min="0"
-                max="100"
-                value="0"
-                aria-label="Song progress"
-            >
-
-            <span class="time" id="duration">0:00</span>
         </div>
 
         <div class="player-controls">
@@ -567,17 +611,38 @@ footer {
 
         </div>
 
-        <div class="player-status" id="player-status">
-            SELECT A TRACK TO PLAY
-        </div>
+    </div>
+
+    <div class="progress-area">
+
+        <span class="time" id="current-time">0:00</span>
+
+        <input
+            type="range"
+            class="progress-slider"
+            id="progress"
+            min="0"
+            max="100"
+            value="0"
+            aria-label="Song progress"
+        >
+
+        <span class="time" id="duration">0:00</span>
 
     </div>
+
+    <div class="player-status" id="player-status">
+        SELECT A TRACK TO PLAY
+    </div>
+
 </div>
 
+
 <script>
-/* ==================================
+
+/* =================================
    RANDOM RGB THEME
-================================== */
+================================= */
 
 const themes = [
     { name: "Electric Purple", color: "#A78BFA", rgb: "167, 139, 250" },
@@ -621,47 +686,23 @@ root.style.setProperty("--accent-backlight", `rgba(${selectedTheme.rgb}, 0.13)`)
 try {
     localStorage.setItem("iltvibeTheme", selectedTheme.name);
 } catch (error) {
-    // The page still works if browser storage is unavailable.
+    // Page remains functional without browser storage.
 }
 
 
-/* ==================================
-   EP VIBE TRACKLIST
-================================== */
+/* =================================
+   TRACK DATA
+================================= */
 
 const tracks = [
-    {
-        title: "FUBU",
-        id: "aqJ6blP4fXc"
-    },
-    {
-        title: "Makaibang Mundo",
-        id: "lowiO4EZ-Y8"
-    },
-    {
-        title: "Zhynn",
-        id: "yj2BXvdIbvw"
-    },
-    {
-        title: "Ikaw Pa Rin",
-        id: "t9k3DmYtcZ8"
-    },
-    {
-        title: "1004",
-        id: "mDQvJEzrIWo"
-    },
-    {
-        title: "ELAINE",
-        id: "3wu6LRun8Aw"
-    },
-    {
-        title: "Sa'yo Lang",
-        id: "M-WCmXS8E3c"
-    },
-    {
-        title: "Ikaw Pa Rin (Studio Version)",
-        id: "S4h_bfXUUuU"
-    }
+    { title: "FUBU", id: "aqJ6blP4fXc" },
+    { title: "Makaibang Mundo", id: "lowiO4EZ-Y8" },
+    { title: "Zhynn", id: "yj2BXvdIbvw" },
+    { title: "Ikaw Pa Rin", id: "t9k3DmYtcZ8" },
+    { title: "1004", id: "mDQvJEzrIWo" },
+    { title: "ELAINE", id: "3wu6LRun8Aw" },
+    { title: "Sa'yo Lang", id: "M-WCmXS8E3c" },
+    { title: "Ikaw Pa Rin (Studio Version)", id: "S4h_bfXUUuU" }
 ];
 
 let currentTrack = 0;
@@ -677,9 +718,9 @@ const durationDisplay = document.getElementById("duration");
 const playerStatus = document.getElementById("player-status");
 
 
-/* ==================================
-   YOUTUBE IFRAME PLAYER API
-================================== */
+/* =================================
+   YOUTUBE IFRAME API
+================================= */
 
 const youtubeScript = document.createElement("script");
 youtubeScript.src = "https://www.youtube.com/iframe_api";
@@ -690,8 +731,9 @@ firstScript.parentNode.insertBefore(youtubeScript, firstScript);
 window.onYouTubeIframeAPIReady = function() {
 
     player = new YT.Player("yt-player", {
-        width: "200",
-        height: "200",
+
+        width: "480",
+        height: "270",
         videoId: tracks[0].id,
 
         playerVars: {
@@ -700,6 +742,7 @@ window.onYouTubeIframeAPIReady = function() {
         },
 
         events: {
+
             onReady: function() {
                 playerStatus.textContent = "READY TO PLAY";
                 updateTrackHighlight();
@@ -709,37 +752,43 @@ window.onYouTubeIframeAPIReady = function() {
             onStateChange: function(event) {
 
                 if (event.data === YT.PlayerState.PLAYING) {
+
                     playPauseButton.textContent = "Ⅱ";
                     playPauseButton.setAttribute("aria-label", "Pause");
                     playerStatus.textContent = "NOW PLAYING";
-                }
 
-                else if (event.data === YT.PlayerState.PAUSED) {
+                } else if (event.data === YT.PlayerState.PAUSED) {
+
                     playPauseButton.textContent = "▶";
                     playPauseButton.setAttribute("aria-label", "Play");
                     playerStatus.textContent = "PAUSED";
-                }
 
-                else if (event.data === YT.PlayerState.ENDED) {
+                } else if (event.data === YT.PlayerState.ENDED) {
+
                     playNextTrack();
+
+                } else if (event.data === YT.PlayerState.BUFFERING) {
+
+                    playerStatus.textContent = "LOADING...";
+
                 }
 
-                else if (event.data === YT.PlayerState.BUFFERING) {
-                    playerStatus.textContent = "LOADING...";
-                }
             },
 
             onError: function() {
                 playerStatus.textContent = "VIDEO UNAVAILABLE";
             }
+
         }
+
     });
+
 };
 
 
-/* ==================================
-   TRACK SELECTION
-================================== */
+/* =================================
+   SELECT TRACK
+================================= */
 
 function selectTrack(index) {
 
@@ -763,6 +812,7 @@ function selectTrack(index) {
 
     updateTrackHighlight();
     resetProgress();
+
 }
 
 function updateTrackHighlight() {
@@ -772,14 +822,19 @@ function updateTrackHighlight() {
         const button = element.querySelector(".listen-btn");
 
         if (index === currentTrack) {
+
             element.classList.add("active");
             button.textContent = "PLAYING";
+
         } else {
+
             element.classList.remove("active");
             button.textContent = "PLAY";
+
         }
 
     });
+
 }
 
 document.querySelectorAll(".track").forEach((element, index) => {
@@ -791,9 +846,9 @@ document.querySelectorAll(".track").forEach((element, index) => {
 });
 
 
-/* ==================================
-   PLAYER CONTROLS
-================================== */
+/* =================================
+   PLAY / PAUSE
+================================= */
 
 playPauseButton.addEventListener("click", function() {
 
@@ -804,30 +859,49 @@ playPauseButton.addEventListener("click", function() {
     const state = player.getPlayerState();
 
     if (state === YT.PlayerState.PLAYING) {
+
         player.pauseVideo();
+
     } else {
+
         player.playVideo();
+
     }
+
 });
 
+
+/* =================================
+   PREVIOUS / NEXT
+================================= */
+
 document.getElementById("previous").addEventListener("click", function() {
-    const previousIndex = (currentTrack - 1 + tracks.length) % tracks.length;
+
+    const previousIndex =
+        (currentTrack - 1 + tracks.length) % tracks.length;
+
     selectTrack(previousIndex);
+
 });
 
 document.getElementById("next").addEventListener("click", function() {
+
     playNextTrack();
+
 });
 
 function playNextTrack() {
+
     const nextIndex = (currentTrack + 1) % tracks.length;
+
     selectTrack(nextIndex);
+
 }
 
 
-/* ==================================
+/* =================================
    PROGRESS BAR
-================================== */
+================================= */
 
 function formatTime(seconds) {
 
@@ -838,7 +912,9 @@ function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = Math.floor(seconds % 60);
 
-    return minutes + ":" + String(remainingSeconds).padStart(2, "0");
+    return minutes + ":" +
+        String(remainingSeconds).padStart(2, "0");
+
 }
 
 function startProgressTimer() {
@@ -849,11 +925,7 @@ function startProgressTimer() {
 
     progressTimer = setInterval(function() {
 
-        if (!player || !player.getCurrentTime) {
-            return;
-        }
-
-        if (isSeeking) {
+        if (!player || !player.getCurrentTime || isSeeking) {
             return;
         }
 
@@ -870,12 +942,15 @@ function startProgressTimer() {
         }
 
     }, 500);
+
 }
 
 function resetProgress() {
+
     progressSlider.value = 0;
     currentTimeDisplay.textContent = "0:00";
     durationDisplay.textContent = "0:00";
+
 }
 
 progressSlider.addEventListener("input", function() {
@@ -887,8 +962,12 @@ progressSlider.addEventListener("input", function() {
         : 0;
 
     if (total > 0) {
-        const targetTime = (Number(progressSlider.value) / 100) * total;
+
+        const targetTime =
+            (Number(progressSlider.value) / 100) * total;
+
         currentTimeDisplay.textContent = formatTime(targetTime);
+
     }
 
 });
@@ -903,12 +982,18 @@ progressSlider.addEventListener("change", function() {
     const total = player.getDuration() || 0;
 
     if (total > 0) {
-        const targetTime = (Number(progressSlider.value) / 100) * total;
+
+        const targetTime =
+            (Number(progressSlider.value) / 100) * total;
+
         player.seekTo(targetTime, true);
+
     }
 
     isSeeking = false;
+
 });
+
 </script>
 
 </body>
