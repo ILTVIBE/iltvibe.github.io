@@ -5,18 +5,47 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Sa'yo Lang - ILTVIBE</title>
+  <meta name="description" content="Sa'yo Lang - Official lyrics by ILTVIBE.">
 
   <style>
     * {
       box-sizing: border-box;
     }
 
+    :root {
+      --accent: #A78BFA;
+      --accent-rgb: 167, 139, 250;
+      --accent-soft: rgba(167, 139, 250, 0.10);
+      --accent-border: rgba(167, 139, 250, 0.35);
+      --accent-glow: rgba(167, 139, 250, 0.22);
+      --accent-backlight: rgba(167, 139, 250, 0.16);
+    }
+
+    html {
+      background: #000;
+      scroll-behavior: smooth;
+    }
+
     body {
+      position: relative;
+      isolation: isolate;
       margin: 0;
-      background: #080808;
+      background: #000;
       color: #fff;
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.8;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 50% 0%, var(--accent-backlight), transparent 55%),
+        radial-gradient(ellipse at 0% 50%, rgba(var(--accent-rgb), 0.07), transparent 45%),
+        radial-gradient(ellipse at 100% 80%, rgba(var(--accent-rgb), 0.06), transparent 45%);
     }
 
     header {
@@ -28,11 +57,13 @@
       font-size: 28px;
       font-weight: 800;
       letter-spacing: 4px;
+      color: var(--accent);
+      text-shadow: 0 0 18px var(--accent-glow);
     }
 
     .tagline {
       margin-top: 8px;
-      color: #666;
+      color: #777;
       font-size: 10px;
       letter-spacing: 3px;
     }
@@ -45,18 +76,20 @@
     .song-header {
       text-align: center;
       padding: 25px 0 45px;
-      border-bottom: 1px solid #1d1d1d;
+      border-bottom: 1px solid var(--accent-border);
     }
 
     .song-title {
       font-size: 32px;
       font-weight: 700;
       letter-spacing: 2px;
+      color: var(--accent);
+      text-shadow: 0 0 18px var(--accent-glow);
     }
 
     .song-meta {
       margin-top: 10px;
-      color: #666;
+      color: #777;
       font-size: 10px;
       letter-spacing: 2px;
     }
@@ -66,12 +99,21 @@
     }
 
     .lyrics-section {
-      margin-bottom: 42px;
+      margin-bottom: 35px;
+      padding: 22px 20px;
+      border: 1px solid var(--accent-border);
+      border-radius: 10px;
+      background: linear-gradient(
+        145deg,
+        var(--accent-soft),
+        rgba(8, 8, 8, 0.88)
+      );
+      box-shadow: 0 0 18px rgba(var(--accent-rgb), 0.06);
     }
 
     .section-label {
       margin-bottom: 14px;
-      color: #666;
+      color: var(--accent);
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 2px;
@@ -84,20 +126,29 @@
       font-size: 15px;
     }
 
+    .lyrics p:last-child {
+      margin-bottom: 0;
+    }
+
     .chorus {
       color: #fff;
     }
 
+    .chorus p {
+      color: #fff;
+    }
+
     .solo {
-      margin: 45px 0;
-      padding: 18px;
+      margin: 40px 0;
+      padding: 22px 18px;
       text-align: center;
-      border-top: 1px solid #1d1d1d;
-      border-bottom: 1px solid #1d1d1d;
-      color: #777;
+      border-top: 1px solid var(--accent-border);
+      border-bottom: 1px solid var(--accent-border);
+      color: var(--accent);
       font-size: 10px;
       letter-spacing: 2px;
       text-transform: uppercase;
+      text-shadow: 0 0 12px var(--accent-glow);
     }
 
     .back {
@@ -108,34 +159,60 @@
     .back a {
       display: inline-block;
       padding: 11px 18px;
-      border: 1px solid #222;
+      border: 1px solid var(--accent-border);
       border-radius: 9px;
-      color: #888;
+      color: var(--accent);
       text-decoration: none;
       font-size: 10px;
       letter-spacing: 2px;
+      transition: all 0.2s ease;
+      box-shadow: 0 0 14px rgba(var(--accent-rgb), 0.08);
     }
 
     .back a:hover {
       color: #fff;
-      background: #111;
+      background: var(--accent-soft);
+      box-shadow: 0 0 18px var(--accent-glow);
     }
 
     footer {
       text-align: center;
       padding: 50px 20px 35px;
-      color: #444;
+      color: #555;
       font-size: 9px;
       letter-spacing: 2px;
     }
 
+    footer strong {
+      color: var(--accent);
+      text-shadow: 0 0 12px var(--accent-glow);
+    }
+
     @media (max-width: 600px) {
+      header {
+        padding: 40px 20px 30px;
+      }
+
       .song-title {
         font-size: 27px;
       }
 
+      .lyrics-section {
+        padding: 20px 16px;
+      }
+
       .lyrics p {
         font-size: 14px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      * {
+        transition: none !important;
       }
     }
   </style>
@@ -143,11 +220,11 @@
 
 <body>
 
+  <!-- HEADER -->
   <header>
     <div class="logo">ILTVIBE</div>
     <div class="tagline">I LIKE THE VIBE</div>
   </header>
-
 
   <main>
 
@@ -162,10 +239,8 @@
 
     </section>
 
-
     <!-- LYRICS -->
     <section class="lyrics">
-
 
       <!-- VERSE 1 -->
       <div class="lyrics-section">
@@ -188,7 +263,6 @@
 
       </div>
 
-
       <!-- PRE-CHORUS -->
       <div class="lyrics-section">
 
@@ -202,7 +276,6 @@
         </p>
 
       </div>
-
 
       <!-- CHORUS -->
       <div class="lyrics-section chorus">
@@ -229,7 +302,6 @@
         </p>
 
       </div>
-
 
       <!-- VERSE 2 -->
       <div class="lyrics-section">
@@ -252,7 +324,6 @@
 
       </div>
 
-
       <!-- PRE-CHORUS -->
       <div class="lyrics-section">
 
@@ -266,7 +337,6 @@
         </p>
 
       </div>
-
 
       <!-- CHORUS -->
       <div class="lyrics-section chorus">
@@ -294,7 +364,6 @@
 
       </div>
 
-
       <!-- OUTRO -->
       <div class="lyrics-section">
 
@@ -309,12 +378,10 @@
 
       </div>
 
-
       <!-- GUITAR SOLO -->
       <div class="solo">
         ♪ Upbeat Guitar Solo ♪
       </div>
-
 
       <!-- END -->
       <div class="solo">
@@ -322,7 +389,6 @@
       </div>
 
     </section>
-
 
     <!-- BACK -->
     <div class="back">
@@ -333,18 +399,105 @@
 
   </main>
 
-
+  <!-- FOOTER -->
   <footer>
-    ILTVIBE · I LIKE THE VIBE
+    <strong>ILTVIBE</strong><br>
+    I LIKE THE VIBE<br><br>
+
+    Original lyrics and composition by 알윈 아놀린.<br>
+    © 2026 ILTVIBE - All rights reserved.
   </footer>
 
+  <script>
+    const themes = [
+      {
+        name: "Electric Purple",
+        accent: "#A78BFA",
+        rgb: "167, 139, 250"
+      },
+      {
+        name: "Neon Blue",
+        accent: "#60A5FA",
+        rgb: "96, 165, 250"
+      },
+      {
+        name: "Cyber Cyan",
+        accent: "#22D3EE",
+        rgb: "34, 211, 238"
+      },
+      {
+        name: "Neon Pink",
+        accent: "#F472B6",
+        rgb: "244, 114, 182"
+      },
+      {
+        name: "Champagne Gold",
+        accent: "#FBBF24",
+        rgb: "251, 191, 36"
+      },
+      {
+        name: "Emerald Green",
+        accent: "#34D399",
+        rgb: "52, 211, 153"
+      },
+      {
+        name: "Deep Crimson",
+        accent: "#FB7185",
+        rgb: "251, 113, 133"
+      },
+      {
+        name: "Violet",
+        accent: "#C084FC",
+        rgb: "192, 132, 252"
+      }
+    ];
+
+    const root = document.documentElement;
+
+    let previousTheme = null;
+
+    try {
+      previousTheme = localStorage.getItem("iltvibeTheme");
+    } catch (error) {
+      previousTheme = null;
+    }
+
+    let availableThemes = themes.filter(
+      theme => theme.name !== previousTheme
+    );
+
+    if (availableThemes.length === 0) {
+      availableThemes = themes;
+    }
+
+    const selectedTheme =
+      availableThemes[Math.floor(Math.random() * availableThemes.length)];
+
+    root.style.setProperty("--accent", selectedTheme.accent);
+    root.style.setProperty("--accent-rgb", selectedTheme.rgb);
+    root.style.setProperty(
+      "--accent-soft",
+      `rgba(${selectedTheme.rgb}, 0.10)`
+    );
+    root.style.setProperty(
+      "--accent-border",
+      `rgba(${selectedTheme.rgb}, 0.35)`
+    );
+    root.style.setProperty(
+      "--accent-glow",
+      `rgba(${selectedTheme.rgb}, 0.22)`
+    );
+    root.style.setProperty(
+      "--accent-backlight",
+      `rgba(${selectedTheme.rgb}, 0.16)`
+    );
+
+    try {
+      localStorage.setItem("iltvibeTheme", selectedTheme.name);
+    } catch (error) {
+      // Page still works if localStorage is unavailable.
+    }
+  </script>
+
 </body>
-  <footer>
-  <strong>ILTVIBE</strong><br>
-  I LIKE THE VIBE<br><br>
-
-  Original lyrics and composition by 알윈 아놀린.<br>
-  © 2026 ILTVIBE - All rights reserved.
-
-  <br><br>
 </html>
