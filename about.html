@@ -7,9 +7,18 @@
 
   <title>About the Artist | ILTVIBE</title>
   <meta name="description" content="Meet 알윈 아놀린, the independent Filipino artist behind ILTVIBE — I LIKE THE VIBE.">
-  <meta name="theme-color" content="#080808">
+  <meta name="theme-color" content="#000000">
 
   <style>
+    :root {
+      --accent: #A78BFA;
+      --accent-rgb: 167, 139, 250;
+      --accent-soft: rgba(167,139,250,0.10);
+      --accent-border: rgba(167,139,250,0.30);
+      --accent-glow: rgba(167,139,250,0.20);
+      --accent-backlight: rgba(167,139,250,0.12);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -18,14 +27,44 @@
 
     html {
       scroll-behavior: smooth;
+      background: #000;
     }
 
     body {
-      background: #080808;
+      background: #000;
       color: #e8e8e8;
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.8;
       min-height: 100vh;
+      position: relative;
+      isolation: isolate;
+    }
+
+    /* GLOBAL LED BACKLIGHT */
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          ellipse at 50% 0%,
+          var(--accent-backlight),
+          transparent 48%
+        ),
+        radial-gradient(
+          ellipse at 0% 50%,
+          rgba(var(--accent-rgb),0.045),
+          transparent 38%
+        ),
+        radial-gradient(
+          ellipse at 100% 75%,
+          rgba(var(--accent-rgb),0.045),
+          transparent 38%
+        );
+      transition: background 0.5s ease;
     }
 
     a {
@@ -42,7 +81,9 @@
 
     header {
       padding: 28px 0;
-      border-bottom: 1px solid #222;
+      border-bottom: 1px solid var(--accent-border);
+      box-shadow: 0 5px 24px var(--accent-backlight);
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
     }
 
     .header-inner {
@@ -57,6 +98,10 @@
       letter-spacing: 3px;
       color: #fff;
       text-align: center;
+      text-shadow:
+        0 0 12px var(--accent-glow),
+        0 0 25px var(--accent-backlight);
+      transition: text-shadow 0.4s ease;
     }
 
     .logo span {
@@ -66,6 +111,7 @@
       letter-spacing: 4px;
       font-weight: 400;
       line-height: 1.5;
+      text-shadow: none;
     }
 
     /* MAIN */
@@ -76,12 +122,13 @@
     }
 
     .eyebrow {
-      color: #999;
+      color: var(--accent);
       font-size: 10px;
       letter-spacing: 4px;
       text-transform: uppercase;
       margin-bottom: 22px;
       text-align: center;
+      text-shadow: 0 0 12px var(--accent-glow);
     }
 
     h1 {
@@ -91,6 +138,7 @@
       letter-spacing: -2px;
       margin-bottom: 12px;
       text-align: center;
+      text-shadow: 0 0 24px var(--accent-backlight);
     }
 
     .artist-role {
@@ -113,16 +161,31 @@
       object-position: center;
       display: block;
       margin: 0 auto 38px;
-      border: 1px solid #292929;
+      border: 1px solid var(--accent-border);
       border-radius: 10px;
       background: #0d0d0d;
+      box-shadow:
+        0 0 14px var(--accent-glow),
+        0 0 32px var(--accent-backlight),
+        0 0 55px rgba(var(--accent-rgb),0.06);
+      transition: box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+
+    .artist-photo:hover {
+      box-shadow:
+        0 0 22px var(--accent-glow),
+        0 0 42px var(--accent-backlight);
     }
 
     .divider {
       width: 45px;
       height: 2px;
-      background: #777;
+      background: var(--accent);
       margin: 0 auto 38px;
+      box-shadow:
+        0 0 10px var(--accent-glow),
+        0 0 22px var(--accent-backlight);
+      transition: background 0.4s ease;
     }
 
     /* BIOGRAPHY */
@@ -141,13 +204,12 @@
       text-align: left;
     }
 
-    /* ILTVIBE TITLE - CENTERED */
-
     .about-copy p:first-child {
       color: #eee;
       font-size: 17px;
       font-weight: 600;
       text-align: center;
+      text-shadow: 0 0 12px var(--accent-backlight);
     }
 
     /* ARTIST DETAILS */
@@ -155,17 +217,20 @@
     .section {
       margin-top: 50px;
       padding-top: 30px;
-      border-top: 1px solid #222;
+      border-top: 1px solid var(--accent-border);
       text-align: left;
+      box-shadow: 0 -12px 25px -20px var(--accent-glow);
+      transition: border-color 0.4s ease;
     }
 
     .section h2 {
-      color: #fff;
+      color: var(--accent);
       font-size: 12px;
       letter-spacing: 3px;
       margin-bottom: 24px;
       font-weight: 600;
       text-align: center;
+      text-shadow: 0 0 12px var(--accent-glow);
     }
 
     .details {
@@ -196,16 +261,21 @@
     .closing {
       margin-top: 45px;
       padding: 25px 0 10px;
-      border-top: 1px solid #222;
+      border-top: 1px solid var(--accent-border);
       text-align: center;
+      box-shadow: 0 -12px 25px -20px var(--accent-glow);
+      transition: border-color 0.4s ease;
     }
 
     .closing h2 {
-      color: #fff;
+      color: var(--accent);
       font-size: 19px;
       letter-spacing: 4px;
       margin-bottom: 6px;
       text-align: center;
+      text-shadow:
+        0 0 12px var(--accent-glow),
+        0 0 25px var(--accent-backlight);
     }
 
     .closing p {
@@ -218,9 +288,11 @@
     /* FOOTER */
 
     footer {
-      border-top: 1px solid #222;
+      border-top: 1px solid var(--accent-border);
       padding: 20px 0;
       text-align: center;
+      box-shadow: 0 -5px 24px var(--accent-backlight);
+      transition: border-color 0.4s ease;
     }
 
     footer p {
@@ -233,10 +305,12 @@
 
     footer a {
       color: #aaa;
+      transition: color 0.3s ease;
     }
 
     footer a:hover {
-      color: #fff;
+      color: var(--accent);
+      text-shadow: 0 0 12px var(--accent-glow);
     }
 
     /* MOBILE */
@@ -281,8 +355,6 @@
         text-align: left;
       }
 
-      /* ARTIST DETAILS HEADING - CENTERED */
-
       .section h2 {
         text-align: center;
       }
@@ -309,6 +381,17 @@
 
       footer {
         padding: 18px 0;
+      }
+    }
+
+    /* REDUCED MOTION */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
@@ -436,6 +519,106 @@
     </div>
 
   </footer>
+
+  <script>
+
+    // RANDOM COLOR THEME
+    // Same eight themes as the homepage.
+
+    const themes = [
+      {
+        name: "Electric Purple",
+        accent: "#A78BFA",
+        rgb: "167, 139, 250"
+      },
+      {
+        name: "Neon Blue",
+        accent: "#60A5FA",
+        rgb: "96, 165, 250"
+      },
+      {
+        name: "Cyber Cyan",
+        accent: "#22D3EE",
+        rgb: "34, 211, 238"
+      },
+      {
+        name: "Neon Pink",
+        accent: "#F472B6",
+        rgb: "244, 114, 182"
+      },
+      {
+        name: "Champagne Gold",
+        accent: "#FBBF24",
+        rgb: "251, 191, 36"
+      },
+      {
+        name: "Emerald Green",
+        accent: "#34D399",
+        rgb: "52, 211, 153"
+      },
+      {
+        name: "Deep Crimson",
+        accent: "#FB7185",
+        rgb: "251, 113, 133"
+      },
+      {
+        name: "Violet",
+        accent: "#C084FC",
+        rgb: "192, 132, 252"
+      }
+    ];
+
+    let selectedTheme;
+
+    try {
+      const previousTheme = localStorage.getItem("iltvibeTheme");
+
+      let availableThemes = themes.filter(
+        theme => theme.name !== previousTheme
+      );
+
+      if (availableThemes.length === 0) {
+        availableThemes = themes;
+      }
+
+      selectedTheme = availableThemes[
+        Math.floor(Math.random() * availableThemes.length)
+      ];
+
+      localStorage.setItem("iltvibeTheme", selectedTheme.name);
+
+    } catch (error) {
+      selectedTheme = themes[
+        Math.floor(Math.random() * themes.length)
+      ];
+    }
+
+    const root = document.documentElement;
+
+    root.style.setProperty("--accent", selectedTheme.accent);
+    root.style.setProperty("--accent-rgb", selectedTheme.rgb);
+
+    root.style.setProperty(
+      "--accent-soft",
+      `rgba(${selectedTheme.rgb}, 0.10)`
+    );
+
+    root.style.setProperty(
+      "--accent-border",
+      `rgba(${selectedTheme.rgb}, 0.30)`
+    );
+
+    root.style.setProperty(
+      "--accent-glow",
+      `rgba(${selectedTheme.rgb}, 0.20)`
+    );
+
+    root.style.setProperty(
+      "--accent-backlight",
+      `rgba(${selectedTheme.rgb}, 0.12)`
+    );
+
+  </script>
 
 </body>
 </html>
