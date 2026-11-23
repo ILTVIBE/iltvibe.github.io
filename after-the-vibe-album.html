@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AFTER THE VIBE — EDITIONS | ILTVIBE</title>
+<meta name="theme-color" content="#000000">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --accent: #A78BFA;
+    --accent-rgb: 167, 139, 250;
+    --accent-soft: rgba(167, 139, 250, 0.12);
+    --accent-border: rgba(167, 139, 250, 0.35);
+    --accent-glow: rgba(167, 139, 250, 0.28);
+    --accent-backlight: rgba(167, 139, 250, 0.13);
+}
+
+html {
+    background: #000;
+}
+
+body {
+    margin: 0;
+    background: #000;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    position: relative;
+    isolation: isolate;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at 50% 0%, var(--accent-backlight), transparent 55%),
+        radial-gradient(ellipse at 0% 50%, rgba(var(--accent-rgb), 0.07), transparent 45%),
+        radial-gradient(ellipse at 100% 80%, rgba(var(--accent-rgb), 0.06), transparent 45%);
+}
+
+.container {
+    width: 100%;
+    max-width: 720px;
+    margin: auto;
+    padding: 45px 20px 60px;
+}
+
+/* LOGO */
+
+.logo {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    margin-bottom: 6px;
+    text-shadow: 0 0 18px var(--accent-glow);
+}
+
+.tagline {
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 38px;
+}
+
+/* EDITION CARDS */
+
+.edition {
+    margin-bottom: 32px;
+}
+
+/* BANNER - NOT CLICKABLE */
+
+.banner {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 16px;
+    border: 1px solid var(--accent-border);
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.65),
+        0 0 20px var(--accent-glow),
+        0 0 45px rgba(var(--accent-rgb), 0.08);
+}
+
+.banner img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* EDITION INFO */
+
+.edition-info {
+    text-align: center;
+    padding: 14px 10px 0;
+}
+
+.edition-title {
+    font-size: 22px;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: 1px;
+    text-shadow: 0 0 14px var(--accent-glow);
+}
+
+.edition-label {
+    color: var(--accent);
+    font-size: 10px;
+    letter-spacing: 2px;
+    margin-top: 8px;
+    font-weight: 700;
+}
+
+.edition-description {
+    color: #888;
+    font-size: 12px;
+    margin-top: 9px;
+}
+
+/* BUTTON */
+
+.select-button {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 9px 23px;
+    border: 1px solid var(--accent-border);
+    border-radius: 25px;
+    color: #fff;
+    background: transparent;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    transition: 0.2s ease;
+}
+
+.select-button:hover {
+    background: var(--accent);
+    color: #000;
+    border-color: var(--accent);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* BACK BUTTON */
+
+.back {
+    display: block;
+    width: fit-content;
+    margin: 40px auto 0;
+    color: #999;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: 0.2s ease;
+}
+
+.back:hover {
+    color: var(--accent);
+    text-shadow: 0 0 12px var(--accent-glow);
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    margin-top: 55px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(var(--accent-rgb), 0.14);
+    color: #666;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* MOBILE */
+
+@media (max-width: 500px) {
+    .container {
+        padding: 35px 15px 50px;
+    }
+
+    .logo {
+        font-size: 32px;
+    }
+
+    .edition-title {
+        font-size: 20px;
+    }
+
+    .edition {
+        margin-bottom: 30px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">ILTVIBE</div>
+
+    <div class="tagline">I LIKE THE VIBE</div>
+
+    <!-- RAW / ORIGINAL EDITION -->
+
+    <div class="edition">
+
+        <div class="banner">
+            <img
+                src="after-the-vibe-raw.png"
+                alt="AFTER THE VIBE Raw Original Edition"
+            >
+        </div>
+
+        <div class="edition-info">
+
+            <h2 class="edition-title">
+                AFTER THE VIBE
+            </h2>
+
+            <div class="edition-label">
+                RAW · ORIGINAL EDITION
+            </div>
+
+            <div class="edition-description">
+                The original release of AFTER THE VIBE.
+            </div>
+
+            <a class="select-button" href="/after-the-vibe.html">
+                AFTER THE VIBE
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- REMASTERED EDITION -->
+
+    <div class="edition">
+
+        <div class="banner">
+            <img
+                src="after-the-vibe-remastered.png"
+                alt="AFTER THE VIBE Remastered Edition"
+            >
+        </div>
+
+        <div class="edition-info">
+
+            <h2 class="edition-title">
+                AFTER THE VIBE
+            </h2>
+
+            <div class="edition-label">
+                REMASTERED EDITION
+            </div>
+
+            <div class="edition-description">
+                A refined audio edition of AFTER THE VIBE.
+            </div>
+
+            <a class="select-button" href="/after-the-vibe-remastered.html">
+                AFTER THE VIBE REMASTERED
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- BACK TO HOME -->
+
+    <a class="back" href="index.html">
+        ← BACK TO ILTVIBE
+    </a>
+
+    <footer>
+        ILTVIBE · I LIKE THE VIBE
+    </footer>
+
+</div>
+
+<!-- RANDOM RGB THEME -->
+
+<script>
+const themes = [
+    { name: "Electric Purple", color: "#A78BFA", rgb: "167, 139, 250" },
+    { name: "Neon Blue", color: "#60A5FA", rgb: "96, 165, 250" },
+    { name: "Cyber Cyan", color: "#22D3EE", rgb: "34, 211, 238" },
+    { name: "Neon Pink", color: "#F472B6", rgb: "244, 114, 182" },
+    { name: "Champagne Gold", color: "#FBBF24", rgb: "251, 191, 36" },
+    { name: "Emerald Green", color: "#34D399", rgb: "52, 211, 153" },
+    { name: "Deep Crimson", color: "#FB7185", rgb: "251, 113, 133" },
+    { name: "Violet", color: "#C084FC", rgb: "192, 132, 252" }
+];
+
+let previousTheme = null;
+
+try {
+    previousTheme = localStorage.getItem("iltvibeTheme");
+} catch (error) {
+    previousTheme = null;
+}
+
+let availableThemes = themes.filter(
+    theme => theme.name !== previousTheme
+);
+
+if (availableThemes.length === 0) {
+    availableThemes = themes;
+}
+
+const selectedTheme =
+    availableThemes[
+        Math.floor(Math.random() * availableThemes.length)
+    ];
+
+const root = document.documentElement;
+
+root.style.setProperty("--accent", selectedTheme.color);
+root.style.setProperty("--accent-rgb", selectedTheme.rgb);
+
+root.style.setProperty(
+    "--accent-soft",
+    `rgba(${selectedTheme.rgb}, 0.12)`
+);
+
+root.style.setProperty(
+    "--accent-border",
+    `rgba(${selectedTheme.rgb}, 0.35)`
+);
+
+root.style.setProperty(
+    "--accent-glow",
+    `rgba(${selectedTheme.rgb}, 0.28)`
+);
+
+root.style.setProperty(
+    "--accent-backlight",
+    `rgba(${selectedTheme.rgb}, 0.13)`
+);
+
+try {
+    localStorage.setItem("iltvibeTheme", selectedTheme.name);
+} catch (error) {
+    // Page works even if browser storage is unavailable.
+}
+</script>
+
+</body>
+</html>
