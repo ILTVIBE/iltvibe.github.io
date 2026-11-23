@@ -73,38 +73,13 @@ body::before {
     margin-bottom: 38px;
 }
 
-/* PAGE INTRO */
-
-.page-title {
-    text-align: center;
-    font-size: 23px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    margin: 0 0 10px;
-}
-
-.page-description {
-    text-align: center;
-    color: #888;
-    font-size: 13px;
-    line-height: 1.6;
-    margin: 0 0 35px;
-}
-
 /* EDITION CARDS */
 
 .edition {
-    display: block;
-    text-decoration: none;
-    color: #fff;
-    margin-bottom: 25px;
-    border-radius: 16px;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    margin-bottom: 32px;
 }
 
-.edition:hover {
-    transform: translateY(-4px);
-}
+/* BANNER - NOT CLICKABLE */
 
 .banner {
     width: 100%;
@@ -122,22 +97,19 @@ body::before {
     width: 100%;
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.edition:hover .banner img {
-    transform: scale(1.025);
+    pointer-events: none;
+    user-select: none;
 }
 
 /* EDITION INFO */
 
 .edition-info {
     text-align: center;
-    padding: 18px 10px 10px;
+    padding: 14px 10px 0;
 }
 
 .edition-title {
-    font-size: 23px;
+    font-size: 22px;
     font-weight: 800;
     margin: 0;
     letter-spacing: 1px;
@@ -146,9 +118,9 @@ body::before {
 
 .edition-label {
     color: var(--accent);
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 2px;
-    margin-top: 9px;
+    margin-top: 8px;
     font-weight: 700;
 }
 
@@ -158,24 +130,27 @@ body::before {
     margin-top: 9px;
 }
 
-/* SELECT LABEL */
+/* BUTTON */
 
-.select-label {
+.select-button {
     display: inline-block;
     margin-top: 14px;
-    padding: 8px 20px;
+    padding: 9px 23px;
     border: 1px solid var(--accent-border);
     border-radius: 25px;
     color: #fff;
+    background: transparent;
+    text-decoration: none;
     font-size: 10px;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     transition: 0.2s ease;
 }
 
-.edition:hover .select-label {
+.select-button:hover {
     background: var(--accent);
     color: #000;
+    border-color: var(--accent);
     box-shadow: 0 0 15px var(--accent-glow);
 }
 
@@ -184,7 +159,7 @@ body::before {
 .back {
     display: block;
     width: fit-content;
-    margin: 38px auto 0;
+    margin: 40px auto 0;
     color: #999;
     text-decoration: none;
     font-size: 13px;
@@ -220,10 +195,6 @@ footer {
         font-size: 32px;
     }
 
-    .page-title {
-        font-size: 20px;
-    }
-
     .edition-title {
         font-size: 20px;
     }
@@ -251,16 +222,9 @@ footer {
 
     <div class="tagline">I LIKE THE VIBE</div>
 
-    <h1 class="page-title">EP VIBE</h1>
-
-    <p class="page-description">
-        Choose your listening edition.
-        Experience EP VIBE in its original and remastered form.
-    </p>
-
     <!-- RAW / ORIGINAL EDITION -->
 
-    <a class="edition" href="/ep-vibe.html">
+    <div class="edition">
 
         <div class="banner">
             <img
@@ -270,6 +234,7 @@ footer {
         </div>
 
         <div class="edition-info">
+
             <h2 class="edition-title">
                 EP VIBE
             </h2>
@@ -282,16 +247,17 @@ footer {
                 The original release of EP VIBE.
             </div>
 
-            <span class="select-label">
-                EXPLORE EDITION
-            </span>
+            <a class="select-button" href="ep-vibe-raw.html">
+                EP VIBE
+            </a>
+
         </div>
 
-    </a>
+    </div>
 
     <!-- REMASTERED EDITION -->
 
-    <a class="edition" href="ep-vibe-remastered.html">
+    <div class="edition">
 
         <div class="banner">
             <img
@@ -301,6 +267,7 @@ footer {
         </div>
 
         <div class="edition-info">
+
             <h2 class="edition-title">
                 EP VIBE
             </h2>
@@ -313,12 +280,13 @@ footer {
                 A refined audio edition of EP VIBE.
             </div>
 
-            <span class="select-label">
-                EXPLORE EDITION
-            </span>
+            <a class="select-button" href="ep-vibe-remastered.html">
+                EP VIBE REMASTERED
+            </a>
+
         </div>
 
-    </a>
+    </div>
 
     <!-- BACK TO HOME -->
 
