@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EP VIBE — EDITIONS | ILTVIBE</title>
+<meta name="theme-color" content="#000000">
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --accent: #A78BFA;
+    --accent-rgb: 167, 139, 250;
+    --accent-soft: rgba(167, 139, 250, 0.12);
+    --accent-border: rgba(167, 139, 250, 0.35);
+    --accent-glow: rgba(167, 139, 250, 0.28);
+    --accent-backlight: rgba(167, 139, 250, 0.13);
+}
+
+html {
+    background: #000;
+}
+
+body {
+    margin: 0;
+    background: #000;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    position: relative;
+    isolation: isolate;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at 50% 0%, var(--accent-backlight), transparent 55%),
+        radial-gradient(ellipse at 0% 50%, rgba(var(--accent-rgb), 0.07), transparent 45%),
+        radial-gradient(ellipse at 100% 80%, rgba(var(--accent-rgb), 0.06), transparent 45%);
+}
+
+.container {
+    width: 100%;
+    max-width: 720px;
+    margin: auto;
+    padding: 45px 20px 60px;
+}
+
+/* LOGO */
+
+.logo {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: 5px;
+    margin-bottom: 6px;
+    text-shadow: 0 0 18px var(--accent-glow);
+}
+
+.tagline {
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+    letter-spacing: 3px;
+    margin-bottom: 38px;
+}
+
+/* PAGE INTRO */
+
+.page-title {
+    text-align: center;
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin: 0 0 10px;
+}
+
+.page-description {
+    text-align: center;
+    color: #888;
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0 0 35px;
+}
+
+/* EDITION CARDS */
+
+.edition {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+    margin-bottom: 25px;
+    border-radius: 16px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.edition:hover {
+    transform: translateY(-4px);
+}
+
+.banner {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 16px;
+    border: 1px solid var(--accent-border);
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.65),
+        0 0 20px var(--accent-glow),
+        0 0 45px rgba(var(--accent-rgb), 0.08);
+}
+
+.banner img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.edition:hover .banner img {
+    transform: scale(1.025);
+}
+
+/* EDITION INFO */
+
+.edition-info {
+    text-align: center;
+    padding: 18px 10px 10px;
+}
+
+.edition-title {
+    font-size: 23px;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: 1px;
+    text-shadow: 0 0 14px var(--accent-glow);
+}
+
+.edition-label {
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 2px;
+    margin-top: 9px;
+    font-weight: 700;
+}
+
+.edition-description {
+    color: #888;
+    font-size: 12px;
+    margin-top: 9px;
+}
+
+/* SELECT LABEL */
+
+.select-label {
+    display: inline-block;
+    margin-top: 14px;
+    padding: 8px 20px;
+    border: 1px solid var(--accent-border);
+    border-radius: 25px;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: 0.2s ease;
+}
+
+.edition:hover .select-label {
+    background: var(--accent);
+    color: #000;
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* BACK BUTTON */
+
+.back {
+    display: block;
+    width: fit-content;
+    margin: 38px auto 0;
+    color: #999;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: 0.2s ease;
+}
+
+.back:hover {
+    color: var(--accent);
+    text-shadow: 0 0 12px var(--accent-glow);
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    margin-top: 55px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(var(--accent-rgb), 0.14);
+    color: #666;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* MOBILE */
+
+@media (max-width: 500px) {
+    .container {
+        padding: 35px 15px 50px;
+    }
+
+    .logo {
+        font-size: 32px;
+    }
+
+    .page-title {
+        font-size: 20px;
+    }
+
+    .edition-title {
+        font-size: 20px;
+    }
+
+    .edition {
+        margin-bottom: 30px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo">ILTVIBE</div>
+
+    <div class="tagline">I LIKE THE VIBE</div>
+
+    <h1 class="page-title">EP VIBE</h1>
+
+    <p class="page-description">
+        Choose your listening edition.
+        Experience EP VIBE in its original and remastered form.
+    </p>
+
+    <!-- RAW / ORIGINAL EDITION -->
+
+    <a class="edition" href="ep-vibe-raw.html">
+
+        <div class="banner">
+            <img
+                src="ep-vibe-raw.png"
+                alt="EP VIBE Raw Original Edition"
+            >
+        </div>
+
+        <div class="edition-info">
+            <h2 class="edition-title">
+                EP VIBE
+            </h2>
+
+            <div class="edition-label">
+                RAW · ORIGINAL EDITION
+            </div>
+
+            <div class="edition-description">
+                The original release of EP VIBE.
+            </div>
+
+            <span class="select-label">
+                EXPLORE EDITION
+            </span>
+        </div>
+
+    </a>
+
+    <!-- REMASTERED EDITION -->
+
+    <a class="edition" href="ep-vibe-remastered.html">
+
+        <div class="banner">
+            <img
+                src="ep-vibe-remastered.png"
+                alt="EP VIBE Remastered Edition"
+            >
+        </div>
+
+        <div class="edition-info">
+            <h2 class="edition-title">
+                EP VIBE
+            </h2>
+
+            <div class="edition-label">
+                REMASTERED EDITION
+            </div>
+
+            <div class="edition-description">
+                A refined audio edition of EP VIBE.
+            </div>
+
+            <span class="select-label">
+                EXPLORE EDITION
+            </span>
+        </div>
+
+    </a>
+
+    <!-- BACK TO HOME -->
+
+    <a class="back" href="index.html">
+        ← BACK TO ILTVIBE
+    </a>
+
+    <footer>
+        ILTVIBE · I LIKE THE VIBE
+    </footer>
+
+</div>
+
+<!-- RANDOM RGB THEME -->
+
+<script>
+const themes = [
+    { name: "Electric Purple", color: "#A78BFA", rgb: "167, 139, 250" },
+    { name: "Neon Blue", color: "#60A5FA", rgb: "96, 165, 250" },
+    { name: "Cyber Cyan", color: "#22D3EE", rgb: "34, 211, 238" },
+    { name: "Neon Pink", color: "#F472B6", rgb: "244, 114, 182" },
+    { name: "Champagne Gold", color: "#FBBF24", rgb: "251, 191, 36" },
+    { name: "Emerald Green", color: "#34D399", rgb: "52, 211, 153" },
+    { name: "Deep Crimson", color: "#FB7185", rgb: "251, 113, 133" },
+    { name: "Violet", color: "#C084FC", rgb: "192, 132, 252" }
+];
+
+let previousTheme = null;
+
+try {
+    previousTheme = localStorage.getItem("iltvibeTheme");
+} catch (error) {
+    previousTheme = null;
+}
+
+let availableThemes = themes.filter(
+    theme => theme.name !== previousTheme
+);
+
+if (availableThemes.length === 0) {
+    availableThemes = themes;
+}
+
+const selectedTheme =
+    availableThemes[
+        Math.floor(Math.random() * availableThemes.length)
+    ];
+
+const root = document.documentElement;
+
+root.style.setProperty("--accent", selectedTheme.color);
+root.style.setProperty("--accent-rgb", selectedTheme.rgb);
+
+root.style.setProperty(
+    "--accent-soft",
+    `rgba(${selectedTheme.rgb}, 0.12)`
+);
+
+root.style.setProperty(
+    "--accent-border",
+    `rgba(${selectedTheme.rgb}, 0.35)`
+);
+
+root.style.setProperty(
+    "--accent-glow",
+    `rgba(${selectedTheme.rgb}, 0.28)`
+);
+
+root.style.setProperty(
+    "--accent-backlight",
+    `rgba(${selectedTheme.rgb}, 0.13)`
+);
+
+try {
+    localStorage.setItem("iltvibeTheme", selectedTheme.name);
+} catch (error) {
+    // Page works even if browser storage is unavailable.
+}
+</script>
+
+</body>
+</html>
